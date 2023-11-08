@@ -4,6 +4,8 @@
  */
 package kanban;
 
+import java.io.File;
+import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,11 +20,14 @@ public class Kanban extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("selectProject.fxml"));
+        URL telaSelectProject = new File("./src/views/selectProject.fxml").toURI().toURL();
+        URL telaCreateProject = new File("./src/views/createProject.fxml").toURI().toURL();
+        Parent selectProject = FXMLLoader.load(telaSelectProject);
+        Parent createProject = FXMLLoader.load(telaCreateProject);
         
-        Scene scene = new Scene(root, 500, 500);
+        Scene tela1 = new Scene(createProject, 500, 500);
         
-        stage.setScene(scene);
+        stage.setScene(tela1);
         stage.show();
     }
 

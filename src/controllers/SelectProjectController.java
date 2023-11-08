@@ -19,7 +19,6 @@ public class SelectProjectController {
 
     @FXML
     void novoProjeto(ActionEvent event) {
-
     }
 
 }
