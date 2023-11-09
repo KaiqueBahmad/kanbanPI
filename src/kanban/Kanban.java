@@ -4,6 +4,7 @@
  */
 package kanban;
 
+import controllers.SelectProjectController;
 import java.io.File;
 import java.net.URL;
 import javafx.application.Application;
@@ -17,18 +18,40 @@ import javafx.stage.Stage;
  * @author aluno
  */
 public class Kanban extends Application {
+    private static Stage telaSelecionada;
+    private static Scene sceneSelectProject;
+    private static Scene sceneCreateProject;
+    
+    private SelectProjectController SelectProjectController;
+    private SelectProjectController CreateProjectController;
     
     @Override
     public void start(Stage stage) throws Exception {
+        telaSelecionada = stage;
+        
         URL telaSelectProject = new File("./src/views/selectProject.fxml").toURI().toURL();
         URL telaCreateProject = new File("./src/views/createProject.fxml").toURI().toURL();
-        Parent selectProject = FXMLLoader.load(telaSelectProject);
-        Parent createProject = FXMLLoader.load(telaCreateProject);
         
-        Scene tela1 = new Scene(createProject, 500, 500);
+        FXMLLoader selectProject = new FXMLLoader(telaSelectProject);
+        FXMLLoader createProject = new FXMLLoader(telaCreateProject);
         
-        stage.setScene(tela1);
+        Parent AAselectProject = selectProject.load();
+        Parent AAcreateProject = createProject.load();
+        
+        sceneSelectProject = new Scene(AAselectProject,  1535, 800);
+        SelectProjectController = selectProject.getController();
+        sceneCreateProject = new Scene(AAcreateProject,  1535, 800);
+        CreateProjectController = selectProject.getController();
+        
+        stage.setScene(sceneSelectProject);
         stage.show();
+    }
+    
+    public static void telas(String tela){
+        switch(tela){
+            case "selectProject" -> telaSelecionada.setScene(sceneSelectProject);
+            case "createProject" -> telaSelecionada.setScene(sceneCreateProject);
+        }            
     }
 
     /**

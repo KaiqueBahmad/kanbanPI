@@ -3,6 +3,7 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import kanban.Kanban;
 
 public class SelectProjectController {
 
@@ -13,12 +14,14 @@ public class SelectProjectController {
     private Button novoProjeto;
 
     @FXML
-    void logout(ActionEvent event) {
+    private void logout(ActionEvent event) {
 
     }
 
     @FXML
-    void novoProjeto(ActionEvent event) {
+    private void novoProjeto(ActionEvent event) {
+        System.out.println("clicou");
+        Kanban.telas("createProjct");
     }
 
 }
