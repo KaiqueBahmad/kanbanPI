@@ -14,18 +14,6 @@ public class CreateProjectController {
     private Button criarProjeto;
 
     @FXML
-    private ProgressIndicator progresso;
-
-    @FXML
-    private ProgressIndicator progresso1;
-
-    @FXML
-    private ProgressIndicator progresso11;
-
-    @FXML
-    private ProgressIndicator progresso111;
-
-    @FXML
     void cancelarProjeto(ActionEvent event) {
 
     }
