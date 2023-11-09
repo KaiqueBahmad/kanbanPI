@@ -147,7 +147,6 @@ public class SelectProjectController {
 
     @FXML
     void projetoUm(MouseEvent event) {
-
     }
 
 }
