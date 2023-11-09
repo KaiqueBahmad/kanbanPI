@@ -15,13 +15,12 @@ public class SelectProjectController {
 
     @FXML
     private void logout(ActionEvent event) {
-
+        
     }
 
     @FXML
     private void novoProjeto(ActionEvent event) {
-        System.out.println("clicou");
-        Kanban.telas("createProjct");
+        Kanban.telas("createProject");
     }
 
 }

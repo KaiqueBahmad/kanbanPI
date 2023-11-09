@@ -22,32 +22,28 @@ public class Kanban extends Application {
     private static Scene sceneSelectProject;
     private static Scene sceneCreateProject;
     
-    private SelectProjectController SelectProjectController;
-    private SelectProjectController CreateProjectController;
+//    private SelectProjectController SelectProjectController;
+//    private SelectProjectController CreateProjectController;
     
     @Override
     public void start(Stage stage) throws Exception {
         telaSelecionada = stage;
         
-        URL telaSelectProject = new File("./src/views/selectProject.fxml").toURI().toURL();
-        URL telaCreateProject = new File("./src/views/createProject.fxml").toURI().toURL();
+        Parent fxmlSelectProject = FXMLLoader.load(getClass().getResource("../views/selectProject.fxml"));
+        sceneSelectProject = new Scene(fxmlSelectProject,  1535, 800);
         
-        FXMLLoader selectProject = new FXMLLoader(telaSelectProject);
-        FXMLLoader createProject = new FXMLLoader(telaCreateProject);
+        Parent fxmlcreateProject = FXMLLoader.load(getClass().getResource("../views/createProject.fxml"));
+        sceneCreateProject = new Scene(fxmlcreateProject,  1535, 800);        
         
-        Parent AAselectProject = selectProject.load();
-        Parent AAcreateProject = createProject.load();
-        
-        sceneSelectProject = new Scene(AAselectProject,  1535, 800);
-        SelectProjectController = selectProject.getController();
-        sceneCreateProject = new Scene(AAcreateProject,  1535, 800);
-        CreateProjectController = selectProject.getController();
+//        SelectProjectController = selectProject.getController();;
+//        CreateProjectController = selectProject.getController();
         
         stage.setScene(sceneSelectProject);
         stage.show();
     }
     
     public static void telas(String tela){
+        System.out.println(tela);
         switch(tela){
             case "selectProject" -> telaSelecionada.setScene(sceneSelectProject);
             case "createProject" -> telaSelecionada.setScene(sceneCreateProject);
