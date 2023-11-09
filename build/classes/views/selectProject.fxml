@@ -30,7 +30,7 @@
             <Font size="25.0" />
          </font>
       </Button>
-      <Pane fx:id="projetoUm" layoutX="65.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoUm" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
+      <Pane fx:id="projetoUm" layoutX="65.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoUm" opacity="0.0" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <children>
             <Label fx:id="nomeProjetoUm" contentDisplay="CENTER" layoutX="125.0" layoutY="42.0" text="Nome">
                <font>
@@ -54,7 +54,7 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Pane fx:id="projetoDois" layoutX="426.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoDois" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
+      <Pane fx:id="projetoDois" layoutX="426.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoDois" opacity="0.0" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <children>
             <Label fx:id="nomeProjetoDois" contentDisplay="CENTER" layoutX="125.0" layoutY="42.0" text="Nome">
                <font>
@@ -79,7 +79,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="projetoTres" layoutX="788.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoTres" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
+      <Pane fx:id="projetoTres" layoutX="788.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoTres" opacity="0.0" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <children>
             <Label fx:id="nomeProjetoTres" contentDisplay="CENTER" layoutX="125.0" layoutY="42.0" text="Nome">
                <font>
@@ -103,7 +103,7 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Pane fx:id="projetoQuatro" layoutX="1149.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoQuatro" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
+      <Pane fx:id="projetoQuatro" layoutX="1149.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoQuatro" opacity="0.0" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <children>
             <Label fx:id="nomeProjetoQuatro" contentDisplay="CENTER" layoutX="125.0" layoutY="42.0" text="Nome">
                <font>
