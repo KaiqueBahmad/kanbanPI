@@ -91,62 +91,76 @@ public class SelectProjectController {
     private Pane projetoUm;
 
     @FXML
-    void editarProjetoDois(MouseEvent event) {
+    private void editarProjetoDois(MouseEvent event) {
+        // verificar se projeto existe
+        Kanban.telas("newName");
+    }
+
+    @FXML
+    private void editarProjetoTres(MouseEvent event) {
+        // verificar se projeto existe
+        Kanban.telas("newName");
+    }
+
+    @FXML
+    private void editarProjetoUm(MouseEvent event) {
+        // verificar se projeto existe
+        Kanban.telas("newName");
+    }
+    
+        @FXML
+    private void editarProjetoQuatro(MouseEvent event) {
+        // verificar se projeto existe
+        Kanban.telas("newName");
+    }
+
+    @FXML
+    private void excluirProjetoQuatro(MouseEvent event) {
 
     }
 
     @FXML
-    void editarProjetoTres(MouseEvent event) {
+    private void excluirProjetoTres(MouseEvent event) {
 
     }
 
     @FXML
-    void editarProjetoUm(MouseEvent event) {
+    private void excluirProjetoUm(MouseEvent event) {
 
     }
 
     @FXML
-    void excluirProjetoQuatro(MouseEvent event) {
+    private void logout(ActionEvent event) {
 
     }
 
     @FXML
-    void excluirProjetoTres(MouseEvent event) {
-
-    }
-
-    @FXML
-    void excluirProjetoUm(MouseEvent event) {
-
-    }
-
-    @FXML
-    void logout(ActionEvent event) {
-
-    }
-
-    @FXML
-    void novoProjeto(ActionEvent event) {
+    private void novoProjeto(ActionEvent event) {
         Kanban.telas("createProject");
     }
 
     @FXML
-    void projetoDois(MouseEvent event) {
-
+    private void projetoDois(MouseEvent event) {
+        // verificar se projeto existe
+        Kanban.telas("kanbanPage");
     }
 
     @FXML
-    void projetoQuatro(MouseEvent event) {
-
+    private void projetoQuatro(MouseEvent event) {
+        // verificar se projeto existe
+        Kanban.telas("kanbanPage");
     }
 
     @FXML
-    void projetoTres(MouseEvent event) {
-
+    private void projetoTres(MouseEvent event) {
+        // verificar se projeto existe
+        Kanban.telas("kanbanPage");
     }
 
     @FXML
-    void projetoUm(MouseEvent event) {
+    private void projetoUm(MouseEvent event) {
+        // verificar se projeto existe
+        Kanban.telas("kanbanPage");
     }
 
 }

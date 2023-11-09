@@ -21,9 +21,8 @@ public class Kanban extends Application {
     private static Stage telaSelecionada;
     private static Scene sceneSelectProject;
     private static Scene sceneCreateProject;
-    
-//    private SelectProjectController SelectProjectController;
-//    private SelectProjectController CreateProjectController;
+    private static Scene sceneKanbanPage;
+    private static Scene sceneNewNameProject;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -33,10 +32,13 @@ public class Kanban extends Application {
         sceneSelectProject = new Scene(fxmlSelectProject,  1535, 800);
         
         Parent fxmlcreateProject = FXMLLoader.load(getClass().getResource("../views/createProject.fxml"));
-        sceneCreateProject = new Scene(fxmlcreateProject,  1535, 800);        
+        sceneCreateProject = new Scene(fxmlcreateProject,  1535, 800);    
         
-//        SelectProjectController = selectProject.getController();;
-//        CreateProjectController = selectProject.getController();
+        Parent fxmlKanbanPage = FXMLLoader.load(getClass().getResource("../views/kanbanPage.fxml"));
+        sceneKanbanPage = new Scene(fxmlKanbanPage,  1535, 800);
+        
+        Parent fxmlNewNameProject = FXMLLoader.load(getClass().getResource("../views/newNameProject.fxml"));
+        sceneNewNameProject = new Scene(fxmlNewNameProject,  1535, 800);
         
         stage.setScene(sceneSelectProject);
         stage.show();
@@ -46,6 +48,8 @@ public class Kanban extends Application {
         switch(tela){
             case "selectProject" -> telaSelecionada.setScene(sceneSelectProject);
             case "createProject" -> telaSelecionada.setScene(sceneCreateProject);
+            case "kanbanPage" -> telaSelecionada.setScene(sceneKanbanPage);
+            case "newName" -> telaSelecionada.setScene(sceneNewNameProject);
         }            
     }
 

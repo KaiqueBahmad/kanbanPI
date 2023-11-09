@@ -5,23 +5,19 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import kanban.Kanban;
 
-public class CreateProjectController {
+public class NewNameProjectController {
+
+    @FXML
+    private TextField attNomeNovoProjeto;
+
+    @FXML
+    private Button attNomeProjeto;
 
     @FXML
     private Button cancelarProjeto;
-
-    @FXML
-    private Button criarProjeto;
-
-    @FXML
-    private TextArea descricaoNovoProjeto;
-
-    @FXML
-    private TextField nomeNovoProjeto;
 
     @FXML
     private Label nomeProjetoDois;
@@ -60,13 +56,13 @@ public class CreateProjectController {
     private ProgressIndicator progressoTotalUm;
 
     @FXML
-    private void cancelarProjeto(ActionEvent event) {
-        Kanban.telas("selectProject");
+    void attNomeProjeto(ActionEvent event) {
+
     }
 
     @FXML
-    private void criarProjeto(ActionEvent event) {
-
+    void cancelarProjeto(ActionEvent event) {
+        Kanban.telas("selectProject");
     }
 
 }
