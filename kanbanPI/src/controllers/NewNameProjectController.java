@@ -56,12 +56,12 @@ public class NewNameProjectController {
     private ProgressIndicator progressoTotalUm;
 
     @FXML
-    void attNomeProjeto(ActionEvent event) {
+    private void attNomeProjeto(ActionEvent event) {
 
     }
 
     @FXML
-    void cancelarProjeto(ActionEvent event) {
+    private void cancelarProjeto(ActionEvent event) {
         Kanban.telas("selectProject");
     }
 

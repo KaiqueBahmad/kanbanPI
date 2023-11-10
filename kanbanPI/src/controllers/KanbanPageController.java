@@ -22,7 +22,7 @@ public class KanbanPageController {
 
     @FXML
     private void logout(ActionEvent event) {
-
+        Kanban.telas("loginPage");
     }
 
     @FXML
