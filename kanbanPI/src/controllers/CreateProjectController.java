@@ -61,6 +61,8 @@ public class CreateProjectController {
 
     @FXML
     private void cancelarProjeto(ActionEvent event) {
+        nomeNovoProjeto.clear();
+        descricaoNovoProjeto.clear();
         Kanban.telas("selectProject");
     }
 

@@ -35,7 +35,7 @@
       </Button>
       <ImageView fx:id="deletarAtividade" fitHeight="40.0" fitWidth="40.0" layoutX="1134.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assets/imgs/lixoAzul.png" />
+            <Image url="@../assets/imgs/lixo.png" />
          </image>
       </ImageView>
       <Label layoutX="224.0" layoutY="158.0" text="A fazer" textFill="WHITE">
@@ -63,6 +63,5 @@
             <Font size="25.0" />
          </font>
       </Label>
-      
    </children>
 </AnchorPane>

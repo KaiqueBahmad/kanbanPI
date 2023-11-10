@@ -27,7 +27,7 @@ public class KanbanPageController {
 
     @FXML
     private void novaAtividade(ActionEvent event) {
-
+        Kanban.telas("newActivit");
     }
 
     @FXML
