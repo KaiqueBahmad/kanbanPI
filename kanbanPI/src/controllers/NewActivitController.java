@@ -33,7 +33,7 @@ public class NewActivitController {
     private TextField prazoAtividade;
 
     @FXML
-    void cancelarAtividade(ActionEvent event) {
+    private void cancelarAtividade(ActionEvent event) {
         nomeAtividade.clear();
         inicioAtividade.getEditor().clear();
         prazoAtividade.clear();
@@ -42,7 +42,7 @@ public class NewActivitController {
     }
 
     @FXML
-    void criarAtividade(ActionEvent event) {
+    private void criarAtividade(ActionEvent event) {
 
     }
 

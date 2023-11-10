@@ -4,9 +4,6 @@
  */
 package kanban;
 
-import controllers.SelectProjectController;
-import java.io.File;
-import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,10 +21,14 @@ public class Kanban extends Application {
     private static Scene sceneKanbanPage;
     private static Scene sceneNewNameProject;
     private static Scene sceneNewActivit;
+    private static Scene sceneLoginPage;
     
     @Override
     public void start(Stage stage) throws Exception {
         telaSelecionada = stage;
+        
+        Parent fxmlLoginPage = FXMLLoader.load(getClass().getResource("../views/loginPage.fxml"));
+        sceneLoginPage = new Scene(fxmlLoginPage,  1535, 800);
         
         Parent fxmlSelectProject = FXMLLoader.load(getClass().getResource("../views/selectProject.fxml"));
         sceneSelectProject = new Scene(fxmlSelectProject,  1535, 800);
@@ -44,7 +45,7 @@ public class Kanban extends Application {
         Parent fxmlNewActivit = FXMLLoader.load(getClass().getResource("../views/newActivit.fxml"));
         sceneNewActivit = new Scene(fxmlNewActivit,  1535, 800);
         
-        stage.setScene(sceneSelectProject);
+        stage.setScene(sceneLoginPage);
         stage.show();
     }
     
@@ -55,6 +56,7 @@ public class Kanban extends Application {
             case "kanbanPage" -> telaSelecionada.setScene(sceneKanbanPage);
             case "newName" -> telaSelecionada.setScene(sceneNewNameProject);
             case "newActivit" -> telaSelecionada.setScene(sceneNewActivit);
+            case "loginPage" -> telaSelecionada.setScene(sceneLoginPage);
         }            
     }
 
