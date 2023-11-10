@@ -137,12 +137,12 @@
                         <Font size="25.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="cancelarProjeto" layoutX="133.5" layoutY="223.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelarProjeto" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;" text="Cancelar" textFill="#454546">
+                  <Button fx:id="cancelarProjeto" layoutX="130.0" layoutY="223.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelarProjeto" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;" text="Cancelar" textFill="#454546">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Button>
-                  <Button fx:id="attNomeProjeto" layoutX="361.5" layoutY="223.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#attNomeProjeto" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;" text="Atualizar" textFill="#454546">
+                  <Button fx:id="attNomeProjeto" layoutX="365.0" layoutY="223.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#attNomeProjeto" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;" text="Atualizar" textFill="#454546">
                      <font>
                         <Font size="25.0" />
                      </font>
