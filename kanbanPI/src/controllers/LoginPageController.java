@@ -4,25 +4,26 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import kanban.Kanban;
 
 public class LoginPageController {
 
     @FXML
-    private TextField cadastroConfirmarSenhaEmpresa;
+    private PasswordField cadastroConfirmarSenhaEmpresa;
 
     @FXML
     private TextField cadastroNomeEmpresa;
 
     @FXML
-    private TextField cadastroSenhaEmpresa;
+    private PasswordField cadastroSenhaEmpresa;
 
     @FXML
     private TextField entrarNomeEmpresa;
 
     @FXML
-    private TextField entrarSenhaEmpresa;
+    private PasswordField entrarSenhaEmpresa;
 
     @FXML
     private Button entrarUsuario;

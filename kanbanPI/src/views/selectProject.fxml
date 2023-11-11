@@ -127,5 +127,10 @@
             <Image url="@../assets/imgs/editar.png" />
          </image>
       </ImageView>
+      <Label fx:id="errorNovoProjeto" layoutX="63.0" layoutY="135.0" textFill="RED">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

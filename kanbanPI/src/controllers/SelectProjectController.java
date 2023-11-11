@@ -89,6 +89,9 @@ public class SelectProjectController {
 
     @FXML
     private Pane projetoUm;
+    
+    @FXML
+    private Label errorNovoProjeto;
 
     @FXML
     private void editarProjetoDois(MouseEvent event) {
@@ -116,17 +119,17 @@ public class SelectProjectController {
 
     @FXML
     private void excluirProjetoQuatro(MouseEvent event) {
-
+        // verificar se projeto existe
     }
 
     @FXML
     private void excluirProjetoTres(MouseEvent event) {
-
+        // verificar se projeto existe
     }
 
     @FXML
     private void excluirProjetoUm(MouseEvent event) {
-
+        // verificar se projeto existe
     }
 
     @FXML
@@ -136,6 +139,8 @@ public class SelectProjectController {
 
     @FXML
     private void novoProjeto(ActionEvent event) {
+       // verificar a quantidade de projetos criados
+       // Apenas são possíveis até 4 projetos (errorNovoProjeto)
         Kanban.telas("createProject");
     }
 

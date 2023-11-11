@@ -57,11 +57,13 @@ public class NewNameProjectController {
 
     @FXML
     private void attNomeProjeto(ActionEvent event) {
+        // salvar o novo nome (attNomeNovoProjeto)
 
     }
 
     @FXML
     private void cancelarProjeto(ActionEvent event) {
+        attNomeNovoProjeto.clear();
         Kanban.telas("selectProject");
     }
 
