@@ -68,7 +68,9 @@ public class CreateProjectController {
 
     @FXML
     private void criarProjeto(ActionEvent event) {
-
+        // salvar nome e descrição
+        nomeNovoProjeto.clear();
+        descricaoNovoProjeto.clear();
     }
 
 }

@@ -18,7 +18,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="138.0" layoutY="77.0" text="Adicionar atividade" textFill="WHITE">
+      <Label layoutX="129.0" layoutY="77.0" text="Adicionar atividade" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -59,6 +59,34 @@
          </image>
       </ImageView>
       <Label layoutX="1191.0" layoutY="158.0" text="Finalizado" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button id="button" fx:id="novoDepartamento" alignment="CENTER" layoutX="371.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#novoDepartamento" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/imgs/departamento.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="435.0" layoutY="77.0" text="Cadastrar departamento" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button id="button" fx:id="novoUsuario" alignment="CENTER" layoutX="733.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#novoUsuario" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/imgs/usuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="797.0" layoutY="77.0" text="Cadastrar usuário" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>

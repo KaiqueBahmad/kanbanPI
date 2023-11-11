@@ -5,9 +5,11 @@
 package kanban;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 /**
@@ -49,6 +51,8 @@ public class Kanban extends Application {
         stage.show();
     }
     
+    
+    
     public static void telas(String tela){
         switch(tela){
             case "selectProject" -> telaSelecionada.setScene(sceneSelectProject);
@@ -66,5 +70,4 @@ public class Kanban extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
 }
