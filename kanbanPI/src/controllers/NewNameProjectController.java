@@ -10,7 +10,7 @@ import kanban.Kanban;
 
 public class NewNameProjectController {
 
-    @FXML
+     @FXML
     private TextField attNomeNovoProjeto;
 
     @FXML
@@ -18,6 +18,9 @@ public class NewNameProjectController {
 
     @FXML
     private Button cancelarProjeto;
+
+    @FXML
+    private Label errorEditarNomeProjeto;
 
     @FXML
     private Label nomeProjetoDois;
@@ -57,12 +60,21 @@ public class NewNameProjectController {
 
     @FXML
     private void attNomeProjeto(ActionEvent event) {
-        // salvar o novo nome (attNomeNovoProjeto)
+        if(attNomeNovoProjeto.getText().equals("")){
+            errorEditarNomeProjeto.setText("Há campos em branco");
+        }
+        else{
+            // salvar o novo nome (attNomeNovoProjeto)
+            errorEditarNomeProjeto.setText("");
+            attNomeNovoProjeto.clear();
+            Kanban.telas("selectProject");
+        }
 
     }
 
     @FXML
     private void cancelarProjeto(ActionEvent event) {
+        errorEditarNomeProjeto.setText("");
         attNomeNovoProjeto.clear();
         Kanban.telas("selectProject");
     }

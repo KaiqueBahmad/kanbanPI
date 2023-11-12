@@ -153,6 +153,11 @@
                         <Font size="25.0" />
                      </font>
                   </Button>
+                  <Label fx:id="errorNovoProjeto" layoutX="189.0" layoutY="267.0" textFill="RED">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

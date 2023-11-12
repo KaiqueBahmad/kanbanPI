@@ -37,12 +37,12 @@ public class KanbanPageController {
     }
     
     @FXML
-    void novoDepartamento(ActionEvent event) {
-
+    private void novoDepartamento(ActionEvent event) {
+        Kanban.telas("newDepartment");
     }
 
     @FXML
-    void novoUsuario(ActionEvent event) {
+    private void novoUsuario(ActionEvent event) {
         
     }
 

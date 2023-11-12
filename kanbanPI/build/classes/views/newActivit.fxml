@@ -122,6 +122,11 @@
                   </TextField>
                   <ComboBox fx:id="departamentoAtividade" layoutX="87.5" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="450.0" promptText="Departamento" style="-fx-background-radius: 10px; -fx-font-size: 25px;" />
                   <ComboBox fx:id="usuarioAtividade" layoutX="87.5" layoutY="344.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="450.0" promptText="Usuário responsável" style="-fx-background-radius: 10px; -fx-font-size: 25px;" />
+                  <Label fx:id="errorNovaAtividade" layoutX="189.0" layoutY="4.0" textFill="RED">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
         </children>

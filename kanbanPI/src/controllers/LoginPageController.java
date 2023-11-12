@@ -45,6 +45,7 @@ public class LoginPageController {
         else{
             // Empresa não encontrada
             // Senha inválida
+            // Senha não coincide
             // verificar se nome empresa existe e dps verificar se senha bate
             errorEntrar.setText("");
             entrarNomeEmpresa.clear();

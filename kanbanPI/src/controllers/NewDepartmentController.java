@@ -1,26 +1,55 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import kanban.Kanban;
 
-/**
- * FXML Controller class
- *
- * @author Karen Quezia de Oliveira <karenoliverss2@gmail.com>
- */
-public class NewDepartmentController implements Initializable {
+public class NewDepartmentController {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    @FXML
+    private Button cancelarDepartamento;
+
+    @FXML
+    private ColorPicker corDepartamentoCriado;
+
+    @FXML
+    private Button criarDepartamento;
+
+    @FXML
+    private Label errorDepartamento;
+
+    @FXML
+    private TextField nomeDepartamentoCriado;
+
+    @FXML
+    private void cancelarDepartamento(ActionEvent event) {
+        errorDepartamento.setText("");
+        nomeDepartamentoCriado.clear();
+        corDepartamentoCriado.setValue(Color.WHITE);
+        Kanban.telas("kanbanPage");
+    }
+
+    @FXML
+    private void criarDepartamento(ActionEvent event) {
+        if(nomeDepartamentoCriado.getText().equals("")){
+            // verificar também se a cor já não é utilizada em outro departamento
+            errorDepartamento.setText("Nome em branco ou cor já utilizada");
+        }
+        else{
+            //salvar cor e nome do departamento
+            errorDepartamento.setText("");
+            nomeDepartamentoCriado.clear();
+            corDepartamentoCriado.setValue(Color.WHITE);
+            Kanban.telas("kanbanPage");
+        }
+        
+
+    }
+
 }

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -25,6 +26,9 @@ public class NewActivitController {
 
     @FXML
     private ComboBox departamentoAtividade;
+    
+    @FXML
+    private Label errorNovaAtividade;
 
     @FXML
     private DatePicker inicioAtividade;
@@ -40,6 +44,7 @@ public class NewActivitController {
 
     @FXML
     private void cancelarAtividade(ActionEvent event) {
+        errorNovaAtividade.setText("");
         nomeAtividade.clear();
         inicioAtividade.getEditor().clear();
         prazoAtividade.clear();
@@ -73,36 +78,44 @@ public class NewActivitController {
 
     @FXML
     private void criarAtividade(ActionEvent event) {
-        //salvar tudo
-        nomeAtividade.clear();
-        inicioAtividade.getEditor().clear();
-        prazoAtividade.clear();
-        departamentoAtividade.getSelectionModel().clearSelection();
-        departamentoAtividade.setButtonCell(new ListCell<String>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty) ;
-                if (empty || item == null) {
-                    setText("Departamento");
-                } else {
-                    setText(item);
+        if(nomeAtividade.getText().equals("") || prazoAtividade.getText().equals("")){
+            // verificar tbm os outros campos
+            // verificar se o prazo n está com número negativo
+            errorNovaAtividade.setText("Há campos em branco");
+        }
+        else{
+            //salvar tudo
+            errorNovaAtividade.setText("");
+            nomeAtividade.clear();
+            inicioAtividade.getEditor().clear();
+            prazoAtividade.clear();
+            departamentoAtividade.getSelectionModel().clearSelection();
+            departamentoAtividade.setButtonCell(new ListCell<String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty) ;
+                    if (empty || item == null) {
+                        setText("Departamento");
+                    } else {
+                        setText(item);
+                    }
                 }
-            }
-        });
-        usuarioAtividade.getSelectionModel().clearSelection();
-        usuarioAtividade.setButtonCell(new ListCell<String>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty) ;
-                if (empty || item == null) {
-                    setText("Usuário responsável");
-                } else {
-                    setText(item);
+            });
+            usuarioAtividade.getSelectionModel().clearSelection();
+            usuarioAtividade.setButtonCell(new ListCell<String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty) ;
+                    if (empty || item == null) {
+                        setText("Usuário responsável");
+                    } else {
+                        setText(item);
+                    }
                 }
-            }
-        });
-        //atualizar tela do kanban
-        Kanban.telas("kanbanPage");
+            });
+            //atualizar tela do kanban
+            Kanban.telas("kanbanPage");
+        }
     }
     
     
