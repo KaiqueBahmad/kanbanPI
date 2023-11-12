@@ -24,6 +24,7 @@ public class Kanban extends Application {
     private static Scene sceneNewNameProject;
     private static Scene sceneNewActivit;
     private static Scene sceneLoginPage;
+    private static Scene sceneNewDepartment;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -47,6 +48,9 @@ public class Kanban extends Application {
         Parent fxmlNewActivit = FXMLLoader.load(getClass().getResource("../views/newActivit.fxml"));
         sceneNewActivit = new Scene(fxmlNewActivit,  1535, 800);
         
+        Parent fxmlNewDepartment = FXMLLoader.load(getClass().getResource("../views/newDepartment.fxml"));
+        sceneNewDepartment = new Scene(fxmlNewDepartment,  1535, 800);
+        
         stage.setScene(sceneLoginPage);
         stage.show();
     }
@@ -61,6 +65,7 @@ public class Kanban extends Application {
             case "newName" -> telaSelecionada.setScene(sceneNewNameProject);
             case "newActivit" -> telaSelecionada.setScene(sceneNewActivit);
             case "loginPage" -> telaSelecionada.setScene(sceneLoginPage);
+            case "newDepartment" -> telaSelecionada.setScene(sceneNewDepartment);
         }            
     }
 
