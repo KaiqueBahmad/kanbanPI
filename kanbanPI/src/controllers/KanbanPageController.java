@@ -43,7 +43,7 @@ public class KanbanPageController {
 
     @FXML
     private void novoUsuario(ActionEvent event) {
-        
+        Kanban.telas("newUser");
     }
 
     @FXML

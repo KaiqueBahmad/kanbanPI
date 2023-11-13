@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXML.java to edit this template
- */
 package kanban;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 /**
@@ -25,6 +19,7 @@ public class Kanban extends Application {
     private static Scene sceneNewActivit;
     private static Scene sceneLoginPage;
     private static Scene sceneNewDepartment;
+    private static Scene sceneNewUser;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -51,6 +46,9 @@ public class Kanban extends Application {
         Parent fxmlNewDepartment = FXMLLoader.load(getClass().getResource("../views/newDepartment.fxml"));
         sceneNewDepartment = new Scene(fxmlNewDepartment,  1535, 800);
         
+        Parent fxmlNewUser = FXMLLoader.load(getClass().getResource("../views/newUser.fxml"));
+        sceneNewUser = new Scene(fxmlNewUser,  1535, 800);
+        
         stage.setScene(sceneLoginPage);
         stage.show();
     }
@@ -66,12 +64,10 @@ public class Kanban extends Application {
             case "newActivit" -> telaSelecionada.setScene(sceneNewActivit);
             case "loginPage" -> telaSelecionada.setScene(sceneLoginPage);
             case "newDepartment" -> telaSelecionada.setScene(sceneNewDepartment);
+            case "newUser" -> telaSelecionada.setScene(sceneNewUser);
         }            
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }
