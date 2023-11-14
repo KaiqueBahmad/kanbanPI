@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: #454546;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewUserController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: #454546;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewUserController">
     <children>
       <Button id="button" alignment="CENTER" layoutX="65.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <graphic>
@@ -95,28 +95,33 @@
       </Label>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
          <children>
-            <Pane layoutX="455.0" layoutY="256.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="288.0" prefWidth="625.0" style="-fx-background-color: #454546; -fx-background-radius: 10px;">
+            <Pane layoutX="455.0" layoutY="256.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="625.0" style="-fx-background-color: #454546; -fx-background-radius: 10px;">
                <children>
-                  <TextField fx:id="nomeUsuarioCriado" layoutX="87.5" layoutY="68.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="450.0" promptText="Nome do usuário" style="-fx-background-radius: 10px;">
+                  <TextField fx:id="nomeUsuarioCriado" layoutX="87.5" layoutY="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="450.0" promptText="Nome do usuário" style="-fx-background-radius: 10px;">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="cancelarUsuario" layoutX="130.0" layoutY="194.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelarUsuario" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;" text="Cancelar" textFill="#454546">
+                  <Button fx:id="cancelarUsuario" layoutX="130.0" layoutY="257.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelarUsuario" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;" text="Cancelar" textFill="#454546">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Button>
-                  <Button fx:id="criarUsuario" layoutX="365.0" layoutY="194.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#criarUsuario" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;" text="Criar" textFill="#454546">
+                  <Button fx:id="criarUsuario" layoutX="365.0" layoutY="257.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#criarUsuario" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;" text="Criar" textFill="#454546">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Button>
-                  <Label fx:id="errorUsuario" layoutX="189.0" layoutY="144.0" textFill="RED">
+                  <Label fx:id="errorUsuario" layoutX="188.0" layoutY="212.0" textFill="RED">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
+                  <TextField fx:id="senhaUsuarioCriado" layoutX="88.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="450.0" promptText="Senha do usuário" style="-fx-background-radius: 10px;">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </TextField>
                </children>
             </Pane>
         </children>
