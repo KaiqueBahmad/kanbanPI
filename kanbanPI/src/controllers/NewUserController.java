@@ -22,21 +22,26 @@ public class NewUserController {
     private TextField nomeUsuarioCriado;
 
     @FXML
+    private TextField senhaUsuarioCriado;
+
+    @FXML
     void cancelarUsuario(ActionEvent event) {
         errorUsuario.setText("");
         nomeUsuarioCriado.clear();
+        senhaUsuarioCriado.clear();
         Kanban.telas("kanbanPage");
     }
 
     @FXML
     void criarUsuario(ActionEvent event) {
-        if(nomeUsuarioCriado.getText().equals("")){
+        if(nomeUsuarioCriado.getText().equals("") || senhaUsuarioCriado.getText().equals("")){
             errorUsuario.setText("Há campos em branco");
         }
         else{
             //salvar
             errorUsuario.setText("");
             nomeUsuarioCriado.clear();
+            senhaUsuarioCriado.clear();
             Kanban.telas("kanbanPage");
 
 
