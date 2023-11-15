@@ -5,11 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import entities.Empresa;
 
-/**
- *
- * @author aluno
- */
 public class Kanban extends Application {
     private static Stage telaSelecionada;
     private static Scene sceneSelectProject;
@@ -20,10 +17,15 @@ public class Kanban extends Application {
     private static Scene sceneLoginPage;
     private static Scene sceneNewDepartment;
     private static Scene sceneNewUser;
+    public static Empresa[] empresas;
+    //public static Usuario[] usuarios;
+    public static boolean loginAdmin;
     
     @Override
     public void start(Stage stage) throws Exception {
         telaSelecionada = stage;
+        empresas = new Empresa[16];
+        loginAdmin = false;
         
         Parent fxmlLoginPage = FXMLLoader.load(getClass().getResource("../views/loginPage.fxml"));
         sceneLoginPage = new Scene(fxmlLoginPage,  1535, 800);
@@ -51,6 +53,8 @@ public class Kanban extends Application {
         
         stage.setScene(sceneLoginPage);
         stage.show();
+        
+        
     }
     
     
@@ -65,7 +69,7 @@ public class Kanban extends Application {
             case "loginPage" -> telaSelecionada.setScene(sceneLoginPage);
             case "newDepartment" -> telaSelecionada.setScene(sceneNewDepartment);
             case "newUser" -> telaSelecionada.setScene(sceneNewUser);
-        }            
+        }
     }
 
     public static void main(String[] args) {

@@ -1,7 +1,10 @@
 package controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
@@ -10,7 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
 
-public class SelectProjectController {
+public class SelectProjectController implements Initializable {
 
     @FXML
     private ImageView editarProjetoDois;
@@ -141,7 +144,9 @@ public class SelectProjectController {
     private void novoProjeto(ActionEvent event) {
        // verificar a quantidade de projetos criados
        // Apenas são possíveis até 4 projetos (errorNovoProjeto)
-        Kanban.telas("createProject");
+       if (Kanban.loginAdmin) {
+            Kanban.telas("createProject");
+       }
     }
 
     @FXML
@@ -167,5 +172,11 @@ public class SelectProjectController {
         // verificar se projeto existe
         Kanban.telas("kanbanPage");
     }
-
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        if (!Kanban.loginAdmin) {
+            novoProjeto.setOpacity(0);
+        } 
+    } 
 }

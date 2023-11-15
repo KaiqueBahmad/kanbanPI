@@ -13,7 +13,7 @@ public class Projeto {
     private float porcentagem;
     private String nome;
     private Empresa pai;
-    private ArrayList<Departamento> departamentos;
+    private ArrayList<Atividade> departamentos;
     
     public Projeto(Empresa pai, String nome) {
         this.departamentos = new ArrayList<>();
@@ -25,8 +25,8 @@ public class Projeto {
     public void atualizarProgresso() {
         float soma = 0;
         int numAtividades = 0;
-        for (Departamento departamento:departamentos) {
-            for (Atividade atividade:departamento.getAtividades()) {
+        for (Atividade departamento:departamentos) {
+            for (Acao atividade:departamento.getAtividades()) {
                 soma += atividade.getPorcentagem();
                 numAtividades++;
             }
@@ -36,19 +36,19 @@ public class Projeto {
     
     public void cadastrarDepartamento(String nome, String cor) {
         boolean jaExiste = false;
-        for (Departamento departamento:departamentos) {
+        for (Atividade departamento:departamentos) {
             if (nome.equals(departamento.getNome())) {
                 jaExiste = true;
             }
         }
         if (!jaExiste) {
-            this.departamentos.add(new Departamento(this, nome, cor));
+            this.departamentos.add(new Atividade(this, nome, cor));
         }
     }
     
-    public Atividade getAtividadeByNome(String nome) {
-        for (Departamento departamento:this.departamentos) {
-            for (Atividade atividade:departamento.getAtividades()) {
+    public Acao getAtividadeByNome(String nome) {
+        for (Atividade departamento:this.departamentos) {
+            for (Acao atividade:departamento.getAtividades()) {
                 if (nome.equals(atividade.getNome())) {
                     return atividade;
                 }
@@ -57,8 +57,8 @@ public class Projeto {
         return null;
     }
     
-    public Departamento getDepartamentoByNome(String nome) {
-        for (Departamento departamento:this.departamentos) {
+    public Atividade getDepartamentoByNome(String nome) {
+        for (Atividade departamento:this.departamentos) {
             if (nome.equals(departamento.getNome())) {
                 return departamento;
             }
@@ -68,16 +68,16 @@ public class Projeto {
     
     public void changeDepartamentoOfAtividade(String departamentoNome, String atividade) {
         //Encontra a atividade a ser mudada de departamento (Pelo Nome)
-        Atividade alvo = this.getAtividadeByNome(atividade);
+        Acao alvo = this.getAtividadeByNome(atividade);
         alvo.getDepartamento().removeAtividadeByNome(atividade);
-        for (Departamento departamento:this.departamentos) {
+        for (Atividade departamento:this.departamentos) {
             if (departamentoNome.equals(departamento.getNome())) {
                 departamento.adicionarAtividade(alvo);
             }
         }
     }
     
-    public ArrayList<Departamento> getDepartamentos() {
+    public ArrayList<Atividade> getDepartamentos() {
         return this.departamentos;
     }
     

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @brief Class Usuario
  */
 public class Usuario {
-    protected ArrayList<Atividade> atividades;
+    protected ArrayList<Acao> atividades;
     protected Projeto pai;
     protected String nome;
         
@@ -19,15 +19,15 @@ public class Usuario {
     }
 //    Adicionar atividade agora Requer passar a atividade já construida
 //    public void adicionarAtividade(String nome, long inicio, long prazo) {
-//        this.atividades.add(new Atividade(this, nome, inicio, prazo));
+//        this.atividades.add(new Acao(this, nome, inicio, prazo));
 //    }
     
-    public void adicionarAtividade(Atividade atividade) {
+    public void adicionarAtividade(Acao atividade) {
         this.atividades.add(atividade);
     }
     
-    public Atividade getAtividadeByNome(String nome) {
-        for (Atividade atividade:this.atividades) {
+    public Acao getAtividadeByNome(String nome) {
+        for (Acao atividade:this.atividades) {
             if (nome.equals(atividade.getNome())) {
                 return atividade;
             }
@@ -36,7 +36,7 @@ public class Usuario {
     }
     
     public void removeAtividadeByNome(String nome) {
-        for (Atividade atividade:this.atividades) {
+        for (Acao atividade:this.atividades) {
             if (nome.equals(atividade.getNome())) {
                 this.atividades.remove(atividade);
             }
@@ -51,7 +51,7 @@ public class Usuario {
         return pai;
     }
     
-    public ArrayList<Atividade> getAtividades() {
+    public ArrayList<Acao> getAtividades() {
         return this.atividades;
     }
 
