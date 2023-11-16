@@ -18,16 +18,32 @@ public class KanbanPageController {
     private Button novaAtividade;
 
     @FXML
+    private Button novoDepartamento;
+
+    @FXML
+    private Button novoUsuario;
+
+    @FXML
     private Button voltarProjetos;
 
     @FXML
     private void logout(ActionEvent event) {
-
+        Kanban.telas("loginPage");
     }
 
     @FXML
     private void novaAtividade(ActionEvent event) {
         Kanban.telas("newActivit");
+    }
+    
+    @FXML
+    private void novoDepartamento(ActionEvent event) {
+        Kanban.telas("newDepartment");
+    }
+
+    @FXML
+    private void novoUsuario(ActionEvent event) {
+        Kanban.telas("newUser");
     }
 
     @FXML
