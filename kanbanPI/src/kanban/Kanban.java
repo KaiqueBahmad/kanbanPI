@@ -1,5 +1,6 @@
 package kanban;
 
+import controllers.KanbanPageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,7 @@ public class Kanban extends Application {
     private static SelectProjectController controllerSelectProject;
     private static Scene sceneCreateProject;
     private static Scene sceneKanbanPage;
+    private static KanbanPageController controllerKanbanPage;
     private static Scene sceneNewNameProject;
     private static Scene sceneNewActivit;
     private static Scene sceneLoginPage;
@@ -37,10 +39,11 @@ public class Kanban extends Application {
         controllerSelectProject = fxmlSelectProject.getController();
         
         Parent fxmlcreateProject = FXMLLoader.load(getClass().getResource("../views/createProject.fxml"));
-        sceneCreateProject = new Scene(fxmlcreateProject,  1535, 800);    
+        sceneCreateProject = new Scene(fxmlcreateProject,  1535, 800);
         
-        Parent fxmlKanbanPage = FXMLLoader.load(getClass().getResource("../views/kanbanPage.fxml"));
-        sceneKanbanPage = new Scene(fxmlKanbanPage,  1535, 800);
+        FXMLLoader fxmlKanbanPage = new FXMLLoader(getClass().getResource("../views/kanbanPage.fxml"));
+        sceneKanbanPage = new Scene(fxmlKanbanPage.load(),  1535, 800);
+        controllerKanbanPage = fxmlKanbanPage.getController();
         
         Parent fxmlNewNameProject = FXMLLoader.load(getClass().getResource("../views/newNameProject.fxml"));
         sceneNewNameProject = new Scene(fxmlNewNameProject,  1535, 800);
@@ -61,11 +64,14 @@ public class Kanban extends Application {
     public static void telas(String tela){
         switch(tela){
             case "selectProject" -> {
-                telaSelecionada.setScene(sceneSelectProject);
                 controllerSelectProject.esconderElementos();
+                telaSelecionada.setScene(sceneSelectProject);
             }
             case "createProject" -> telaSelecionada.setScene(sceneCreateProject);
-            case "kanbanPage" -> telaSelecionada.setScene(sceneKanbanPage);
+            case "kanbanPage" -> {
+                controllerKanbanPage.esconderElementos();
+                telaSelecionada.setScene(sceneKanbanPage);
+            }
             case "newName" -> telaSelecionada.setScene(sceneNewNameProject);
             case "newActivit" -> telaSelecionada.setScene(sceneNewActivit);
             case "loginPage" -> telaSelecionada.setScene(sceneLoginPage);

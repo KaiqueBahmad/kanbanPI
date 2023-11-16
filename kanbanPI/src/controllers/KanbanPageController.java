@@ -5,12 +5,59 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import kanban.Kanban;
 
 public class KanbanPageController {
 
     @FXML
+    private Pane aFazerDois;
+
+    @FXML
+    private ImageView aFazerProximo;
+
+    @FXML
+    private Pane aFazerQuatro;
+
+    @FXML
+    private Pane aFazerTres;
+
+    @FXML
+    private Pane aFazerUm;
+
+    @FXML
     private ImageView deletarAtividade;
+
+    @FXML
+    private Pane fazendoDois;
+
+    @FXML
+    private ImageView fazendoProximo;
+
+    @FXML
+    private Pane fazendoQuatro;
+
+    @FXML
+    private Pane fazendoTres;
+
+    @FXML
+    private Pane fazendoUm;
+
+    @FXML
+    private Pane finalizadoDois;
+
+    @FXML
+    private ImageView finalizadoProximo;
+
+    @FXML
+    private Pane finalizadoQuatro;
+
+    @FXML
+    private Pane finalizadoTres;
+
+    @FXML
+    private Pane finalizadoUm;
 
     @FXML
     private Button logout;
@@ -39,6 +86,21 @@ public class KanbanPageController {
     @FXML
     private void logout(ActionEvent event) {
         Kanban.telas("loginPage");
+    }
+    
+     @FXML
+    void aFazerProximo(MouseEvent event) {
+
+    }
+
+    @FXML
+    void fazendoProximo(MouseEvent event) {
+
+    }
+
+    @FXML
+    void finalizadoProximo(MouseEvent event) {
+
     }
 
     @FXML
@@ -71,7 +133,7 @@ public class KanbanPageController {
     }
     
     public void esconderElementos() {
-        if (!Kanban.loginAdmin) {
+        if (Kanban.loginAdmin) {
             tituloNovaAtividade.setOpacity(0);
             tituloNovoDepartamento.setOpacity(0);
             tituloNovoUsuario.setOpacity(0);
