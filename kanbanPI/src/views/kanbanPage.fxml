@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: #454546;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.KanbanPageController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: #454546;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.KanbanPageController">
     <children>
       <Button id="button" fx:id="novaAtividade" alignment="CENTER" layoutX="65.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#novaAtividade" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <graphic>
@@ -18,7 +18,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="129.0" layoutY="77.0" text="Adicionar atividade" textFill="WHITE">
+      <Label fx:id="tituloNovaAtividade" layoutX="129.0" layoutY="77.0" text="Adicionar atividade" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -72,7 +72,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="435.0" layoutY="77.0" text="Cadastrar departamento" textFill="WHITE">
+      <Label fx:id="tituloNovoDepartamento" layoutX="435.0" layoutY="77.0" text="Cadastrar departamento" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -86,7 +86,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="797.0" layoutY="77.0" text="Cadastrar usuário" textFill="WHITE">
+      <Label fx:id="tituloNovoUsuario" layoutX="797.0" layoutY="77.0" text="Cadastrar usuário" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
