@@ -5,14 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import entities.Empresa;
+import controllers.SelectProjectController;
 
-/**
- *
- * @author aluno
- */
 public class Kanban extends Application {
     private static Stage telaSelecionada;
     private static Scene sceneSelectProject;
+    private static SelectProjectController controllerSelectProject;
     private static Scene sceneCreateProject;
     private static Scene sceneKanbanPage;
     private static Scene sceneNewNameProject;
@@ -20,16 +19,22 @@ public class Kanban extends Application {
     private static Scene sceneLoginPage;
     private static Scene sceneNewDepartment;
     private static Scene sceneNewUser;
-    
+    public static Empresa[] empresas;
+    //public static Usuario[] usuarios;
+    public static boolean loginAdmin;
+
     @Override
     public void start(Stage stage) throws Exception {
         telaSelecionada = stage;
+        empresas = new Empresa[16];
+        loginAdmin = false;
         
         Parent fxmlLoginPage = FXMLLoader.load(getClass().getResource("../views/loginPage.fxml"));
         sceneLoginPage = new Scene(fxmlLoginPage,  1535, 800);
         
-        Parent fxmlSelectProject = FXMLLoader.load(getClass().getResource("../views/selectProject.fxml"));
-        sceneSelectProject = new Scene(fxmlSelectProject,  1535, 800);
+        FXMLLoader fxmlSelectProject = new FXMLLoader(getClass().getResource("../views/selectProject.fxml"));
+        sceneSelectProject = new Scene(fxmlSelectProject.load(),  1535, 800);
+        controllerSelectProject = fxmlSelectProject.getController();
         
         Parent fxmlcreateProject = FXMLLoader.load(getClass().getResource("../views/createProject.fxml"));
         sceneCreateProject = new Scene(fxmlcreateProject,  1535, 800);    
@@ -50,14 +55,15 @@ public class Kanban extends Application {
         sceneNewUser = new Scene(fxmlNewUser,  1535, 800);
         
         stage.setScene(sceneLoginPage);
-        stage.show();
+        stage.show();  
     }
-    
-    
     
     public static void telas(String tela){
         switch(tela){
-            case "selectProject" -> telaSelecionada.setScene(sceneSelectProject);
+            case "selectProject" -> {
+                telaSelecionada.setScene(sceneSelectProject);
+                controllerSelectProject.esconderElementos();
+            }
             case "createProject" -> telaSelecionada.setScene(sceneCreateProject);
             case "kanbanPage" -> telaSelecionada.setScene(sceneKanbanPage);
             case "newName" -> telaSelecionada.setScene(sceneNewNameProject);
@@ -65,7 +71,7 @@ public class Kanban extends Application {
             case "loginPage" -> telaSelecionada.setScene(sceneLoginPage);
             case "newDepartment" -> telaSelecionada.setScene(sceneNewDepartment);
             case "newUser" -> telaSelecionada.setScene(sceneNewUser);
-        }            
+        }
     }
 
     public static void main(String[] args) {

@@ -25,6 +25,9 @@ public class SelectProjectController {
     private ImageView editarProjetoUm;
 
     @FXML
+    private Label errorNovoProjeto;
+
+    @FXML
     private ImageView excluirProjetoDois;
 
     @FXML
@@ -89,10 +92,10 @@ public class SelectProjectController {
 
     @FXML
     private Pane projetoUm;
-    
-    @FXML
-    private Label errorNovoProjeto;
 
+    @FXML
+    private Label tituloCriarNovoProjeto;
+    
     @FXML
     private void editarProjetoDois(MouseEvent event) {
         // verificar se projeto existe
@@ -141,7 +144,9 @@ public class SelectProjectController {
     private void novoProjeto(ActionEvent event) {
        // verificar a quantidade de projetos criados
        // Apenas são possíveis até 4 projetos (errorNovoProjeto)
-        Kanban.telas("createProject");
+       if (!Kanban.loginAdmin) {
+            Kanban.telas("createProject");
+       }
     }
 
     @FXML
@@ -167,5 +172,11 @@ public class SelectProjectController {
         // verificar se projeto existe
         Kanban.telas("kanbanPage");
     }
-
+    
+    public void esconderElementos() {
+        if (!Kanban.loginAdmin) {
+            novoProjeto.setOpacity(0);
+            tituloCriarNovoProjeto.setOpacity(0);
+        }
+    }
 }
