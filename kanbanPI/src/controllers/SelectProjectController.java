@@ -144,7 +144,7 @@ public class SelectProjectController {
     private void novoProjeto(ActionEvent event) {
        // verificar a quantidade de projetos criados
        // Apenas são possíveis até 4 projetos (errorNovoProjeto)
-       if (!Kanban.loginAdmin) {
+       if (Kanban.loginAdmin) {
             Kanban.telas("createProject");
        }
     }
@@ -177,6 +177,14 @@ public class SelectProjectController {
         if (!Kanban.loginAdmin) {
             novoProjeto.setOpacity(0);
             tituloCriarNovoProjeto.setOpacity(0);
+            editarProjetoUm.setOpacity(0);
+            editarProjetoDois.setOpacity(0);
+            editarProjetoTres.setOpacity(0);
+            editarProjetoQuatro.setOpacity(0);
+            excluirProjetoUm.setOpacity(0);
+            excluirProjetoDois.setOpacity(0);
+            excluirProjetoTres.setOpacity(0);
+            excluirProjetoQuatro.setOpacity(0);
         }
     }
 }
