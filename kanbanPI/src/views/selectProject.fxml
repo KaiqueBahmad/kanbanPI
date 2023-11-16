@@ -20,7 +20,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="138.0" layoutY="77.0" text="Criar novo projeto" textFill="WHITE">
+      <Label fx:id="tituloCriarNovoProjeto" layoutX="138.0" layoutY="77.0" text="Criar novo projeto" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>

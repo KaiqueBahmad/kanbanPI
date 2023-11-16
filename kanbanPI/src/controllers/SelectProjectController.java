@@ -25,6 +25,9 @@ public class SelectProjectController {
     private ImageView editarProjetoUm;
 
     @FXML
+    private Label errorNovoProjeto;
+
+    @FXML
     private ImageView excluirProjetoDois;
 
     @FXML
@@ -89,9 +92,9 @@ public class SelectProjectController {
 
     @FXML
     private Pane projetoUm;
-    
+
     @FXML
-    private Label errorNovoProjeto;
+    private Label tituloCriarNovoProjeto;
     
     @FXML
     private void editarProjetoDois(MouseEvent event) {
@@ -163,16 +166,17 @@ public class SelectProjectController {
         // verificar se projeto existe
         Kanban.telas("kanbanPage");
     }
-    
-    public void esconderElementos() {
-        if (!Kanban.loginAdmin) {
-            novoProjeto.setOpacity(0);
-        }
-    }
 
     @FXML
     private void projetoUm(MouseEvent event) {
         // verificar se projeto existe
         Kanban.telas("kanbanPage");
+    }
+    
+    public void esconderElementos() {
+        if (!Kanban.loginAdmin) {
+            novoProjeto.setOpacity(0);
+            tituloCriarNovoProjeto.setOpacity(0);
+        }
     }
 }

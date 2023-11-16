@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import entities.Empresa;
 import controllers.SelectProjectController;
+
 public class Kanban extends Application {
     private static Stage telaSelecionada;
     private static Scene sceneSelectProject;
@@ -54,12 +55,8 @@ public class Kanban extends Application {
         sceneNewUser = new Scene(fxmlNewUser,  1535, 800);
         
         stage.setScene(sceneLoginPage);
-        stage.show();
-        
-        
+        stage.show();  
     }
-    
-    
     
     public static void telas(String tela){
         switch(tela){
