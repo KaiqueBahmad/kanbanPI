@@ -50,6 +50,9 @@ public class CreateProjectController {
     private ImageView excluirProjetoUm;
 
     @FXML
+    private Button logout;
+
+    @FXML
     private TextField nomeNovoProjeto;
 
     @FXML
@@ -63,6 +66,12 @@ public class CreateProjectController {
 
     @FXML
     private Label nomeProjetoUm;
+
+    @FXML
+    private Button novoProjeto;
+
+    @FXML
+    private Button novoUsuario;
 
     @FXML
     private Label numPostProjetoDois;
@@ -99,6 +108,12 @@ public class CreateProjectController {
 
     @FXML
     private Pane projetoUm;
+
+    @FXML
+    private Label tituloCriarNovoProjeto;
+
+    @FXML
+    private Label tituloCriarNovoUsuario;
 
     @FXML
     private void cancelarProjeto(ActionEvent event) {
