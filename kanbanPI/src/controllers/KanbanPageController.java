@@ -490,7 +490,7 @@ public class KanbanPageController {
     void deletarAcao(MouseEvent event) {
         errorKanbanLixo.setText("Selecione o Post-it que deseja excluir");
         
-        //retirar qnd clicar em algum post-it
+        // fazer toggle da lixeira (voltar, sair, add ação e cadastrar atividade);
     }
 
     @FXML

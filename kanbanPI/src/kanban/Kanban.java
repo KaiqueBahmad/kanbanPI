@@ -27,6 +27,7 @@ public class Kanban extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        // adicionar cadastrar área (selectProject) - botão gerar relatorio
         telaSelecionada = stage;
         empresas = new Empresa[16];
         loginAdmin = false;
