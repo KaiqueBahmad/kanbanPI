@@ -58,6 +58,9 @@ public class SelectProjectController {
     private Button novoProjeto;
 
     @FXML
+    private Button novoUsuario;
+
+    @FXML
     private Label numPostProjetoDois;
 
     @FXML
@@ -95,6 +98,9 @@ public class SelectProjectController {
 
     @FXML
     private Label tituloCriarNovoProjeto;
+
+    @FXML
+    private Label tituloCriarNovoUsuario;
     
     @FXML
     private void editarProjetoDois(MouseEvent event) {
@@ -148,6 +154,13 @@ public class SelectProjectController {
             Kanban.telas("createProject");
        }
     }
+    
+    @FXML
+    void novoUsuario(ActionEvent event) {
+        if (Kanban.loginAdmin) {
+            Kanban.telas("newUser");
+       }
+    }
 
     @FXML
     private void projetoDois(MouseEvent event) {
@@ -177,6 +190,8 @@ public class SelectProjectController {
         if (!Kanban.loginAdmin) {
             novoProjeto.setOpacity(0);
             tituloCriarNovoProjeto.setOpacity(0);
+            novoUsuario.setOpacity(0);
+            tituloCriarNovoUsuario.setOpacity(0);
             editarProjetoUm.setOpacity(0);
             editarProjetoDois.setOpacity(0);
             editarProjetoTres.setOpacity(0);

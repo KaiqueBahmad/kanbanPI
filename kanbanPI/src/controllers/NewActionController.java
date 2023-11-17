@@ -1,18 +1,21 @@
 package controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import kanban.Kanban;
 
-public class NewActivitController {
+public class NewActionController {
 
     @FXML
     private ProgressBar aFazerBarraPorcentDois;
@@ -111,19 +114,19 @@ public class NewActivitController {
     private Label aFazerUsuarioUm;
 
     @FXML
-    private Button cancelarAtividade;
+    private ComboBox atividadeAcao;
 
     @FXML
-    private ColorPicker corAtividadeCriado;
+    private Button cancelarAcao;
 
     @FXML
-    private Button criarAtividade;
+    private Button criarAcao;
 
     @FXML
     private ImageView deletarAcao;
 
     @FXML
-    private Label errorAtividade;
+    private Label errorNovaAcao;
 
     @FXML
     private ProgressBar fazendoBarraPorcentDois;
@@ -303,10 +306,13 @@ public class NewActivitController {
     private Label finalizadoUsuarioUm;
 
     @FXML
+    private DatePicker inicioAcao;
+
+    @FXML
     private Button logout;
 
     @FXML
-    private TextField nomeAtividadeCriado;
+    private TextField nomeAcao;
 
     @FXML
     private Button novaAcao;
@@ -315,34 +321,105 @@ public class NewActivitController {
     private Button novaAtividade;
 
     @FXML
+    private TextField prazoAcao;
+
+    @FXML
     private Label tituloNovaAcao;
 
     @FXML
     private Label tituloNovaAtividade;
 
     @FXML
+    private ComboBox usuarioAcao;
+
+    @FXML
     private Button voltarProjetos;
 
     @FXML
-    private void cancelarAtividade(ActionEvent event) {
-        errorAtividade.setText("");
-        nomeAtividadeCriado.clear();
-        corAtividadeCriado.setValue(Color.WHITE);
+    private void cancelarAcao(ActionEvent event) {
+        errorNovaAcao.setText("");
+        nomeAcao.clear();
+        inicioAcao.getEditor().clear();
+        prazoAcao.clear();
+        atividadeAcao.getSelectionModel().clearSelection();
+        atividadeAcao.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Atividade");
+                } else {
+                    setText(item);
+                }
+            }
+        });
+        usuarioAcao.getSelectionModel().clearSelection();
+        usuarioAcao.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Usuário responsável");
+                } else {
+                    setText(item);
+                }
+            }
+        });
         Kanban.telas("kanbanPage");
     }
 
     @FXML
-    private void criarAtividade(ActionEvent event) {
-        if(nomeAtividadeCriado.getText().equals("")){
-            // verificar também se a cor já não é utilizada em outro departamento
-            errorAtividade.setText("Nome em branco ou cor já utilizada");
+    private void criarAcao(ActionEvent event) {
+        if(nomeAcao.getText().equals("") || prazoAcao.getText().equals("")){
+            // verificar tbm os outros campos
+            // verificar se o prazo n está com número negativo
+            errorNovaAcao.setText("Há campos em branco");
         }
         else{
-            //salvar cor e nome do departamento
-            errorAtividade.setText("");
-            nomeAtividadeCriado.clear();
-            corAtividadeCriado.setValue(Color.WHITE);
+            //salvar tudo
+            errorNovaAcao.setText("");
+            nomeAcao.clear();
+            inicioAcao.getEditor().clear();
+            prazoAcao.clear();
+            atividadeAcao.getSelectionModel().clearSelection();
+            atividadeAcao.setButtonCell(new ListCell<String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty) ;
+                    if (empty || item == null) {
+                        setText("Atividade");
+                    } else {
+                        setText(item);
+                    }
+                }
+            });
+            usuarioAcao.getSelectionModel().clearSelection();
+            usuarioAcao.setButtonCell(new ListCell<String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty) ;
+                    if (empty || item == null) {
+                        setText("Usuário responsável");
+                    } else {
+                        setText(item);
+                    }
+                }
+            });
+            //atualizar tela do kanban
             Kanban.telas("kanbanPage");
         }
     }
+    
+    
+    @FXML
+    public void initialize() {
+        // forma de adicionar opções na combo box
+        ObservableList<String> opcoesDept = FXCollections.observableArrayList("Opção 1", "Opção 2", "Opção 3");
+        atividadeAcao.setItems(opcoesDept);
+        
+        ObservableList<String> opcoesUser = FXCollections.observableArrayList("user 1", "user 2", "user 3");
+        usuarioAcao.setItems(opcoesUser);
+        opcoesUser.add("user 4");
+    }
+
 }

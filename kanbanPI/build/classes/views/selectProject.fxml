@@ -20,7 +20,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="tituloCriarNovoProjeto" layoutX="138.0" layoutY="77.0" text="Criar novo projeto" textFill="WHITE">
+      <Label fx:id="tituloCriarNovoProjeto" layoutX="129.0" layoutY="77.0" text="Criar novo projeto" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
@@ -128,6 +128,20 @@
          </image>
       </ImageView>
       <Label fx:id="errorNovoProjeto" layoutX="63.0" layoutY="135.0" textFill="RED">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button id="button" fx:id="novoUsuario" alignment="CENTER" layoutX="359.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#novoUsuario" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/imgs/usuario.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="tituloCriarNovoUsuario" layoutX="423.0" layoutY="77.0" text="Cadastrar Usuário" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>

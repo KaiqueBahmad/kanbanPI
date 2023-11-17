@@ -17,9 +17,9 @@ public class Kanban extends Application {
     private static Scene sceneKanbanPage;
     private static KanbanPageController controllerKanbanPage;
     private static Scene sceneNewNameProject;
-    private static Scene sceneNewActivit;
+    private static Scene sceneNewAction;
     private static Scene sceneLoginPage;
-    private static Scene sceneNewDepartment;
+    private static Scene sceneNewActivit;
     private static Scene sceneNewUser;
     public static Empresa[] empresas;
     //public static Usuario[] usuarios;
@@ -48,11 +48,11 @@ public class Kanban extends Application {
         Parent fxmlNewNameProject = FXMLLoader.load(getClass().getResource("../views/newNameProject.fxml"));
         sceneNewNameProject = new Scene(fxmlNewNameProject,  1535, 800);
         
+        Parent fxmlNewAction = FXMLLoader.load(getClass().getResource("../views/newAction.fxml"));
+        sceneNewAction = new Scene(fxmlNewAction,  1535, 800);
+        
         Parent fxmlNewActivit = FXMLLoader.load(getClass().getResource("../views/newActivit.fxml"));
         sceneNewActivit = new Scene(fxmlNewActivit,  1535, 800);
-        
-        Parent fxmlNewDepartment = FXMLLoader.load(getClass().getResource("../views/newDepartment.fxml"));
-        sceneNewDepartment = new Scene(fxmlNewDepartment,  1535, 800);
         
         Parent fxmlNewUser = FXMLLoader.load(getClass().getResource("../views/newUser.fxml"));
         sceneNewUser = new Scene(fxmlNewUser,  1535, 800);
@@ -73,9 +73,9 @@ public class Kanban extends Application {
                 telaSelecionada.setScene(sceneKanbanPage);
             }
             case "newName" -> telaSelecionada.setScene(sceneNewNameProject);
-            case "newActivit" -> telaSelecionada.setScene(sceneNewActivit);
+            case "newAction" -> telaSelecionada.setScene(sceneNewAction);
             case "loginPage" -> telaSelecionada.setScene(sceneLoginPage);
-            case "newDepartment" -> telaSelecionada.setScene(sceneNewDepartment);
+            case "newActivit" -> telaSelecionada.setScene(sceneNewActivit);
             case "newUser" -> telaSelecionada.setScene(sceneNewUser);
         }
     }
