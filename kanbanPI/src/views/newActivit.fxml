@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: #454546;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewActivitController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: #454546;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewActivitController">
     <children>
       <Button id="button" fx:id="novaAcao" alignment="CENTER" layoutX="65.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <graphic>
@@ -97,7 +97,7 @@
             <Image url="@../assets/imgs/setaBaixo.png" />
          </image>
       </ImageView>
-      <Pane fx:id="aFazerDois" layoutX="308.0" layoutY="237.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="aFazerDois" layoutX="308.0" layoutY="237.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="aFazerCorEscolhidaDois" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="aFazerNomeDois" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -124,8 +124,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="aFazerBarraPorcentDois" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="aFazerPorcentDois" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="aFazerBarraPorcentDois" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.0" style="-fx-accent: #32CD32;" />
+            <Label fx:id="aFazerPorcentDois" layoutX="96.0" layoutY="139.0" text="0%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -134,21 +134,15 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="aFazerMaisDois" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="aFazerTres" layoutX="89.0" layoutY="454.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="aFazerTres" layoutX="89.0" layoutY="454.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="aFazerCorEscolhidaTres" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="aFazerNomeTres" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -175,8 +169,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="aFazerBarraPorcentTres" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="aFazerPorcentTres" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="aFazerBarraPorcentTres" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.0" style="-fx-accent: #32CD32;" />
+            <Label fx:id="aFazerPorcentTres" layoutX="96.0" layoutY="139.0" text="0%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -185,21 +179,15 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="aFazerMaisTres" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="aFazerUm" layoutX="89.0" layoutY="237.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="aFazerUm" layoutX="89.0" layoutY="237.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="aFazerCorEscolhidaUm" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="aFazerNomeUm" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -226,8 +214,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="aFazerBarraPorcentUm" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="aFazerPorcentUm" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="aFazerBarraPorcentUm" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.0" style="-fx-accent: #32CD32;" />
+            <Label fx:id="aFazerPorcentUm" layoutX="96.0" layoutY="139.0" text="0%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -236,21 +224,15 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="aFazerMaisUm" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="aFazerQuatro" layoutX="308.0" layoutY="453.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="aFazerQuatro" layoutX="308.0" layoutY="453.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="aFazerCorEscolhidaQuatro" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="aFazerNomeQuatro" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -277,8 +259,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="aFazerBarraPorcentQuatro" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="aFazerPorcentQuatro" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="aFazerBarraPorcentQuatro" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.0" style="-fx-accent: #32CD32;" />
+            <Label fx:id="aFazerPorcentQuatro" layoutX="96.0" layoutY="139.0" text="0%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -287,21 +269,15 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="aFazerMaisQuatro" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="fazendoUm" layoutX="558.0" layoutY="237.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="fazendoUm" layoutX="558.0" layoutY="237.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="fazendoCorEscolhidaUm" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="fazendoNomeUm" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -328,8 +304,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="fazendoBarraPorcentUm" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="fazendoPorcentUm" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="fazendoBarraPorcentUm" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.5" style="-fx-accent: #32CD32;" />
+            <Label fx:id="fazendoPorcentUm" layoutX="94.0" layoutY="139.0" text="50%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -338,21 +314,15 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="fazendoMaisUm" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="fazendoDois" layoutX="777.0" layoutY="237.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="fazendoDois" layoutX="777.0" layoutY="237.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="fazendoCorEscolhidaDois" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="fazendoNomeDois" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -379,8 +349,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="fazendoBarraPorcentDois" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="fazendoPorcentDois" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="fazendoBarraPorcentDois" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.5" style="-fx-accent: #32CD32;" />
+            <Label fx:id="fazendoPorcentDois" layoutX="94.0" layoutY="139.0" text="50%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -389,21 +359,15 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="fazendoMaisDois" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="fazendoTres" layoutX="558.0" layoutY="454.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="fazendoTres" layoutX="558.0" layoutY="454.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="fazendoCorEscolhidaTres" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="fazendoNomeTres" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -430,8 +394,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="fazendoBarraPorcentTres" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="fazendoPorcentTres" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="fazendoBarraPorcentTres" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.5" style="-fx-accent: #32CD32;" />
+            <Label fx:id="fazendoPorcentTres" layoutX="94.0" layoutY="139.0" text="50%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -440,21 +404,15 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="fazendoMaisTres" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="fazendoQuatro" layoutX="777.0" layoutY="454.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="fazendoQuatro" layoutX="777.0" layoutY="454.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="fazendoCorEscolhidaQuatro" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="fazendoNomeQuatro" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -481,8 +439,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="fazendoBarraPorcentQuatro" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="fazendoPorcentQuatro" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="fazendoBarraPorcentQuatro" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.5" style="-fx-accent: #32CD32;" />
+            <Label fx:id="fazendoPorcentQuatro" layoutX="94.0" layoutY="139.0" text="50%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -491,21 +449,15 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="fazendoMaisQuatro" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="finalizadoUm" layoutX="1027.0" layoutY="237.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="finalizadoUm" layoutX="1027.0" layoutY="237.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="finalizadoCorEscolhidaUm" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="finalizadoNomeUm" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -532,8 +484,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="finalizadoBarraPorcentUm" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="finalizadoPorcentUm" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="finalizadoBarraPorcentUm" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="1.0" style="-fx-accent: #32CD32;" />
+            <Label fx:id="finalizadoPorcentUm" layoutX="91.0" layoutY="139.0" text="100%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -542,21 +494,15 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="finalizadoMaisUm" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="finalizadoDois" layoutX="1246.0" layoutY="237.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="finalizadoDois" layoutX="1246.0" layoutY="237.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="finalizadoCorEscolhidaDois" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="finalizadoNomeDois" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -583,8 +529,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="finalizadoBarraPorcentDois" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="finalizadoPorcentDois" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="finalizadoBarraPorcentDois" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="1.0" style="-fx-accent: #32CD32;" />
+            <Label fx:id="finalizadoPorcentDois" layoutX="91.0" layoutY="139.0" text="100%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -593,21 +539,15 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="finalizadoMaisDois" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="finalizadoTres" layoutX="1027.0" layoutY="454.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="finalizadoTres" layoutX="1027.0" layoutY="454.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="finalizadoCorEscolhidaTres" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="finalizadoNomeTres" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -634,8 +574,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="finalizadoBarraPorcentTres" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="finalizadoPorcentTres" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="finalizadoBarraPorcentTres" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="1.0" style="-fx-accent: #32CD32;" />
+            <Label fx:id="finalizadoPorcentTres" layoutX="91.0" layoutY="139.0" text="100%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -644,21 +584,15 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="finalizadoMaisTres" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="finalizadoQuatro" layoutX="1246.0" layoutY="454.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="finalizadoQuatro" layoutX="1246.0" layoutY="454.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="finalizadoCorEscolhidaQuatro" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Label fx:id="finalizadoNomeQuatro" layoutX="48.0" layoutY="4.0" text="Nome Ação" textFill="#454546">
@@ -685,8 +619,8 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="finalizadoBarraPorcentQuatro" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="0.1" style="-fx-accent: #32CD32;" />
-            <Label fx:id="finalizadoPorcentQuatro" layoutX="91.0" layoutY="139.0" text="10%" textFill="#454546">
+            <ProgressBar fx:id="finalizadoBarraPorcentQuatro" layoutX="35.0" layoutY="160.0" prefHeight="18.0" prefWidth="146.0" progress="1.0" style="-fx-accent: #32CD32;" />
+            <Label fx:id="finalizadoPorcentQuatro" layoutX="91.0" layoutY="139.0" text="100%" textFill="#454546">
                <font>
                   <Font size="15.0" />
                </font>
@@ -695,17 +629,11 @@
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
             <ImageView fx:id="finalizadoMaisQuatro" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ImageView>
          </children>
       </Pane>
@@ -717,18 +645,30 @@
                      <font>
                         <Font size="25.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </TextField>
                   <Button fx:id="cancelarAtividade" layoutX="130.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelarAtividade" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;" text="Cancelar" textFill="#454546">
                      <font>
                         <Font size="25.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="criarAtividade" layoutX="365.0" layoutY="258.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#criarAtividade" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;" text="Criar" textFill="#454546">
                      <font>
                         <Font size="25.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
-                  <ColorPicker fx:id="corAtividadeCriado" layoutX="87.5" layoutY="138.0" prefHeight="56.0" prefWidth="450.0" promptText="Cor do departamento" style="-fx-background-radius: 10px; -fx-font-size: 25px;" />
+                  <ColorPicker fx:id="corAtividadeCriado" layoutX="87.5" layoutY="138.0" prefHeight="56.0" prefWidth="450.0" promptText="Cor do departamento" style="-fx-background-radius: 10px; -fx-font-size: 25px;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></ColorPicker>
                   <Label fx:id="errorAtividade" layoutX="115.0" layoutY="206.0" textFill="RED">
                      <font>
                         <Font size="25.0" />

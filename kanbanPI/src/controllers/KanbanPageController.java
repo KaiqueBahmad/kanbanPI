@@ -12,7 +12,7 @@ import kanban.Kanban;
 
 public class KanbanPageController {
 
-     @FXML
+    @FXML
     private ProgressBar aFazerBarraPorcentDois;
 
     @FXML
@@ -149,6 +149,9 @@ public class KanbanPageController {
 
     @FXML
     private ImageView deletarAcao;
+
+    @FXML
+    private Label errorKanbanLixo;
 
     @FXML
     private ProgressBar fazendoBarraPorcentDois;
@@ -482,6 +485,13 @@ public class KanbanPageController {
     void aFazerProximo(MouseEvent event) {
 
     }
+    
+    @FXML
+    void deletarAcao(MouseEvent event) {
+        errorKanbanLixo.setText("Selecione o Post-it que deseja excluir");
+        
+        //retirar qnd clicar em algum post-it
+    }
 
     @FXML
     void fazendoMaisDois(MouseEvent event) {
@@ -570,13 +580,15 @@ public class KanbanPageController {
 
     @FXML
     private void logout(ActionEvent event) {
+        errorKanbanLixo.setText("");
         Kanban.telas("loginPage");
     }
 
     @FXML
     private void novaAcao(ActionEvent event) {
         if (Kanban.loginAdmin) {
-            Kanban.telas("newActivit");
+            errorKanbanLixo.setText("");
+            Kanban.telas("newAction");
        }
         
     }
@@ -584,6 +596,7 @@ public class KanbanPageController {
     @FXML
     private void novaAtividade(ActionEvent event) {
         if (Kanban.loginAdmin) {
+            errorKanbanLixo.setText("");
             Kanban.telas("newActivit");
        }
         
@@ -591,6 +604,7 @@ public class KanbanPageController {
 
     @FXML
     private void voltarProjetos(ActionEvent event) {
+        errorKanbanLixo.setText("");
         Kanban.telas("selectProject");
     }
     

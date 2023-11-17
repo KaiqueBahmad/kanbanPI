@@ -3,15 +3,10 @@ package controllers;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import kanban.Kanban;
 
 public class LoginPageController {
@@ -65,24 +60,20 @@ public class LoginPageController {
                         Kanban.telas("selectProject");
                         entrarNomeEmpresa.clear();
                         entrarSenhaEmpresa.clear();
+                        errorCadastro.setText("");
+                        cadastroNomeEmpresa.clear();
+                        cadastroSenhaEmpresa.clear();
+                        cadastroConfirmarSenhaEmpresa.clear();
                     } else {
                         errorEntrar.setText("Senha está inválida");
                     }
                     break;
                 }
             }
-            
+            if (!nomeCadastrado) {
+                errorEntrar.setText("Empresa/Usuario não cadastrado");
+            }
         }
-        
-        if (!nomeCadastrado) {
-            errorEntrar.setText("Empresa/Usuario não cadastrado");
-        }
-        
-//        if (!nomeCadastrado) {
-//            for () {
-//            
-//            }
-//        }
     }
 
     @FXML
@@ -95,7 +86,6 @@ public class LoginPageController {
             // proibir espaços sequenciais, no inicio e no fim
         }
         else{
-            //salvar nome e senha
             for(entities.Empresa empresa: Kanban.empresas){
                 if (empresa == null) {
                     continue;

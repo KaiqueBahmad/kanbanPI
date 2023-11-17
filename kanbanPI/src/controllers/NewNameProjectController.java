@@ -6,11 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import kanban.Kanban;
 
 public class NewNameProjectController {
 
-     @FXML
+    @FXML
     private TextField attNomeNovoProjeto;
 
     @FXML
@@ -20,7 +22,37 @@ public class NewNameProjectController {
     private Button cancelarProjeto;
 
     @FXML
+    private ImageView editarProjetoDois;
+
+    @FXML
+    private ImageView editarProjetoQuatro;
+
+    @FXML
+    private ImageView editarProjetoTres;
+
+    @FXML
+    private ImageView editarProjetoUm;
+
+    @FXML
     private Label errorEditarNomeProjeto;
+
+    @FXML
+    private Label errorNovoProjeto;
+
+    @FXML
+    private ImageView excluirProjetoDois;
+
+    @FXML
+    private ImageView excluirProjetoQuatro;
+
+    @FXML
+    private ImageView excluirProjetoTres;
+
+    @FXML
+    private ImageView excluirProjetoUm;
+
+    @FXML
+    private Button logout;
 
     @FXML
     private Label nomeProjetoDois;
@@ -33,6 +65,12 @@ public class NewNameProjectController {
 
     @FXML
     private Label nomeProjetoUm;
+
+    @FXML
+    private Button novoProjeto;
+
+    @FXML
+    private Button novoUsuario;
 
     @FXML
     private Label numPostProjetoDois;
@@ -57,6 +95,24 @@ public class NewNameProjectController {
 
     @FXML
     private ProgressIndicator progressoTotalUm;
+
+    @FXML
+    private Pane projetoDois;
+
+    @FXML
+    private Pane projetoQuatro;
+
+    @FXML
+    private Pane projetoTres;
+
+    @FXML
+    private Pane projetoUm;
+
+    @FXML
+    private Label tituloCriarNovoProjeto;
+
+    @FXML
+    private Label tituloCriarNovoUsuario;
 
     @FXML
     private void attNomeProjeto(ActionEvent event) {
