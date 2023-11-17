@@ -29,7 +29,7 @@ public class NewUserController {
         errorUsuario.setText("");
         nomeUsuarioCriado.clear();
         senhaUsuarioCriado.clear();
-        Kanban.telas("kanbanPage");
+        Kanban.telas("selectProject");
     }
 
     @FXML
@@ -42,7 +42,7 @@ public class NewUserController {
             errorUsuario.setText("");
             nomeUsuarioCriado.clear();
             senhaUsuarioCriado.clear();
-            Kanban.telas("kanbanPage");
+            Kanban.telas("selectProject");
 
 
         }

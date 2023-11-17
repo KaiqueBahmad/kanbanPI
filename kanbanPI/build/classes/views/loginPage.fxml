@@ -31,7 +31,7 @@
             <Font size="25.0" />
          </font>
       </TextField>
-      <TextField fx:id="entrarNomeEmpresa" layoutX="927.0" layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="450.0" promptText="Nome da empresa" style="-fx-background-radius: 10px;">
+      <TextField fx:id="entrarNomeEmpresa" layoutX="927.0" layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="450.0" promptText="Empresa/usuário(#)" style="-fx-background-radius: 10px;">
          <font>
             <Font size="25.0" />
          </font>

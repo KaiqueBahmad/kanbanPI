@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -11,8 +12,116 @@ import kanban.Kanban;
 
 public class KanbanPageController {
 
+     @FXML
+    private ProgressBar aFazerBarraPorcentDois;
+
+    @FXML
+    private ProgressBar aFazerBarraPorcentQuatro;
+
+    @FXML
+    private ProgressBar aFazerBarraPorcentTres;
+
+    @FXML
+    private ProgressBar aFazerBarraPorcentUm;
+
+    @FXML
+    private Pane aFazerCorEscolhidaBarraDois;
+
+    @FXML
+    private Pane aFazerCorEscolhidaBarraQuatro;
+
+    @FXML
+    private Pane aFazerCorEscolhidaBarraTres;
+
+    @FXML
+    private Pane aFazerCorEscolhidaBarraUm;
+
+    @FXML
+    private Pane aFazerCorEscolhidaDois;
+
+    @FXML
+    private Pane aFazerCorEscolhidaQuatro;
+
+    @FXML
+    private Pane aFazerCorEscolhidaTres;
+
+    @FXML
+    private Pane aFazerCorEscolhidaUm;
+
+    @FXML
+    private Label aFazerDescricaoDois;
+
+    @FXML
+    private Label aFazerDescricaoQuatro;
+
+    @FXML
+    private Label aFazerDescricaoTres;
+
+    @FXML
+    private Label aFazerDescricaoUm;
+
     @FXML
     private Pane aFazerDois;
+
+    @FXML
+    private Label aFazerInicioFimDois;
+
+    @FXML
+    private Label aFazerInicioFimQuatro;
+
+    @FXML
+    private Label aFazerInicioFimTres;
+
+    @FXML
+    private Label aFazerInicioFimUm;
+
+    @FXML
+    private ImageView aFazerMaisDois;
+
+    @FXML
+    private ImageView aFazerMaisQuatro;
+
+    @FXML
+    private ImageView aFazerMaisTres;
+
+    @FXML
+    private ImageView aFazerMaisUm;
+
+    @FXML
+    private ImageView aFazerMenosDois;
+
+    @FXML
+    private ImageView aFazerMenosQuatro;
+
+    @FXML
+    private ImageView aFazerMenosTres;
+
+    @FXML
+    private ImageView aFazerMenosUm;
+
+    @FXML
+    private Label aFazerNomeDois;
+
+    @FXML
+    private Label aFazerNomeQuatro;
+
+    @FXML
+    private Label aFazerNomeTres;
+
+    @FXML
+    private Label aFazerNomeUm;
+
+    @FXML
+    private Label aFazerPorcentDois;
+
+    @FXML
+    private Label aFazerPorcentQuatro;
+
+    @FXML
+    private Label aFazerPorcentTres;
+
+    @FXML
+    private Label aFazerPorcentUm;
 
     @FXML
     private ImageView aFazerProximo;
@@ -27,10 +136,130 @@ public class KanbanPageController {
     private Pane aFazerUm;
 
     @FXML
-    private ImageView deletarAtividade;
+    private Label aFazerUsuarioDois;
+
+    @FXML
+    private Label aFazerUsuarioQuatro;
+
+    @FXML
+    private Label aFazerUsuarioTres;
+
+    @FXML
+    private Label aFazerUsuarioUm;
+
+    @FXML
+    private ImageView deletarAcao;
+
+    @FXML
+    private ProgressBar fazendoBarraPorcentDois;
+
+    @FXML
+    private ProgressBar fazendoBarraPorcentQuatro;
+
+    @FXML
+    private ProgressBar fazendoBarraPorcentTres;
+
+    @FXML
+    private ProgressBar fazendoBarraPorcentUm;
+
+    @FXML
+    private Pane fazendoCorEscolhidaBarraDois;
+
+    @FXML
+    private Pane fazendoCorEscolhidaBarraQuatro;
+
+    @FXML
+    private Pane fazendoCorEscolhidaBarraTres;
+
+    @FXML
+    private Pane fazendoCorEscolhidaBarraUm;
+
+    @FXML
+    private Pane fazendoCorEscolhidaDois;
+
+    @FXML
+    private Pane fazendoCorEscolhidaQuatro;
+
+    @FXML
+    private Pane fazendoCorEscolhidaTres;
+
+    @FXML
+    private Pane fazendoCorEscolhidaUm;
+
+    @FXML
+    private Label fazendoDescricaoDois;
+
+    @FXML
+    private Label fazendoDescricaoQuatro;
+
+    @FXML
+    private Label fazendoDescricaoTres;
+
+    @FXML
+    private Label fazendoDescricaoUm;
 
     @FXML
     private Pane fazendoDois;
+
+    @FXML
+    private Label fazendoInicioFimDois;
+
+    @FXML
+    private Label fazendoInicioFimQuatro;
+
+    @FXML
+    private Label fazendoInicioFimTres;
+
+    @FXML
+    private Label fazendoInicioFimUm;
+
+    @FXML
+    private ImageView fazendoMaisDois;
+
+    @FXML
+    private ImageView fazendoMaisQuatro;
+
+    @FXML
+    private ImageView fazendoMaisTres;
+
+    @FXML
+    private ImageView fazendoMaisUm;
+
+    @FXML
+    private ImageView fazendoMenosDois;
+
+    @FXML
+    private ImageView fazendoMenosQuatro;
+
+    @FXML
+    private ImageView fazendoMenosTres;
+
+    @FXML
+    private ImageView fazendoMenosUm;
+
+    @FXML
+    private Label fazendoNomeDois;
+
+    @FXML
+    private Label fazendoNomeQuatro;
+
+    @FXML
+    private Label fazendoNomeTres;
+
+    @FXML
+    private Label fazendoNomeUm;
+
+    @FXML
+    private Label fazendoPorcentDois;
+
+    @FXML
+    private Label fazendoPorcentQuatro;
+
+    @FXML
+    private Label fazendoPorcentTres;
+
+    @FXML
+    private Label fazendoPorcentUm;
 
     @FXML
     private ImageView fazendoProximo;
@@ -45,7 +274,127 @@ public class KanbanPageController {
     private Pane fazendoUm;
 
     @FXML
+    private Label fazendoUsuarioDois;
+
+    @FXML
+    private Label fazendoUsuarioQuatro;
+
+    @FXML
+    private Label fazendoUsuarioTres;
+
+    @FXML
+    private Label fazendoUsuarioUm;
+
+    @FXML
+    private ProgressBar finalizadoBarraPorcentDois;
+
+    @FXML
+    private ProgressBar finalizadoBarraPorcentQuatro;
+
+    @FXML
+    private ProgressBar finalizadoBarraPorcentTres;
+
+    @FXML
+    private ProgressBar finalizadoBarraPorcentUm;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaBarraDois;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaBarraQuatro;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaBarraTres;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaBarraUm;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaDois;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaQuatro;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaTres;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaUm;
+
+    @FXML
+    private Label finalizadoDescricaoDois;
+
+    @FXML
+    private Label finalizadoDescricaoQuatro;
+
+    @FXML
+    private Label finalizadoDescricaoTres;
+
+    @FXML
+    private Label finalizadoDescricaoUm;
+
+    @FXML
     private Pane finalizadoDois;
+
+    @FXML
+    private Label finalizadoInicioFimDois;
+
+    @FXML
+    private Label finalizadoInicioFimQuatro;
+
+    @FXML
+    private Label finalizadoInicioFimTres;
+
+    @FXML
+    private Label finalizadoInicioFimUm;
+
+    @FXML
+    private ImageView finalizadoMaisDois;
+
+    @FXML
+    private ImageView finalizadoMaisQuatro;
+
+    @FXML
+    private ImageView finalizadoMaisTres;
+
+    @FXML
+    private ImageView finalizadoMaisUm;
+
+    @FXML
+    private ImageView finalizadoMenosDois;
+
+    @FXML
+    private ImageView finalizadoMenosQuatro;
+
+    @FXML
+    private ImageView finalizadoMenosTres;
+
+    @FXML
+    private ImageView finalizadoMenosUm;
+
+    @FXML
+    private Label finalizadoNomeDois;
+
+    @FXML
+    private Label finalizadoNomeQuatro;
+
+    @FXML
+    private Label finalizadoNomeTres;
+
+    @FXML
+    private Label finalizadoNomeUm;
+
+    @FXML
+    private Label finalizadoPorcentDois;
+
+    @FXML
+    private Label finalizadoPorcentQuatro;
+
+    @FXML
+    private Label finalizadoPorcentTres;
+
+    @FXML
+    private Label finalizadoPorcentUm;
 
     @FXML
     private ImageView finalizadoProximo;
@@ -60,36 +409,117 @@ public class KanbanPageController {
     private Pane finalizadoUm;
 
     @FXML
+    private Label finalizadoUsuarioDois;
+
+    @FXML
+    private Label finalizadoUsuarioQuatro;
+
+    @FXML
+    private Label finalizadoUsuarioTres;
+
+    @FXML
+    private Label finalizadoUsuarioUm;
+
+    @FXML
     private Button logout;
+
+    @FXML
+    private Button novaAcao;
 
     @FXML
     private Button novaAtividade;
 
     @FXML
-    private Button novoDepartamento;
-
-    @FXML
-    private Button novoUsuario;
+    private Label tituloNovaAcao;
 
     @FXML
     private Label tituloNovaAtividade;
 
     @FXML
-    private Label tituloNovoDepartamento;
-
-    @FXML
-    private Label tituloNovoUsuario;
-
-    @FXML
     private Button voltarProjetos;
+    
+    @FXML
+    void aFazerMaisDois(MouseEvent event) {
+
+    }
 
     @FXML
-    private void logout(ActionEvent event) {
-        Kanban.telas("loginPage");
+    void aFazerMaisQuatro(MouseEvent event) {
+
     }
-    
-     @FXML
+
+    @FXML
+    void aFazerMaisTres(MouseEvent event) {
+
+    }
+
+    @FXML
+    void aFazerMaisUm(MouseEvent event) {
+
+    }
+
+    @FXML
+    void aFazerMenosDois(MouseEvent event) {
+
+    }
+
+    @FXML
+    void aFazerMenosQuatro(MouseEvent event) {
+
+    }
+
+    @FXML
+    void aFazerMenosTres(MouseEvent event) {
+
+    }
+
+    @FXML
+    void aFazerMenosUm(MouseEvent event) {
+
+    }
+
+    @FXML
     void aFazerProximo(MouseEvent event) {
+
+    }
+
+    @FXML
+    void fazendoMaisDois(MouseEvent event) {
+
+    }
+
+    @FXML
+    void fazendoMaisQuatro(MouseEvent event) {
+
+    }
+
+    @FXML
+    void fazendoMaisTres(MouseEvent event) {
+
+    }
+
+    @FXML
+    void fazendoMaisUm(MouseEvent event) {
+
+    }
+
+    @FXML
+    void fazendoMenosDois(MouseEvent event) {
+
+    }
+
+    @FXML
+    void fazendoMenosQuatro(MouseEvent event) {
+
+    }
+
+    @FXML
+    void fazendoMenosTres(MouseEvent event) {
+
+    }
+
+    @FXML
+    void fazendoMenosUm(MouseEvent event) {
 
     }
 
@@ -99,12 +529,52 @@ public class KanbanPageController {
     }
 
     @FXML
+    void finalizadoMaisDois(MouseEvent event) {
+
+    }
+
+    @FXML
+    void finalizadoMaisQuatro(MouseEvent event) {
+
+    }
+
+    @FXML
+    void finalizadoMaisTres(MouseEvent event) {
+
+    }
+
+    @FXML
+    void finalizadoMenosDois(MouseEvent event) {
+
+    }
+
+    @FXML
+    void finalizadoMenosQuatro(MouseEvent event) {
+
+    }
+
+    @FXML
+    void finalizadoMenosTres(MouseEvent event) {
+
+    }
+
+    @FXML
+    void finalizadoMenosUm(MouseEvent event) {
+
+    }
+
+    @FXML
     void finalizadoProximo(MouseEvent event) {
 
     }
 
     @FXML
-    private void novaAtividade(ActionEvent event) {
+    private void logout(ActionEvent event) {
+        Kanban.telas("loginPage");
+    }
+
+    @FXML
+    private void novaAcao(ActionEvent event) {
         if (Kanban.loginAdmin) {
             Kanban.telas("newActivit");
        }
@@ -112,17 +582,9 @@ public class KanbanPageController {
     }
     
     @FXML
-    private void novoDepartamento(ActionEvent event) {
+    private void novaAtividade(ActionEvent event) {
         if (Kanban.loginAdmin) {
-            Kanban.telas("newDepartment");
-       }
-        
-    }
-
-    @FXML
-    private void novoUsuario(ActionEvent event) {
-        if (Kanban.loginAdmin) {
-            Kanban.telas("newUser");
+            Kanban.telas("newActivit");
        }
         
     }
@@ -133,14 +595,12 @@ public class KanbanPageController {
     }
     
     public void esconderElementos() {
-        if (Kanban.loginAdmin) {
-            tituloNovaAtividade.setOpacity(0);
-            tituloNovoDepartamento.setOpacity(0);
-            tituloNovoUsuario.setOpacity(0);
+        if (!Kanban.loginAdmin) {
+            novaAcao.setOpacity(0);
+            tituloNovaAcao.setOpacity(0);
             novaAtividade.setOpacity(0);
-            novoDepartamento.setOpacity(0);
-            novoUsuario.setOpacity(0);
-            deletarAtividade.setOpacity(0);
+            tituloNovaAtividade.setOpacity(0);
+            deletarAcao.setOpacity(0);
         }
     }
 
