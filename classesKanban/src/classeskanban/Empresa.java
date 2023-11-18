@@ -6,17 +6,20 @@ import java.util.ArrayList;
 
 //Se sobrar Tempo, implementar Criptografia
 public class Empresa {
-    protected String nome;
+    private String nome;
     private final String senha;
     private String senhaInformada;
-    protected Projeto[] projetos;
+    private Projeto[] projetos;
     private ArrayList<Usuario> usuarios;
-    
+    private ArrayList<Area> areas;
+        
     public Empresa(String nome, String senha) {
         this.projetos = new Projeto[4];
         this.usuarios = new ArrayList<>();
+        this.areas = new ArrayList<>();
         this.nome = nome;
         this.senha = senha;
+        this.senhaInformada = "";
     }
     
     public boolean auth() {
@@ -27,43 +30,88 @@ public class Empresa {
         this.senhaInformada = chave;
     }
     
-    public void criarProjeto(String nome, String descricao) {
+    public boolean criarProjeto(String nome, String descricao) {
         if (this.auth()) {
-            int i;
-            for (i = 0; i < projetos.length; i++) {
+            for (int i = 0; i < projetos.length; i++) {
                 if (projetos[i] == null) {
-                    break;
+                    this.projetos[i] = new Projeto(this, nome, descricao);
+                    return true;
                 }
             }
-            if (projetos[i] == null) {
-                this.projetos[i] = new Projeto(this, nome, descricao);
-            }
-            
         }
+        return false;
     }
     
-    public void cadastrarUsuario(String nome, String senha) {
+    public boolean criarArea(String nome) {
+        if (!this.auth()) {
+            return false;
+        }
+        for (int i = 0; i < areas.size(); i++) {
+            if (areas.get(i) == null) {
+                this.areas.add(new Area(this, nome));
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean criarUsuario(String nome, String senha) {
+        if (!this.auth()) {
+            return false;
+        }
         for (Usuario usuario: this.usuarios) {
             if (nome.equals(usuario.getNome())) {
-                return;
+                return false;
             }
         }
         this.usuarios.add(new Usuario(this, nome, senha));
+        return true;
+    }
+    
+    public ArrayList<Projeto> getProjetosDo(String nome) {
+        ArrayList<Projeto> projetosEncontrados = new ArrayList<>();
+        if (!this.auth() && !this.getUsuarioPorNome(nome).auth()) {
+            return null;
+        }
+        for (Projeto projeto:this.projetos) {
+            for (Atividade atividade:projeto.getAtividades()) {
+                for (Acao acao:atividade.getAcoes()) {
+                    if (nome.equals(acao.getUsrResponsavel(this).getNome())) {
+                        projetosEncontrados.add(projeto);
+                    }
+                }
+            }
+        }
+        return projetosEncontrados;
     }
     
     public ArrayList<Usuario> getUsuarios() {
         return this.usuarios;
     }
     
-    public Usuario getUsuarioByNome(String nome) {
-        for (Usuario usuario: this.usuarios) {
-            if (nome.equals(this.usuarios)) {
+    public Usuario getUsuarioPorNome(String nome){
+        if (!this.auth()) {
+            return null;
+        }
+        for (Usuario usuario:this.usuarios) {
+            if (nome.equals(usuario.getNome())) {
                 return usuario;
             }
         }
         return null;
     }
     
+    public Area getAreaPorNome(String nome){
+        if (!this.auth()) {
+            return null;
+        }
+        for (Area area:this.areas) {
+            if (nome.equals(area.getNome())) {
+                return area;
+            }
+        }
+        return null;
+    }
     
     public Projeto[] getProjetos() {
         if (this.auth()) {
@@ -72,6 +120,6 @@ public class Empresa {
         return null;
     }
     public void logout() {
-        this.senhaInformada = null;
+        this.senhaInformada = "";
     }
 }

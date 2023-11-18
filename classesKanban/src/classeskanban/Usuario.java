@@ -8,21 +8,51 @@ import java.util.ArrayList;
  * @brief Class Usuario
  */
 public class Usuario {
-    protected ArrayList<Acao> acoes;
-    protected Empresa pai;
-    protected String nome;
+    private Empresa pai;
+    private String nome;
     private String senha;
-    private String senhaSalva;
+    private String senhaInformada;
+    private ArrayList<Acao> acoes;
     
     public Usuario(Empresa pai, String nome,String senha) {
         this.acoes = new ArrayList<>(); 
         this.pai = pai;
         this.nome = nome;
         this.senha = senha;
+        this.senhaInformada = "";
     }
     
-    public void addAcao(Acao acao) {
+    public boolean auth() {
+        return this.senha.equals(this.senhaInformada);
+    }
+    
+    public boolean removerAcaoPorNome(String nome) {
+        if (!this.auth() && !this.pai.auth()) {
+            return false;
+        }
+        for (Acao acao:this.acoes) {
+            if (nome.equals(acao.getNome())) {
+                acoes.remove(acao);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void salvarSenha(String chave) {
+        this.senhaInformada = chave;
+    }
+    
+    public void logout() {
+        this.senhaInformada = "";
+    }
+    
+    public boolean addAcao(Empresa empresa, Acao acao) {
+        if (!this.auth() && !this.pai.auth()) {
+            return false;
+        }
         this.acoes.add(acao);
+        return true;
     }
 
     public String getNome() {
