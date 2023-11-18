@@ -42,7 +42,7 @@ public class Atividade {
             }
         }
         
-        Usuario usuario = this.pai.getEmpresa().getUsuarioPorNome(nome);
+        Usuario usuario = this.pai.getEmpresa().getUsuarioPorNome(nomeUsuario);
         Area area = this.pai.getEmpresa().getAreaPorNome(nomeArea);
         
         Acao acao = new Acao(usuario, area, this, nome, inicio, prazo);
@@ -50,6 +50,18 @@ public class Atividade {
         area.addAcao(acao);
         this.acoes.add(acao);
         return true;
+    }
+    
+    public Acao getAcaoPorNome(String nome) {
+        for (Acao acao:this.acoes) {
+            if (nome.equals(acao.getNome())) {
+                if (this.pai.getEmpresa().auth() || acao.getUsrResponsavel().auth()) {
+                    return acao;
+                }
+            }
+        }
+        return null;
+        
     }
     
     public boolean removerAcaoPorNome(String nome) {
