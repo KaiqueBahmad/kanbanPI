@@ -71,4 +71,16 @@ public class Projeto {
     public String getNome() {
         return this.nome;
     }
+
+    public Atividade getAtividadePorNome(String nome) {
+        if (!pai.auth()) {
+            return null;
+        }
+        for (Atividade at:this.atividades) {
+            if (nome.equals(at.getNome())) {
+                return at;
+            }
+        }
+        return null;
+    }
 }

@@ -47,12 +47,12 @@ public class Empresa {
             return false;
         }
         for (int i = 0; i < areas.size(); i++) {
-            if (areas.get(i) == null) {
-                this.areas.add(new Area(this, nome));
-                return true;
+            if (nome.equals(areas.get(i).getNome())) {
+                return false;
             }
         }
-        return false;
+        this.areas.add(new Area(this, nome));
+        return true;
     }
     
     public boolean criarUsuario(String nome, String senha) {
@@ -76,7 +76,7 @@ public class Empresa {
         for (Projeto projeto:this.projetos) {
             for (Atividade atividade:projeto.getAtividades()) {
                 for (Acao acao:atividade.getAcoes()) {
-                    if (nome.equals(acao.getUsrResponsavel(this).getNome())) {
+                    if (nome.equals(acao.getUsrResponsavel().getNome())) {
                         projetosEncontrados.add(projeto);
                     }
                 }

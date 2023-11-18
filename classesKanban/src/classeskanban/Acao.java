@@ -1,5 +1,7 @@
 package classeskanban;
 
+import java.time.Instant;
+
 public class Acao {
     private Atividade atividadePai;
     private Usuario usuarioResponsavel;
@@ -20,10 +22,7 @@ public class Acao {
         this.porcentagem = 0;
     }
 
-    public Usuario getUsrResponsavel(Empresa emp) {
-        if (!emp.auth()) {
-            return null;
-        }
+    public Usuario getUsrResponsavel() {
         return this.usuarioResponsavel;
     }
     
@@ -32,10 +31,14 @@ public class Acao {
     }
 
     public void aumentarPorcentagem(double aumento) {
-        if (!this.usuarioResponsavel.auth()) {
+        if (!this.usuarioResponsavel.auth() && !this.atividadePai.getProjeto().getEmpresa().auth()) {
             return;
         }
         this.porcentagem += aumento;
+        if (this.porcentagem >= 1) {
+            this.porcentagem = 1;
+            this.terminar();
+        }
     }
     public float getPorcentagem() {
         return porcentagem;
@@ -53,8 +56,12 @@ public class Acao {
         return termino;
     }
 
-    public void setTermino(long termino) {
-        this.termino = termino;
+    public void terminar() {
+        if (!this.usuarioResponsavel.auth() && !this.atividadePai.getProjeto().getEmpresa().auth()) {
+            return;
+        }
+        this.porcentagem = 1;
+        this.termino = Instant.now().getEpochSecond();
     }
 
     public boolean desvincular(Empresa emp) {
