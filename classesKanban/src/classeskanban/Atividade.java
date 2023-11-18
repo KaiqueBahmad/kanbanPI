@@ -1,0 +1,104 @@
+package classeskanban;
+
+import java.util.ArrayList;
+
+public class Atividade {
+    protected Projeto pai;
+    protected String nome;
+    protected String cor;
+    private float porcentagem;
+    protected ArrayList<Acao> acoes;
+    
+    public Atividade(Projeto pai, String nome, String cor) {
+        this.pai = pai;
+        this.nome = nome;
+        this.cor = cor;
+        this.acoes = new ArrayList<>(); 
+    }
+    
+    public void atualizarPorcentagem() {
+        int count  = 0;
+        float soma = 0;
+        for (Acao acao:this.acoes) {
+            soma += acao.getPorcentagem();
+            count++;
+        }
+        if (count > 0) {
+            this.porcentagem = soma / (float) count;
+        } else {
+            this.porcentagem = 0;
+        }
+        this.pai.atualizarPorcentagem();
+    }
+    
+    public boolean criarAcao(String nome, String nomeUsuario, String nomeArea, long inicio, long prazo) {
+        if (!this.pai.getEmpresa().auth()) {
+            return false;
+        }
+        
+        for (Acao ac:this.acoes) {
+            if (nome.equals(ac.getNome())) {
+                return false;
+            }
+        }
+        
+        Usuario usuario = this.pai.getEmpresa().getUsuarioPorNome(nome);
+        Area area = this.pai.getEmpresa().getAreaPorNome(nomeArea);
+        
+        Acao acao = new Acao(usuario, area, this, nome, inicio, prazo);
+        usuario.addAcao(this.pai.getEmpresa(), acao);
+        area.addAcao(acao);
+        this.acoes.add(acao);
+        return true;
+    }
+    
+    public boolean removerAcaoPorNome(String nome) {
+        if (!this.pai.getEmpresa().auth()) {
+            return false;
+        }
+        for (Acao acao:acoes) {
+            if (nome.equals(acao.getNome())) {
+                if (acao.desvincular(this.pai.getEmpresa())) {
+                    acoes.remove(acao);
+                    return true;
+                }
+            }
+        }
+        return false;
+        
+        
+    }
+    
+    public float getPorcentagem() {
+        return this.porcentagem;
+    }
+    
+
+    public void addAcao(Acao acao) {
+        this.acoes.add(acao);
+    }
+    
+    public String getNome() {
+        return this.nome;
+    }
+
+    public String getCor() {
+        return this.cor;
+    }
+
+    public Projeto getProjeto() {
+        return pai;
+    }
+    
+    public ArrayList<Acao> getAcoes() {
+        return this.acoes;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }    
+}
