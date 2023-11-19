@@ -11,26 +11,23 @@ import java.util.ArrayList;
  * @author kaiqu
  */
 public class Area {
-    private Empresa pai;
+    private Empresa empresa;
     private String nome;
     private ArrayList<Acao> acoes;
     
     
-    public Area(Empresa pai, String nome) {
-        this.pai = pai;
+    public Area(Empresa empresa, String nome) {
+        this.empresa = empresa;
         this.nome = nome;
         this.acoes = new ArrayList<>();
     }
     
     public ArrayList<Acao> getAcoes() {
-        if (!pai.auth()) {
-            return null;
-        }
         return this.acoes;
     }
     
     public boolean removerAcao(Acao acaoRemover) {
-        if (!pai.auth()) {
+        if (!empresa.auth()) {
             return false;
         }
         for (Acao acao:this.acoes) {
@@ -43,7 +40,7 @@ public class Area {
     }
     
     public boolean addAcao(Acao acaoNova) {
-        if (!pai.auth()) {
+        if (!empresa.auth()) {
             return false;
         }
         for (Acao acao:this.acoes) {

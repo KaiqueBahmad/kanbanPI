@@ -90,9 +90,6 @@ public class Empresa {
     }
     
     public Usuario getUsuarioPorNome(String nome){
-        if (!this.auth()) {
-            return null;
-        }
         for (Usuario usuario:this.usuarios) {
             if (nome.equals(usuario.getNome())) {
                 return usuario;

@@ -11,8 +11,13 @@ public class Main {
         empresas[0].criarArea("Financeiro");
         empresas[0].getProjetos()[0].getAtividadePorNome("atividade").criarAcao("Acao 1", "Usuario", "Financeiro", 0, 5000);
         empresas[0].getProjetos()[0].getAtividadePorNome("atividade").getAcaoPorNome("Acao 1").aumentarPorcentagem(0.25);
-        System.out.println(empresas[0].getProjetos()[0].getAtividadePorNome("atividade").getAcaoPorNome("Acao 1").getPorcentagem());;
-        empresas[0].getProjetos()[0].getAtividadePorNome("atividade").getAcaoPorNome("Acao 1").terminar();
-        System.out.println(empresas[0].getProjetos()[0].getAtividadePorNome("atividade").getAcaoPorNome("Acao 1").getPorcentagem());;
+        empresas[0].logout();
+        Usuario user = empresas[0].getUsuarioPorNome("Usuario");
+        user.salvarSenha("senha2+");
+        user.getAcoes().get(0).aumentarPorcentagem(0.35);
+        System.out.println(user.getAcoes().get(0).getPorcentagem());
+        user.logout();
+        user.getAcoes().get(0).terminar();
+        System.out.println(user.getAcoes().get(0).getPorcentagem());
     }
 }

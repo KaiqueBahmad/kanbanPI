@@ -3,11 +3,11 @@ package classeskanban;
 import java.util.ArrayList;
 
 public class Atividade {
-    protected Projeto pai;
-    protected String nome;
-    protected String cor;
+    private Projeto pai;
+    private String nome;
+    private String cor;
     private float porcentagem;
-    protected ArrayList<Acao> acoes;
+    private ArrayList<Acao> acoes;
     
     public Atividade(Projeto pai, String nome, String cor) {
         this.pai = pai;
@@ -104,13 +104,5 @@ public class Atividade {
     
     public ArrayList<Acao> getAcoes() {
         return this.acoes;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
-    }    
+    }   
 }

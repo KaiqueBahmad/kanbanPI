@@ -43,9 +43,7 @@ public class Usuario {
         this.senhaInformada = chave;
     }
     
-    public void logout() {
-        this.senhaInformada = "";
-    }
+    
     
     public boolean addAcao(Empresa empresa, Acao acao) {
         if (!this.auth() && !this.pai.auth()) {
@@ -62,8 +60,8 @@ public class Usuario {
     public ArrayList<Acao> getAcoes() {
         return this.acoes;
     }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    
+    public void logout() {
+        this.senhaInformada = "";
     }
 }
