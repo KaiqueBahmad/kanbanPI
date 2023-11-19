@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import entities.Empresa;
+import entities.Usuario;
 import controllers.SelectProjectController;
 
 public class Kanban extends Application {
@@ -24,7 +25,6 @@ public class Kanban extends Application {
     private static Scene sceneNewArea;
     public static Empresa[] empresas;
     public static String currentUser;
-    //public static Usuario[] usuarios;
     public static boolean loginAdmin;
 
     @Override

@@ -1,5 +1,7 @@
 package controllers;
 
+import entities.Empresa;
+import entities.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
+import utils.Metodos;
 
 public class NewUserController {
 
@@ -129,16 +132,43 @@ public class NewUserController {
     private void criarUsuario(ActionEvent event) {
         if(nomeUsuarioCriado.getText().equals("") || senhaUsuarioCriado.getText().equals("")){
             errorUsuario.setText("Há campos em branco");
+            return;
         }
-        else{
-            //salvar
-            errorUsuario.setText("");
-            nomeUsuarioCriado.clear();
-            senhaUsuarioCriado.clear();
-            Kanban.telas("selectProject");
-
-
+        if (!Metodos.verificarEspacos(nomeUsuarioCriado.getText())) {
+            errorUsuario.setText("Política de uso de espaços inadequada.");
+            return;
         }
+        Empresa empresaLogada = null;
+        for (Empresa empresa:Kanban.empresas) {
+            if (empresa == null) {
+                continue;
+            }
+            
+            if (nomeUsuarioCriado.getText().equals(empresa.getNome())) {
+                errorUsuario.setText("Nome já está em uso.");
+                return;
+            }
+            for (Usuario user:empresa.getUsuarios()) {
+                if (nomeUsuarioCriado.getText().equals(user.getNome())) {
+                    errorUsuario.setText("Nome já está em uso.");
+                    return;
+                }
+            }
+            if (Kanban.currentUser.equals(empresa.getNome())) {
+                empresaLogada = empresa;
+            }
+        }
+        if (empresaLogada == null) {
+            errorUsuario.setText("Erro no Login.");
+            return;
+        }
+        
+        empresaLogada.criarUsuario(nomeUsuarioCriado.getText(), senhaUsuarioCriado.getText());
+        
+        errorUsuario.setText("");
+        nomeUsuarioCriado.clear();
+        senhaUsuarioCriado.clear();
+        Kanban.telas("selectProject");
     }
 
 }

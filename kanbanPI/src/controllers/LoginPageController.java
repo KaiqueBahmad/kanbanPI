@@ -1,5 +1,6 @@
 package controllers;
 
+import entities.Usuario;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,11 +52,12 @@ public class LoginPageController {
             for (entities.Empresa empresa:Kanban.empresas) {
                 if (empresa == null) {
                     continue;
-                }
+                }                
                 if (empresa.getNome().equals(nomeInserido)) {
                     nomeCadastrado = true;
                     empresa.salvarSenha(senhaInserida);
                     if (empresa.auth()) {
+                        Kanban.currentUser = empresa.getNome();
                         Kanban.loginAdmin = true;
                         Kanban.telas("selectProject");
                         entrarNomeEmpresa.clear();
@@ -68,6 +70,27 @@ public class LoginPageController {
                         errorEntrar.setText("Senha está inválida");
                     }
                     break;
+                }
+                for (Usuario user:empresa.getUsuarios()) {
+                    if (nomeInserido.equals(user.getNome())) {
+                        nomeCadastrado = true;
+                        user.salvarSenha(senhaInserida);
+                        if (user.auth()) {
+                            Kanban.currentUser = user.getNome();
+                            Kanban.loginAdmin = false;
+                            Kanban.telas("selectProject");
+                            entrarNomeEmpresa.clear();
+                            entrarSenhaEmpresa.clear();
+                            errorCadastro.setText("");
+                            cadastroNomeEmpresa.clear();
+                            cadastroSenhaEmpresa.clear();
+                            cadastroConfirmarSenhaEmpresa.clear();
+                        }
+                        else {
+                            errorEntrar.setText("Senha está inválida");
+                        }
+                        break;
+                    }
                 }
             }
             if (!nomeCadastrado) {

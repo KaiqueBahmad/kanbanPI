@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
+import utils.Metodos;
+import entities.Empresa;
 
 public class NewAreaController {
 
@@ -129,15 +131,39 @@ public class NewAreaController {
 
     @FXML
     private void criarArea(ActionEvent event) {
-        if(nomeArea.getText().equals("")){
+        String nome = nomeArea.getText();
+        if(nome.equals("")){
             errorNovaArea.setText("Há campos em branco");
+            return;
         }
-        else{
-            // salva
-            nomeArea.clear();
-            errorNovaArea.setText("");
-            Kanban.telas("selectProject");
+        if (!Metodos.verificarEspacos(nome)) {
+            errorNovaArea.setText("Política de uso de espaços inadequada.");
+            return;
         }
+        Empresa empresaLogada = null;
+        for (Empresa empresa:Kanban.empresas) {
+            if (empresa == null) {
+                continue;
+            }            
+            if (Kanban.currentUser.equals(empresa.getNome())) {
+                empresaLogada = empresa;
+            }
+        }
+        if (empresaLogada == null) {
+            errorNovaArea.setText("Erro no Login.");
+            return;
+        }
+        if (empresaLogada.getAreaPorNome(nome) != null) {
+            errorNovaArea.setText("Nome já está em uso.");
+            return;
+        }
+        
+        
+        empresaLogada.criarArea(nome);
+        
+        errorNovaArea.setText("");
+        nomeArea.clear();
+        Kanban.telas("selectProject");
     }
 
 }

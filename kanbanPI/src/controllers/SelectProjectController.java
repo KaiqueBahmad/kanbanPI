@@ -201,21 +201,22 @@ public class SelectProjectController {
     }
     
     public void esconderElementos() {
-        if (!Kanban.loginAdmin) {
-            novoProjeto.setOpacity(0);
-            tituloCriarNovoProjeto.setOpacity(0);
-            novoUsuario.setOpacity(0);
-            tituloCriarNovoUsuario.setOpacity(0);
-            novaArea.setOpacity(0);
-            tituloCriarNovaArea.setOpacity(0);
-            editarProjetoUm.setOpacity(0);
-            editarProjetoDois.setOpacity(0);
-            editarProjetoTres.setOpacity(0);
-            editarProjetoQuatro.setOpacity(0);
-            excluirProjetoUm.setOpacity(0);
-            excluirProjetoDois.setOpacity(0);
-            excluirProjetoTres.setOpacity(0);
-            excluirProjetoQuatro.setOpacity(0);
-        }
+        int opacidade = Kanban.loginAdmin ? 1:0;
+        System.out.println(opacidade);
+        novoProjeto.setOpacity(opacidade);
+        tituloCriarNovoProjeto.setOpacity(opacidade);
+        novoUsuario.setOpacity(opacidade);
+        tituloCriarNovoUsuario.setOpacity(opacidade);
+        novaArea.setOpacity(opacidade);
+        tituloCriarNovaArea.setOpacity(opacidade);
+        editarProjetoUm.setOpacity(opacidade);
+        excluirProjetoUm.setOpacity(opacidade);        
+        opacidade = 0;
+        editarProjetoDois.setOpacity(opacidade);
+        editarProjetoTres.setOpacity(opacidade);
+        editarProjetoQuatro.setOpacity(opacidade);
+        excluirProjetoDois.setOpacity(opacidade);
+        excluirProjetoTres.setOpacity(opacidade);
+        excluirProjetoQuatro.setOpacity(opacidade);
     }
 }
