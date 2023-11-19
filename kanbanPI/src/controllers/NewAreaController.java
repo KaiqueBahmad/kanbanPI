@@ -160,7 +160,8 @@ public class NewAreaController {
         
         
         empresaLogada.criarArea(nome);
-        
+//        Kanban.newActionController.atualizarLista();
+                
         errorNovaArea.setText("");
         nomeArea.clear();
         Kanban.telas("selectProject");

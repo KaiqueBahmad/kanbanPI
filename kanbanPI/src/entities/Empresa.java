@@ -110,6 +110,13 @@ public class Empresa {
         return null;
     }
     
+    public ArrayList<Area> getAreas() {
+        if (!this.auth()) {
+            return null;
+        }
+        return this.areas;
+    }
+    
     public String getNome() {
         return this.nome;
     }

@@ -1,6 +1,7 @@
 package kanban;
 
 import controllers.KanbanPageController;
+import controllers.NewActionController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,7 @@ public class Kanban extends Application {
     private static KanbanPageController controllerKanbanPage;
     private static Scene sceneNewNameProject;
     private static Scene sceneNewAction;
+    public static NewActionController newActionController;
     private static Scene sceneLoginPage;
     private static Scene sceneNewActivit;
     private static Scene sceneNewUser;
@@ -50,8 +52,9 @@ public class Kanban extends Application {
         Parent fxmlNewNameProject = FXMLLoader.load(getClass().getResource("../views/newNameProject.fxml"));
         sceneNewNameProject = new Scene(fxmlNewNameProject,  1535, 800);
         
-        Parent fxmlNewAction = FXMLLoader.load(getClass().getResource("../views/newAction.fxml"));
-        sceneNewAction = new Scene(fxmlNewAction,  1535, 800);
+        FXMLLoader fxmlNewAction = new FXMLLoader(getClass().getResource("../views/newAction.fxml"));
+        sceneNewAction = new Scene(fxmlNewAction.load(),  1535, 800);
+        newActionController = fxmlNewAction.getController();
         
         Parent fxmlNewActivit = FXMLLoader.load(getClass().getResource("../views/newActivit.fxml"));
         sceneNewActivit = new Scene(fxmlNewActivit,  1535, 800);

@@ -1,5 +1,7 @@
 package controllers;
 
+import entities.Area;
+import entities.Empresa;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
+import utils.Metodos;
 
 public class NewActionController {
 
@@ -469,7 +472,9 @@ public class NewActionController {
 
     @FXML
     private Button voltarProjetos;
-
+    
+    private ObservableList<String> opcoesArea;
+    private String[] opcoesAreaArray;
     @FXML
     private void cancelarAcao(ActionEvent event) {
         errorNovaAcao.setText("");
@@ -568,17 +573,37 @@ public class NewActionController {
             Kanban.telas("kanbanPage");
         }
     }
-    
+//    Programar essa parada aqui
+//    public void atualizarListaArea() {
+//        Empresa empresaLogada = null;
+//        if (!Kanban.loginAdmin) {
+//            return;
+//        }
+//        for (Empresa empresa:Kanban.empresas) {
+//            if (empresa == null) {
+//                continue;
+//            }
+//            if (Kanban.currentUser.equals(empresa.getNome())) {
+//                empresaLogada = empresa;
+//            }
+//        }
+//        
+//        for (Area area:empresaLogada.getAreas()) {
+//            if (!Metodos.jaEstaNaLista(area.getNome(), opcoesAreaArray)) {
+//                opcoesArea.add(area.getNome());
+//                for (String item:opcoesAreaArray) {
+//                    item = area.getNome();
+//                }
+//            }
+//        }
+//    }
     
     @FXML
     public void initialize() {
         // forma de adicionar opções na combo box
-        ObservableList<String> opcoesDept = FXCollections.observableArrayList("Opção 1", "Opção 2", "Opção 3");
-        atividadeAcao.setItems(opcoesDept);
-        
-        ObservableList<String> opcoesUser = FXCollections.observableArrayList("user 1", "user 2", "user 3");
-        usuarioAcao.setItems(opcoesUser);
-        opcoesUser.add("user 4");
+        opcoesArea = FXCollections.observableArrayList();
+        opcoesAreaArray = new String[64];
+        areaAcao.setItems(opcoesArea);
     }
 
 }
