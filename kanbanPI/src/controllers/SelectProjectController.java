@@ -55,6 +55,9 @@ public class SelectProjectController {
     private Label nomeProjetoUm;
 
     @FXML
+    private Button novaArea;
+
+    @FXML
     private Button novoProjeto;
 
     @FXML
@@ -95,6 +98,9 @@ public class SelectProjectController {
 
     @FXML
     private Pane projetoUm;
+
+    @FXML
+    private Label tituloCriarNovaArea;
 
     @FXML
     private Label tituloCriarNovoProjeto;
@@ -145,6 +151,13 @@ public class SelectProjectController {
     private void logout(ActionEvent event) {
         Kanban.telas("loginPage");
     }
+    
+    @FXML
+    private void novaArea(ActionEvent event) {
+        if (Kanban.loginAdmin) {
+            Kanban.telas("newArea");
+       }
+    }
 
     @FXML
     private void novoProjeto(ActionEvent event) {
@@ -157,7 +170,7 @@ public class SelectProjectController {
     }
     
     @FXML
-    void novoUsuario(ActionEvent event) {
+    private void novoUsuario(ActionEvent event) {
         if (Kanban.loginAdmin) {
             Kanban.telas("newUser");
        }
@@ -193,6 +206,8 @@ public class SelectProjectController {
             tituloCriarNovoProjeto.setOpacity(0);
             novoUsuario.setOpacity(0);
             tituloCriarNovoUsuario.setOpacity(0);
+            novaArea.setOpacity(0);
+            tituloCriarNovaArea.setOpacity(0);
             editarProjetoUm.setOpacity(0);
             editarProjetoDois.setOpacity(0);
             editarProjetoTres.setOpacity(0);
