@@ -110,6 +110,10 @@ public class Empresa {
         return null;
     }
     
+    public String getNome() {
+        return this.nome;
+    }
+    
     public Projeto[] getProjetos() {
         if (this.auth()) {
             return this.projetos;

@@ -23,13 +23,14 @@ public class Kanban extends Application {
     private static Scene sceneNewUser;
     private static Scene sceneNewArea;
     public static Empresa[] empresas;
+    public static String currentUser;
     //public static Usuario[] usuarios;
     public static boolean loginAdmin;
 
     @Override
     public void start(Stage stage) throws Exception {
         telaSelecionada = stage;
-        empresas = new Empresa[16];
+        empresas = new Empresa[32];
         loginAdmin = false;
         
         Parent fxmlLoginPage = FXMLLoader.load(getClass().getResource("../views/loginPage.fxml"));
