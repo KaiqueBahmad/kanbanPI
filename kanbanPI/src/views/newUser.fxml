@@ -224,11 +224,6 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label fx:id="errorUsuario" layoutX="188.0" layoutY="212.0" textFill="RED">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
                   <TextField fx:id="senhaUsuarioCriado" layoutX="88.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="450.0" promptText="Senha do usuário" style="-fx-background-radius: 10px;">
                      <font>
                         <Font size="25.0" />
@@ -237,6 +232,15 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
+                  <VBox alignment="CENTER" layoutX="34.0" layoutY="211.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="36.0" prefWidth="557.0">
+                     <children>
+                        <Label fx:id="errorUsuario" prefHeight="36.0" prefWidth="437.0" textFill="RED">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </Pane>
         </children>
