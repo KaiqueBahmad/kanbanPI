@@ -647,7 +647,7 @@
                         <Font size="25.0" />
                      </font>
                      <cursor>
-                        <Cursor fx:constant="HAND" />
+                        <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
                   <Button fx:id="cancelarAcao" layoutX="130.0" layoutY="508.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#cancelarAcao" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;" text="Cancelar" textFill="#454546">
@@ -675,7 +675,7 @@
                         <Font size="25.0" />
                      </font>
                      <cursor>
-                        <Cursor fx:constant="HAND" />
+                        <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
                   <ComboBox fx:id="atividadeAcao" layoutX="87.5" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="450.0" promptText="Atividade" style="-fx-background-radius: 10px; -fx-font-size: 25px;">
