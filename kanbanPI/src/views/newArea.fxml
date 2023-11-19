@@ -224,11 +224,15 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label fx:id="errorNovaArea" layoutX="189.0" layoutY="166.0" textFill="RED">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
+                  <VBox alignment="CENTER" layoutX="34.0" layoutY="166.0" prefHeight="36.0" prefWidth="557.0">
+                     <children>
+                        <Label fx:id="errorNovaArea" textFill="RED">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </Pane>
          </children>
