@@ -84,7 +84,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </PasswordField>
-      <VBox alignment="CENTER" layoutX="966.0" layoutY="114.0" prefHeight="73.0" prefWidth="405.0">
+      <VBox alignment="CENTER" layoutX="950.0" layoutY="114.0" prefHeight="73.0" prefWidth="405.0">
          <children>
             <Label fx:id="errorEntrar" alignment="CENTER" contentDisplay="CENTER" textFill="RED">
                <font>
@@ -93,8 +93,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox alignment="CENTER" layoutX="221.0" layoutY="165.0" prefHeight="73.0" prefWidth="405.0" />
-      <VBox alignment="CENTER" layoutX="173.0" layoutY="114.0" prefHeight="73.0" prefWidth="405.0">
+      <VBox alignment="CENTER" layoutX="182.0" layoutY="114.0" prefHeight="73.0" prefWidth="405.0">
          <children>
             <Label fx:id="errorCadastro" alignment="CENTER" contentDisplay="CENTER" textFill="RED">
                <font>
