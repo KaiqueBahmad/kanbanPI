@@ -10,13 +10,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
 
-public class NewUserController {
+public class NewAreaController {
 
     @FXML
-    private Button cancelarUsuario;
+    private Button cancelarArea;
 
     @FXML
-    private Button criarUsuario;
+    private Button criarArea;
 
     @FXML
     private ImageView editarProjetoDois;
@@ -31,10 +31,10 @@ public class NewUserController {
     private ImageView editarProjetoUm;
 
     @FXML
-    private Label errorNovoProjeto;
+    private Label errorNovaArea;
 
     @FXML
-    private Label errorUsuario;
+    private Label errorNovoProjeto;
 
     @FXML
     private ImageView excluirProjetoDois;
@@ -52,6 +52,9 @@ public class NewUserController {
     private Button logout;
 
     @FXML
+    private TextField nomeArea;
+
+    @FXML
     private Label nomeProjetoDois;
 
     @FXML
@@ -64,7 +67,7 @@ public class NewUserController {
     private Label nomeProjetoUm;
 
     @FXML
-    private TextField nomeUsuarioCriado;
+    private Button novaArea;
 
     @FXML
     private Button novoProjeto;
@@ -109,7 +112,7 @@ public class NewUserController {
     private Pane projetoUm;
 
     @FXML
-    private TextField senhaUsuarioCriado;
+    private Label tituloCriarNovaArea;
 
     @FXML
     private Label tituloCriarNovoProjeto;
@@ -118,26 +121,22 @@ public class NewUserController {
     private Label tituloCriarNovoUsuario;
 
     @FXML
-    private void cancelarUsuario(ActionEvent event) {
-        errorUsuario.setText("");
-        nomeUsuarioCriado.clear();
-        senhaUsuarioCriado.clear();
+    private void cancelarArea(ActionEvent event) {
+        nomeArea.clear();
+        errorNovaArea.setText("");
         Kanban.telas("selectProject");
     }
 
     @FXML
-    private void criarUsuario(ActionEvent event) {
-        if(nomeUsuarioCriado.getText().equals("") || senhaUsuarioCriado.getText().equals("")){
-            errorUsuario.setText("Há campos em branco");
+    private void criarArea(ActionEvent event) {
+        if(nomeArea.getText().equals("")){
+            errorNovaArea.setText("Há campos em branco");
         }
         else{
-            //salvar
-            errorUsuario.setText("");
-            nomeUsuarioCriado.clear();
-            senhaUsuarioCriado.clear();
+            // salva
+            nomeArea.clear();
+            errorNovaArea.setText("");
             Kanban.telas("selectProject");
-
-
         }
     }
 

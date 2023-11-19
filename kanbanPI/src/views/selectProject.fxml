@@ -8,9 +8,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: #454546;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SelectProjectController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: #454546;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SelectProjectController">
    <children>
       <Button id="button" fx:id="novoProjeto" alignment="CENTER" layoutX="65.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#novoProjeto" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <graphic>
@@ -39,63 +40,95 @@
       </Button>
       <Pane fx:id="projetoUm" layoutX="65.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoUm" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <children>
-            <Label fx:id="nomeProjetoUm" contentDisplay="CENTER" layoutX="125.0" layoutY="42.0" text="Nome" textFill="#454546">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="numPostProjetoUm" contentDisplay="CENTER" layoutX="102.0" layoutY="115.0" text="50 post-it" textFill="#454546">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
             <ProgressIndicator fx:id="progressoTotalUm" layoutX="106.0" layoutY="188.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="110.0" progress="0.0" style="-fx-accent: #32CD32; -fx-font-size: 17px; -fx-background-color: transparent; -fx-background-insets: null;" />
+            <VBox alignment="CENTER" layoutX="6.0" layoutY="42.0" prefHeight="36.0" prefWidth="309.0">
+               <children>
+                  <Label fx:id="nomeProjetoUm" contentDisplay="CENTER" text="Nome" textFill="#454546">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="7.0" layoutY="115.0" prefHeight="36.0" prefWidth="309.0">
+               <children>
+                  <Label fx:id="numPostProjetoUm" contentDisplay="CENTER" text="50 post-it" textFill="#454546">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Pane>
       <Pane fx:id="projetoDois" layoutX="426.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoDois" opacity="0.0" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <children>
-            <Label fx:id="nomeProjetoDois" contentDisplay="CENTER" layoutX="125.0" layoutY="42.0" text="Nome" textFill="#454546">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="numPostProjetoDois" contentDisplay="CENTER" layoutX="102.0" layoutY="115.0" text="30 post-it" textFill="#454546">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
             <ProgressIndicator fx:id="progressoTotalDois" layoutX="106.0" layoutY="188.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="110.0" progress="0.0" style="-fx-accent: #32CD32; -fx-font-size: 17px; -fx-background-color: transparent; -fx-background-insets: null;" />
+            <VBox alignment="CENTER" layoutX="7.0" layoutY="42.0" prefHeight="36.0" prefWidth="309.0">
+               <children>
+                  <Label fx:id="nomeProjetoDois" contentDisplay="CENTER" text="Nome" textFill="#454546">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="7.0" layoutY="115.0" prefHeight="36.0" prefWidth="309.0">
+               <children>
+                  <Label fx:id="numPostProjetoDois" contentDisplay="CENTER" text="30 post-it" textFill="#454546">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </Pane>
       <Pane fx:id="projetoTres" layoutX="788.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoTres" opacity="0.0" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <children>
-            <Label fx:id="nomeProjetoTres" contentDisplay="CENTER" layoutX="125.0" layoutY="42.0" text="Nome" textFill="#454546">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="numPostProjetoTres" contentDisplay="CENTER" layoutX="102.0" layoutY="115.0" text="12 post-it" textFill="#454546">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
             <ProgressIndicator fx:id="progressoTotalTres" layoutX="106.0" layoutY="188.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="110.0" progress="0.0" style="-fx-accent: #32CD32; -fx-font-size: 17px; -fx-background-color: transparent; -fx-background-insets: null;" />
+            <VBox alignment="CENTER" layoutX="7.0" layoutY="42.0" prefHeight="36.0" prefWidth="309.0">
+               <children>
+                  <Label fx:id="nomeProjetoTres" contentDisplay="CENTER" text="Nome" textFill="#454546">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="6.0" layoutY="115.0" prefHeight="36.0" prefWidth="309.0">
+               <children>
+                  <Label fx:id="numPostProjetoTres" contentDisplay="CENTER" text="12 post-it" textFill="#454546">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children></Pane>
       <Pane fx:id="projetoQuatro" layoutX="1149.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoQuatro" opacity="0.0" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <children>
-            <Label fx:id="nomeProjetoQuatro" contentDisplay="CENTER" layoutX="125.0" layoutY="42.0" text="Nome" textFill="#454546">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="numPostProjetoQuatro" contentDisplay="CENTER" layoutX="102.0" layoutY="115.0" text="12 post-it" textFill="#454546">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
             <ProgressIndicator fx:id="progressoTotalQuatro" layoutX="106.0" layoutY="188.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="110.0" progress="0.0" style="-fx-accent: #32CD32; -fx-font-size: 17px; -fx-background-color: transparent; -fx-background-insets: null;" />
+            <VBox alignment="CENTER" layoutX="7.0" layoutY="42.0" prefHeight="36.0" prefWidth="309.0">
+               <children>
+                  <Label fx:id="nomeProjetoQuatro" contentDisplay="CENTER" text="Nome" textFill="#454546">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="6.0" layoutY="115.0" prefHeight="36.0" prefWidth="309.0">
+               <children>
+                  <Label fx:id="numPostProjetoQuatro" contentDisplay="CENTER" text="12 post-it" textFill="#454546">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children></Pane>
       <ImageView fx:id="editarProjetoUm" fitHeight="20.0" fitWidth="20.0" layoutX="200.0" layoutY="560.0" onMouseClicked="#editarProjetoUm" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -161,6 +194,23 @@
          </cursor>
       </Button>
       <Label fx:id="tituloCriarNovoUsuario" layoutX="423.0" layoutY="77.0" text="Cadastrar Usuário" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button id="button" fx:id="novaArea" alignment="CENTER" layoutX="648.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#novaArea" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/imgs/area.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="tituloCriarNovaArea" layoutX="712.0" layoutY="77.0" text="Cadastrar área" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>

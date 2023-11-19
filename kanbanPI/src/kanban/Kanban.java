@@ -21,13 +21,13 @@ public class Kanban extends Application {
     private static Scene sceneLoginPage;
     private static Scene sceneNewActivit;
     private static Scene sceneNewUser;
+    private static Scene sceneNewArea;
     public static Empresa[] empresas;
     //public static Usuario[] usuarios;
     public static boolean loginAdmin;
 
     @Override
     public void start(Stage stage) throws Exception {
-        // adicionar cadastrar área (selectProject) - botão gerar relatorio
         telaSelecionada = stage;
         empresas = new Empresa[16];
         loginAdmin = false;
@@ -58,6 +58,9 @@ public class Kanban extends Application {
         Parent fxmlNewUser = FXMLLoader.load(getClass().getResource("../views/newUser.fxml"));
         sceneNewUser = new Scene(fxmlNewUser,  1535, 800);
         
+        Parent fxmlNewArea = FXMLLoader.load(getClass().getResource("../views/newArea.fxml"));
+        sceneNewArea = new Scene(fxmlNewArea,  1535, 800);
+        
         stage.setScene(sceneLoginPage);
         stage.show();  
     }
@@ -78,6 +81,7 @@ public class Kanban extends Application {
             case "loginPage" -> telaSelecionada.setScene(sceneLoginPage);
             case "newActivit" -> telaSelecionada.setScene(sceneNewActivit);
             case "newUser" -> telaSelecionada.setScene(sceneNewUser);
+            case "newArea" -> telaSelecionada.setScene(sceneNewArea);
         }
     }
 

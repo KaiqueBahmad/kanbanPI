@@ -442,139 +442,139 @@ public class KanbanPageController {
     private Button voltarProjetos;
     
     @FXML
-    void aFazerMaisDois(MouseEvent event) {
+    private void aFazerMaisDois(MouseEvent event) {
 
     }
 
     @FXML
-    void aFazerMaisQuatro(MouseEvent event) {
+    private void aFazerMaisQuatro(MouseEvent event) {
 
     }
 
     @FXML
-    void aFazerMaisTres(MouseEvent event) {
+    private void aFazerMaisTres(MouseEvent event) {
 
     }
 
     @FXML
-    void aFazerMaisUm(MouseEvent event) {
+    private void aFazerMaisUm(MouseEvent event) {
 
     }
 
     @FXML
-    void aFazerMenosDois(MouseEvent event) {
+    private void aFazerMenosDois(MouseEvent event) {
 
     }
 
     @FXML
-    void aFazerMenosQuatro(MouseEvent event) {
+    private void aFazerMenosQuatro(MouseEvent event) {
 
     }
 
     @FXML
-    void aFazerMenosTres(MouseEvent event) {
+    private void aFazerMenosTres(MouseEvent event) {
 
     }
 
     @FXML
-    void aFazerMenosUm(MouseEvent event) {
+    private void aFazerMenosUm(MouseEvent event) {
 
     }
 
     @FXML
-    void aFazerProximo(MouseEvent event) {
+    private void aFazerProximo(MouseEvent event) {
 
     }
     
     @FXML
-    void deletarAcao(MouseEvent event) {
+    private void deletarAcao(MouseEvent event) {
         errorKanbanLixo.setText("Selecione o Post-it que deseja excluir");
         
-        // fazer toggle da lixeira (voltar, sair, add ação e cadastrar atividade);
+        //retirar qnd clicar em algum post-it
     }
 
     @FXML
-    void fazendoMaisDois(MouseEvent event) {
-
-    }
-
-    @FXML
-    void fazendoMaisQuatro(MouseEvent event) {
+    private void fazendoMaisDois(MouseEvent event) {
 
     }
 
     @FXML
-    void fazendoMaisTres(MouseEvent event) {
+    private void fazendoMaisQuatro(MouseEvent event) {
 
     }
 
     @FXML
-    void fazendoMaisUm(MouseEvent event) {
+    private void fazendoMaisTres(MouseEvent event) {
 
     }
 
     @FXML
-    void fazendoMenosDois(MouseEvent event) {
+    private void fazendoMaisUm(MouseEvent event) {
 
     }
 
     @FXML
-    void fazendoMenosQuatro(MouseEvent event) {
+    private void fazendoMenosDois(MouseEvent event) {
 
     }
 
     @FXML
-    void fazendoMenosTres(MouseEvent event) {
+    private void fazendoMenosQuatro(MouseEvent event) {
 
     }
 
     @FXML
-    void fazendoMenosUm(MouseEvent event) {
+    private void fazendoMenosTres(MouseEvent event) {
 
     }
 
     @FXML
-    void fazendoProximo(MouseEvent event) {
+    private void fazendoMenosUm(MouseEvent event) {
 
     }
 
     @FXML
-    void finalizadoMaisDois(MouseEvent event) {
+    private void fazendoProximo(MouseEvent event) {
 
     }
 
     @FXML
-    void finalizadoMaisQuatro(MouseEvent event) {
+    private void finalizadoMaisDois(MouseEvent event) {
 
     }
 
     @FXML
-    void finalizadoMaisTres(MouseEvent event) {
+    private void finalizadoMaisQuatro(MouseEvent event) {
 
     }
 
     @FXML
-    void finalizadoMenosDois(MouseEvent event) {
+    private void finalizadoMaisTres(MouseEvent event) {
 
     }
 
     @FXML
-    void finalizadoMenosQuatro(MouseEvent event) {
+    private void finalizadoMenosDois(MouseEvent event) {
 
     }
 
     @FXML
-    void finalizadoMenosTres(MouseEvent event) {
+    private void finalizadoMenosQuatro(MouseEvent event) {
 
     }
 
     @FXML
-    void finalizadoMenosUm(MouseEvent event) {
+    private void finalizadoMenosTres(MouseEvent event) {
 
     }
 
     @FXML
-    void finalizadoProximo(MouseEvent event) {
+    private void finalizadoMenosUm(MouseEvent event) {
+
+    }
+
+    @FXML
+    private void finalizadoProximo(MouseEvent event) {
 
     }
 

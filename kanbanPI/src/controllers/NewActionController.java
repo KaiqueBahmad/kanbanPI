@@ -30,6 +30,18 @@ public class NewActionController {
     private ProgressBar aFazerBarraPorcentUm;
 
     @FXML
+    private Pane aFazerCorEscolhidaBarraDois;
+
+    @FXML
+    private Pane aFazerCorEscolhidaBarraQuatro;
+
+    @FXML
+    private Pane aFazerCorEscolhidaBarraTres;
+
+    @FXML
+    private Pane aFazerCorEscolhidaBarraUm;
+
+    @FXML
     private Pane aFazerCorEscolhidaDois;
 
     @FXML
@@ -69,6 +81,30 @@ public class NewActionController {
     private Label aFazerInicioFimUm;
 
     @FXML
+    private ImageView aFazerMaisDois;
+
+    @FXML
+    private ImageView aFazerMaisQuatro;
+
+    @FXML
+    private ImageView aFazerMaisTres;
+
+    @FXML
+    private ImageView aFazerMaisUm;
+
+    @FXML
+    private ImageView aFazerMenosDois;
+
+    @FXML
+    private ImageView aFazerMenosQuatro;
+
+    @FXML
+    private ImageView aFazerMenosTres;
+
+    @FXML
+    private ImageView aFazerMenosUm;
+
+    @FXML
     private Label aFazerNomeDois;
 
     @FXML
@@ -93,6 +129,9 @@ public class NewActionController {
     private Label aFazerPorcentUm;
 
     @FXML
+    private ImageView aFazerProximo;
+
+    @FXML
     private Pane aFazerQuatro;
 
     @FXML
@@ -112,6 +151,9 @@ public class NewActionController {
 
     @FXML
     private Label aFazerUsuarioUm;
+
+    @FXML
+    private ComboBox areaAcao;
 
     @FXML
     private ComboBox atividadeAcao;
@@ -141,6 +183,30 @@ public class NewActionController {
     private ProgressBar fazendoBarraPorcentUm;
 
     @FXML
+    private Pane fazendoCorEscolhidaBarraDois;
+
+    @FXML
+    private Pane fazendoCorEscolhidaBarraQuatro;
+
+    @FXML
+    private Pane fazendoCorEscolhidaBarraTres;
+
+    @FXML
+    private Pane fazendoCorEscolhidaBarraUm;
+
+    @FXML
+    private Pane fazendoCorEscolhidaDois;
+
+    @FXML
+    private Pane fazendoCorEscolhidaQuatro;
+
+    @FXML
+    private Pane fazendoCorEscolhidaTres;
+
+    @FXML
+    private Pane fazendoCorEscolhidaUm;
+
+    @FXML
     private Label fazendoDescricaoDois;
 
     @FXML
@@ -168,6 +234,30 @@ public class NewActionController {
     private Label fazendoInicioFimUm;
 
     @FXML
+    private ImageView fazendoMaisDois;
+
+    @FXML
+    private ImageView fazendoMaisQuatro;
+
+    @FXML
+    private ImageView fazendoMaisTres;
+
+    @FXML
+    private ImageView fazendoMaisUm;
+
+    @FXML
+    private ImageView fazendoMenosDois;
+
+    @FXML
+    private ImageView fazendoMenosQuatro;
+
+    @FXML
+    private ImageView fazendoMenosTres;
+
+    @FXML
+    private ImageView fazendoMenosUm;
+
+    @FXML
     private Label fazendoNomeDois;
 
     @FXML
@@ -190,6 +280,9 @@ public class NewActionController {
 
     @FXML
     private Label fazendoPorcentUm;
+
+    @FXML
+    private ImageView fazendoProximo;
 
     @FXML
     private Pane fazendoQuatro;
@@ -225,6 +318,30 @@ public class NewActionController {
     private ProgressBar finalizadoBarraPorcentUm;
 
     @FXML
+    private Pane finalizadoCorEscolhidaBarraDois;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaBarraQuatro;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaBarraTres;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaBarraUm;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaDois;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaQuatro;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaTres;
+
+    @FXML
+    private Pane finalizadoCorEscolhidaUm;
+
+    @FXML
     private Label finalizadoDescricaoDois;
 
     @FXML
@@ -252,6 +369,9 @@ public class NewActionController {
     private Label finalizadoInicioFimUm;
 
     @FXML
+    private ImageView finalizadoMaisDois;
+
+    @FXML
     private ImageView finalizadoMaisQuatro;
 
     @FXML
@@ -259,6 +379,18 @@ public class NewActionController {
 
     @FXML
     private ImageView finalizadoMaisUm;
+
+    @FXML
+    private ImageView finalizadoMenosDois;
+
+    @FXML
+    private ImageView finalizadoMenosQuatro;
+
+    @FXML
+    private ImageView finalizadoMenosTres;
+
+    @FXML
+    private ImageView finalizadoMenosUm;
 
     @FXML
     private Label finalizadoNomeDois;
@@ -283,6 +415,9 @@ public class NewActionController {
 
     @FXML
     private Label finalizadoPorcentUm;
+
+    @FXML
+    private ImageView finalizadoProximo;
 
     @FXML
     private Pane finalizadoQuatro;
@@ -365,6 +500,18 @@ public class NewActionController {
                 }
             }
         });
+        areaAcao.getSelectionModel().clearSelection();
+        areaAcao.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Área");
+                } else {
+                    setText(item);
+                }
+            }
+        });
         Kanban.telas("kanbanPage");
     }
 
@@ -400,6 +547,18 @@ public class NewActionController {
                     super.updateItem(item, empty) ;
                     if (empty || item == null) {
                         setText("Usuário responsável");
+                    } else {
+                        setText(item);
+                    }
+                }
+            });
+            areaAcao.getSelectionModel().clearSelection();
+            areaAcao.setButtonCell(new ListCell<String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty) ;
+                    if (empty || item == null) {
+                        setText("Área");
                     } else {
                         setText(item);
                     }
