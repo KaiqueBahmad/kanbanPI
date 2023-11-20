@@ -1,5 +1,7 @@
 package controllers;
 
+import entities.Empresa;
+import entities.Projeto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -149,6 +151,11 @@ public class SelectProjectController {
 
     @FXML
     private void logout(ActionEvent event) {
+        if (Kanban.loginAdmin) {
+            Kanban.empresaAtual().logout();
+        } else {
+            Kanban.empresaAtual().getUsuarioPorNome(Kanban.currentUser).logout();
+        }
         Kanban.telas("loginPage");
     }
     
@@ -175,34 +182,43 @@ public class SelectProjectController {
             Kanban.telas("newUser");
        }
     }
-
-    @FXML
-    private void projetoDois(MouseEvent event) {
-        // verificar se projeto existe
-        Kanban.telas("kanbanPage");
-    }
-
-    @FXML
-    private void projetoQuatro(MouseEvent event) {
-        // verificar se projeto existe
-        Kanban.telas("kanbanPage");
-    }
-
-    @FXML
-    private void projetoTres(MouseEvent event) {
-        // verificar se projeto existe
-        Kanban.telas("kanbanPage");
-    }
-
+    
     @FXML
     private void projetoUm(MouseEvent event) {
-        // verificar se projeto existe
-        Kanban.telas("kanbanPage");
+        if (Kanban.empresaAtual().getProjetos()[0] != null) {
+            Kanban.telas("kanbanPage");
+            Kanban.projetoAberto = 0;
+        }
     }
+    
+    @FXML
+    private void projetoDois(MouseEvent event) {
+        if (Kanban.empresaAtual().getProjetos()[1] != null) {
+            Kanban.telas("kanbanPage");
+            Kanban.projetoAberto = 1;
+        }
+    }
+    @FXML
+    private void projetoTres(MouseEvent event) {
+        if (Kanban.empresaAtual().getProjetos()[2] != null) {
+            Kanban.telas("kanbanPage");
+            Kanban.projetoAberto = 2;
+        }
+    }
+    @FXML
+    private void projetoQuatro(MouseEvent event) {
+        if (Kanban.empresaAtual().getProjetos()[3] != null) {
+            Kanban.telas("kanbanPage");
+            Kanban.projetoAberto = 3;
+        }
+    }
+
+    
+
+    
     
     public void esconderElementos() {
         int opacidade = Kanban.loginAdmin ? 1:0;
-        System.out.println(opacidade);
         novoProjeto.setOpacity(opacidade);
         tituloCriarNovoProjeto.setOpacity(opacidade);
         novoUsuario.setOpacity(opacidade);
@@ -218,5 +234,37 @@ public class SelectProjectController {
         excluirProjetoDois.setOpacity(opacidade);
         excluirProjetoTres.setOpacity(opacidade);
         excluirProjetoQuatro.setOpacity(opacidade);
+    }
+
+    public void loadProjetos() {
+        Pane[] projetos = {projetoUm, projetoDois, projetoTres, projetoQuatro};
+        Label[] projetoNomes = {nomeProjetoUm, nomeProjetoDois, nomeProjetoTres, nomeProjetoQuatro};
+        Label[] projetoQtdAcoes = {numPostProjetoUm, numPostProjetoDois, numPostProjetoTres, numPostProjetoQuatro};
+        ProgressIndicator[] projetoProgressos = {progressoTotalUm, progressoTotalDois, progressoTotalTres, progressoTotalQuatro};
+        ImageView[] projetosExcluir = {excluirProjetoUm, excluirProjetoDois, excluirProjetoTres, excluirProjetoQuatro};
+        ImageView[] projetosEditar = {editarProjetoUm, editarProjetoDois, editarProjetoTres, editarProjetoQuatro};
+        Empresa empresa = Kanban.empresaAtual();
+        Projeto[] projetosE = empresa.getProjetos();
+        for (int i = 0; i < 4; i++) {
+            int opacidade = projetosE[i] != null ? 1:0;
+            projetos[i].setOpacity(opacidade);
+            projetosExcluir[i].setOpacity(opacidade);
+            projetosEditar[i].setOpacity(opacidade);
+            if (projetosE[i] == null) {
+                continue;
+            }
+            
+            projetoNomes[i].setText(projetosE[i].getNome());
+            int numPostIts = projetosE[i].numAcoes();
+            if (numPostIts == 1) {
+                String mensagem = Integer.toString(numPostIts)+" post-it";
+                projetoQtdAcoes[i].setText(mensagem);
+            } else {
+                String mensagem = Integer.toString(numPostIts)+" post-its";
+                projetoQtdAcoes[i].setText(mensagem);
+            }
+            projetoProgressos[i].setProgress(projetosE[i].getPorcentagem());
+            
+        }
     }
 }

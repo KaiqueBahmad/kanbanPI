@@ -99,9 +99,6 @@ public class Empresa {
     }
     
     public Area getAreaPorNome(String nome){
-        if (!this.auth()) {
-            return null;
-        }
         for (Area area:this.areas) {
             if (nome.equals(area.getNome())) {
                 return area;
@@ -111,9 +108,6 @@ public class Empresa {
     }
     
     public ArrayList<Area> getAreas() {
-        if (!this.auth()) {
-            return null;
-        }
         return this.areas;
     }
     
@@ -122,10 +116,7 @@ public class Empresa {
     }
     
     public Projeto[] getProjetos() {
-        if (this.auth()) {
-            return this.projetos;
-        }
-        return null;
+        return this.projetos;
     }
     public void logout() {
         this.senhaInformada = "";

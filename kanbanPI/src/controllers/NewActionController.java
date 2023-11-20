@@ -1,7 +1,9 @@
 package controllers;
 
 import entities.Area;
+import entities.Atividade;
 import entities.Empresa;
+import entities.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -472,9 +474,11 @@ public class NewActionController {
 
     @FXML
     private Button voltarProjetos;
-    
+       
+    private ObservableList<String> opcoesAtividade;
+    private ObservableList<String> opcoesUsuario;
     private ObservableList<String> opcoesArea;
-    private String[] opcoesAreaArray;
+    
     @FXML
     private void cancelarAcao(ActionEvent event) {
         errorNovaAcao.setText("");
@@ -598,12 +602,64 @@ public class NewActionController {
 //        }
 //    }
     
+    public void loadAreasLista() {
+        Empresa empresaLogada = null;
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        for (Empresa empresa:Kanban.empresas) {
+            if (empresa == null) {
+                continue;
+            }
+            if (Kanban.currentUser.equals(empresa.getNome())) {
+                empresaLogada = empresa;
+            }
+        }
+        opcoesArea.clear();
+        for (Area area:empresaLogada.getAreas()) {
+            opcoesArea.add(area.getNome());
+        }
+    }
+    
+    public void loadUsuariosLista() {
+        Empresa empresaLogada = null;
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        for (Empresa empresa:Kanban.empresas) {
+            if (empresa == null) {
+                continue;
+            }
+            if (Kanban.currentUser.equals(empresa.getNome())) {
+                empresaLogada = empresa;
+            }
+        }
+        opcoesUsuario.clear();
+        for (Usuario user:empresaLogada.getUsuarios()) {
+            opcoesUsuario.add(user.getNome());
+        }
+    }
+    
+    public void loadAtividadesLista() {
+        Empresa empresaLogada = null;
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        Empresa empresa = Kanban.empresaAtual();
+        opcoesAtividade.clear();
+        for (Atividade at:empresa.getProjetos()[0].getAtividades()) {
+            opcoesAtividade.add(at.getNome());
+        }
+    }
+    
     @FXML
     public void initialize() {
         // forma de adicionar opções na combo box
+        opcoesAtividade = FXCollections.observableArrayList();
+        opcoesUsuario = FXCollections.observableArrayList();
         opcoesArea = FXCollections.observableArrayList();
-        opcoesAreaArray = new String[64];
         areaAcao.setItems(opcoesArea);
+        usuarioAcao.setItems(opcoesUsuario);
+        atividadeAcao.setItems(opcoesAtividade);
     }
-
 }

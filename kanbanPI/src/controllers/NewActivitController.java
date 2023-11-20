@@ -1,5 +1,7 @@
 package controllers;
 
+import entities.Empresa;
+import entities.Projeto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import kanban.Kanban;
+import utils.Metodos;
 
 public class NewActivitController {
 
@@ -334,15 +337,66 @@ public class NewActivitController {
     @FXML
     private void criarAtividade(ActionEvent event) {
         if(nomeAtividadeCriado.getText().equals("")){
-            // verificar também se a cor já não é utilizada em outro departamento
             errorAtividade.setText("Nome em branco ou cor já utilizada");
+            return;
         }
-        else{
-            //salvar cor e nome do departamento
-            errorAtividade.setText("");
+        String nomeAtividade = nomeAtividadeCriado.getText();
+        Color cor = corAtividadeCriado.getValue();
+        String corHex = String.format( "#%02X%02X%02X",
+            (int)( cor.getRed() * 255 ),
+            (int)( cor.getGreen() * 255 ),
+            (int)( cor.getBlue() * 255 )
+        );
+        if (!Metodos.verificarEspacos(nomeAtividadeCriado.getText())) {
+            errorAtividade.setText("Política de uso de espaços inadequada.");
+            return;
+        }
+        if (Kanban.projetoAberto == -1) {
+            errorAtividade.setText("Problemas ao encontrar o projeto.");
+            return;
+        }
+        Projeto projeto = Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto];
+        if (projeto.criarAtividade(nomeAtividade, corHex)) {
+            errorAtividade.setText("");     
             nomeAtividadeCriado.clear();
             corAtividadeCriado.setValue(Color.WHITE);
             Kanban.telas("kanbanPage");
+        } else {
+            errorAtividade.setText("Erro ao criar a Atividade.");
         }
     }
+//        @FXML
+//    private void criarProjeto(ActionEvent event) {        
+//        if(nomeNovoProjeto.getText().equals("") || descricaoNovoProjeto.getText().equals("")){
+//            errorNovoProjeto.setText("Há campos em branco");
+//            return;
+//        }
+//        String nomeProjeto = nomeNovoProjeto.getText();
+//        String descricaoProjeto=  descricaoNovoProjeto.getText();
+//        if (!Metodos.verificarEspacos(nomeNovoProjeto.getText())) {
+//            errorNovoProjeto.setText("Política de uso de espaços inadequada.");
+//            return;
+//        }
+//        Empresa empresaLogada = Kanban.empresaAtual();
+//        if (empresaLogada == null) {
+//            return;
+//        }
+//        for (Projeto projeto:empresaLogada.getProjetos()) {
+//            if (projeto == null) {
+//                continue;
+//            }
+//            if (nomeProjeto.equals(projeto.getNome())) {
+//                errorNovoProjeto.setText("Nome já está em uso.");
+//                return;
+//            }
+//        }
+//        if (empresaLogada.criarProjeto(nomeProjeto, descricaoProjeto)) {
+//            errorNovoProjeto.setText("");
+//            nomeNovoProjeto.clear();
+//            descricaoNovoProjeto.clear();
+//            Kanban.telas("selectProject");
+//        } else {
+//            errorNovoProjeto.setText("Política de uso de espaços inadequada.");
+//        }
+//    }
 }
