@@ -13,6 +13,18 @@ import kanban.Kanban;
 public class KanbanPageController {
 
     @FXML
+    private Label aFazerAreaDois;
+
+    @FXML
+    private Label aFazerAreaQuatro;
+
+    @FXML
+    private Label aFazerAreaTres;
+
+    @FXML
+    private Label aFazerAreaUm;
+
+    @FXML
     private ProgressBar aFazerBarraPorcentDois;
 
     @FXML
@@ -31,9 +43,6 @@ public class KanbanPageController {
     private Pane aFazerCorEscolhidaBarraQuatro;
 
     @FXML
-    private Pane aFazerCorEscolhidaBarraTres;
-
-    @FXML
     private Pane aFazerCorEscolhidaBarraUm;
 
     @FXML
@@ -49,19 +58,19 @@ public class KanbanPageController {
     private Pane aFazerCorEscolhidaUm;
 
     @FXML
-    private Label aFazerDescricaoDois;
-
-    @FXML
-    private Label aFazerDescricaoQuatro;
-
-    @FXML
-    private Label aFazerDescricaoTres;
-
-    @FXML
-    private Label aFazerDescricaoUm;
-
-    @FXML
     private Pane aFazerDois;
+
+    @FXML
+    private Label aFazerDuracaoDois;
+
+    @FXML
+    private Label aFazerDuracaoQuatro;
+
+    @FXML
+    private Label aFazerDuracaoTres;
+
+    @FXML
+    private Label aFazerDuracaoUm;
 
     @FXML
     private Label aFazerInicioFimDois;
@@ -154,6 +163,18 @@ public class KanbanPageController {
     private Label errorKanbanLixo;
 
     @FXML
+    private Label fazendoAreaDois;
+
+    @FXML
+    private Label fazendoAreaQuatro;
+
+    @FXML
+    private Label fazendoAreaTres;
+
+    @FXML
+    private Label fazendoAreaUm;
+
+    @FXML
     private ProgressBar fazendoBarraPorcentDois;
 
     @FXML
@@ -175,9 +196,6 @@ public class KanbanPageController {
     private Pane fazendoCorEscolhidaBarraTres;
 
     @FXML
-    private Pane fazendoCorEscolhidaBarraUm;
-
-    @FXML
     private Pane fazendoCorEscolhidaDois;
 
     @FXML
@@ -190,19 +208,19 @@ public class KanbanPageController {
     private Pane fazendoCorEscolhidaUm;
 
     @FXML
-    private Label fazendoDescricaoDois;
-
-    @FXML
-    private Label fazendoDescricaoQuatro;
-
-    @FXML
-    private Label fazendoDescricaoTres;
-
-    @FXML
-    private Label fazendoDescricaoUm;
-
-    @FXML
     private Pane fazendoDois;
+
+    @FXML
+    private Label fazendoDuracaoDois;
+
+    @FXML
+    private Label fazendoDuracaoQuatro;
+
+    @FXML
+    private Label fazendoDuracaoTres;
+
+    @FXML
+    private Label fazendoDuracaoUm;
 
     @FXML
     private Label fazendoInicioFimDois;
@@ -289,6 +307,18 @@ public class KanbanPageController {
     private Label fazendoUsuarioUm;
 
     @FXML
+    private Label finalizadoAreaDois;
+
+    @FXML
+    private Label finalizadoAreaQuatro;
+
+    @FXML
+    private Label finalizadoAreaTres;
+
+    @FXML
+    private Label finalizadoAreaUm;
+
+    @FXML
     private ProgressBar finalizadoBarraPorcentDois;
 
     @FXML
@@ -325,19 +355,19 @@ public class KanbanPageController {
     private Pane finalizadoCorEscolhidaUm;
 
     @FXML
-    private Label finalizadoDescricaoDois;
-
-    @FXML
-    private Label finalizadoDescricaoQuatro;
-
-    @FXML
-    private Label finalizadoDescricaoTres;
-
-    @FXML
-    private Label finalizadoDescricaoUm;
-
-    @FXML
     private Pane finalizadoDois;
+
+    @FXML
+    private Label finalizadoDuracaoDois;
+
+    @FXML
+    private Label finalizadoDuracaoQuatro;
+
+    @FXML
+    private Label finalizadoDuracaoTres;
+
+    @FXML
+    private Label finalizadoDuracaoUm;
 
     @FXML
     private Label finalizadoInicioFimDois;
