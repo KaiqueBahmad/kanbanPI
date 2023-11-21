@@ -107,6 +107,22 @@ public class Empresa {
         return null;
     }
     
+    public void deletarProjeto(int i) {
+        if (!this.auth()) {
+            return;
+        }
+        if (i >= 0 && i < 4) {
+            this.projetos[i] = null;
+        } else {
+            return;
+        }
+        for (int j = 0; j < this.projetos.length; j++) {
+            if (this.projetos[j] == null && j != this.projetos.length - 1) {
+                projetos[j] = projetos[j+1];
+                projetos[j+1] = null;
+            }
+        }
+    }
     public ArrayList<Area> getAreas() {
         return this.areas;
     }
@@ -121,4 +137,5 @@ public class Empresa {
     public void logout() {
         this.senhaInformada = "";
     }
+
 }

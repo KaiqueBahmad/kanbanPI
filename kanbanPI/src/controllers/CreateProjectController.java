@@ -154,6 +154,7 @@ public class CreateProjectController {
         Projeto[] projetosE = empresa.getProjetos();
         for (int i = 0; i < 4; i++) {
             if (projetosE[i] == null) {
+                projetos[i].setOpacity(0);
                 continue;
             }
             projetos[i].setOpacity(1);

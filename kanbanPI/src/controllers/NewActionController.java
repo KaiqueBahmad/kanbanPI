@@ -4,6 +4,8 @@ import entities.Area;
 import entities.Atividade;
 import entities.Empresa;
 import entities.Usuario;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -526,56 +528,64 @@ public class NewActionController {
 
     @FXML
     private void criarAcao(ActionEvent event) {
-        if(nomeAcao.getText().equals("") || prazoAcao.getText().equals("")){
-            // verificar tbm os outros campos
-            // verificar se o prazo n está com número negativo
+//        if(nomeAcao.getText().equals("") || prazoAcao.getText().equals("")){
+//            // verificar tbm os outros campos
+//            // verificar se o prazo n está com número negativo
+//            errorNovaAcao.setText("Há campos em branco");
+//        }
+        
+        String nome = nomeAcao.getText();
+        String prazo = prazoAcao.getText();
+        LocalDate data = inicioAcao.getValue();
+//        long data = inicioAcao.getValue().toEpochDay();
+        if (nome.equals("") || prazo.equals("")|| data == null) {
             errorNovaAcao.setText("Há campos em branco");
         }
-        else{
-            //salvar tudo
-            errorNovaAcao.setText("");
-            nomeAcao.clear();
-            inicioAcao.getEditor().clear();
-            prazoAcao.clear();
-            atividadeAcao.getSelectionModel().clearSelection();
-            atividadeAcao.setButtonCell(new ListCell<String>() {
-                @Override
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty) ;
-                    if (empty || item == null) {
-                        setText("Atividade");
-                    } else {
-                        setText(item);
-                    }
+        long epochData = data.atStartOfDay(ZoneId.systemDefault()).toEpochSecond();
+        System.out.println(epochData);
+        errorNovaAcao.setText("");
+        nomeAcao.clear();
+        inicioAcao.getEditor().clear();
+        prazoAcao.clear();
+        atividadeAcao.getSelectionModel().clearSelection();
+        atividadeAcao.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Atividade");
+                } else {
+                    setText(item);
                 }
-            });
-            usuarioAcao.getSelectionModel().clearSelection();
-            usuarioAcao.setButtonCell(new ListCell<String>() {
-                @Override
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty) ;
-                    if (empty || item == null) {
-                        setText("Usuário responsável");
-                    } else {
-                        setText(item);
-                    }
+            }
+        });
+        usuarioAcao.getSelectionModel().clearSelection();
+        usuarioAcao.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Usuário responsável");
+                } else {
+                    setText(item);
                 }
-            });
-            areaAcao.getSelectionModel().clearSelection();
-            areaAcao.setButtonCell(new ListCell<String>() {
-                @Override
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty) ;
-                    if (empty || item == null) {
-                        setText("Área");
-                    } else {
-                        setText(item);
-                    }
+            }
+        });
+        areaAcao.getSelectionModel().clearSelection();
+        areaAcao.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Área");
+                } else {
+                    setText(item);
                 }
-            });
-            //atualizar tela do kanban
-            Kanban.telas("kanbanPage");
-        }
+            }
+        });
+        //atualizar tela do kanban
+        Kanban.telas("kanbanPage");
+
     }
 //    Programar essa parada aqui
 //    public void atualizarListaArea() {
@@ -647,7 +657,7 @@ public class NewActionController {
         }
         Empresa empresa = Kanban.empresaAtual();
         opcoesAtividade.clear();
-        for (Atividade at:empresa.getProjetos()[0].getAtividades()) {
+        for (Atividade at:empresa.getProjetos()[Kanban.projetoAberto].getAtividades()) {
             opcoesAtividade.add(at.getNome());
         }
     }

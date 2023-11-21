@@ -4,6 +4,7 @@ import entities.Empresa;
 import entities.Projeto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
@@ -128,26 +129,47 @@ public class SelectProjectController {
         Kanban.telas("newName");
     }
     
-        @FXML
+    @FXML
     private void editarProjetoQuatro(MouseEvent event) {
         // verificar se projeto existe
         Kanban.telas("newName");
     }
-
     @FXML
-    private void excluirProjetoQuatro(MouseEvent event) {
-        // verificar se projeto existe
+    private void excluirProjetoUm(MouseEvent event) {
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        Kanban.empresaAtual().deletarProjeto(0);
+        loadProjetos();
+        Kanban.controllerCreateProject.loadProjetos();
+    }
+    @FXML
+    private void excluirProjetoDois(MouseEvent event) {
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        Kanban.empresaAtual().deletarProjeto(1);
+        loadProjetos();
     }
 
     @FXML
     private void excluirProjetoTres(MouseEvent event) {
-        // verificar se projeto existe
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        Kanban.empresaAtual().deletarProjeto(2);
+        loadProjetos();
+    }
+    @FXML
+    private void excluirProjetoQuatro(MouseEvent event) {
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        Kanban.empresaAtual().deletarProjeto(3);
+        loadProjetos();
     }
 
-    @FXML
-    private void excluirProjetoUm(MouseEvent event) {
-        // verificar se projeto existe
-    }
+
 
     @FXML
     private void logout(ActionEvent event) {
@@ -171,9 +193,16 @@ public class SelectProjectController {
        // verificar a quantidade de projetos criados
        // Apenas são possíveis até 4 projetos (errorNovoProjeto)
        // trocar opacidade e cursor (projeto, editar e excluir)
-       if (Kanban.loginAdmin) {
-            Kanban.telas("createProject");
-       }
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        for (Projeto projeto:Kanban.empresaAtual().getProjetos()) {
+             if (projeto == null) {
+                 Kanban.telas("createProject");
+                 return;
+             }
+         }
+        errorNovoProjeto.setText("Limite de 4 Projetos excedido.");
     }
     
     @FXML
@@ -219,6 +248,7 @@ public class SelectProjectController {
     
     public void esconderElementos() {
         int opacidade = Kanban.loginAdmin ? 1:0;
+        errorNovoProjeto.setText("");
         novoProjeto.setOpacity(opacidade);
         tituloCriarNovoProjeto.setOpacity(opacidade);
         novoUsuario.setOpacity(opacidade);
@@ -251,9 +281,15 @@ public class SelectProjectController {
             projetosExcluir[i].setOpacity(opacidade);
             projetosEditar[i].setOpacity(opacidade);
             if (projetosE[i] == null) {
+                projetosExcluir[i].setCursor(Cursor.DEFAULT);
+                projetosEditar[i].setCursor(Cursor.DEFAULT);
+                projetos[i].setCursor(Cursor.DEFAULT);
                 continue;
             }
             
+            projetosExcluir[i].setCursor(Cursor.CLOSED_HAND);
+            projetosEditar[i].setCursor(Cursor.CLOSED_HAND);
+            projetos[i].setCursor(Cursor.CLOSED_HAND);
             projetoNomes[i].setText(projetosE[i].getNome());
             int numPostIts = projetosE[i].numAcoes();
             if (numPostIts == 1) {

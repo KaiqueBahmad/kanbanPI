@@ -21,7 +21,7 @@ public class Kanban extends Application {
     private static Scene sceneSelectProject;
     private static SelectProjectController controllerSelectProject;
     private static Scene sceneCreateProject;
-    private static CreateProjectController controllerCreateProject;
+    public static CreateProjectController controllerCreateProject;
     private static Scene sceneKanbanPage;
     private static KanbanPageController controllerKanbanPage;
     private static Scene sceneNewNameProject;
