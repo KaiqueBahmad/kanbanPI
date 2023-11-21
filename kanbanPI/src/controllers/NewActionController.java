@@ -528,64 +528,73 @@ public class NewActionController {
 
     @FXML
     private void criarAcao(ActionEvent event) {
-//        if(nomeAcao.getText().equals("") || prazoAcao.getText().equals("")){
+//        if(nomeAcao.getText().equals("") || prazoAcao.getText().equals("") || inicioAcao.getValue() == null){
 //            // verificar tbm os outros campos
 //            // verificar se o prazo n está com número negativo
 //            errorNovaAcao.setText("Há campos em branco");
 //        }
-        
+
+
         String nome = nomeAcao.getText();
         String prazo = prazoAcao.getText();
         LocalDate data = inicioAcao.getValue();
 //        long data = inicioAcao.getValue().toEpochDay();
-        if (nome.equals("") || prazo.equals("")|| data == null) {
+        if (nome.equals("") || prazo.equals("")|| data == null || atividadeAcao.getSelectionModel().getSelectedItem() == null || usuarioAcao.getSelectionModel().getSelectedItem() == null || areaAcao.getSelectionModel().getSelectedItem() == null) {
             errorNovaAcao.setText("Há campos em branco");
         }
-        long epochData = data.atStartOfDay(ZoneId.systemDefault()).toEpochSecond();
-        System.out.println(epochData);
-        errorNovaAcao.setText("");
-        nomeAcao.clear();
-        inicioAcao.getEditor().clear();
-        prazoAcao.clear();
-        atividadeAcao.getSelectionModel().clearSelection();
-        atividadeAcao.setButtonCell(new ListCell<String>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty) ;
-                if (empty || item == null) {
-                    setText("Atividade");
-                } else {
-                    setText(item);
-                }
+        else{
+            if(Integer.parseInt(prazo) < 0){
+                // verificar tbm se o prazo é de fato um número (|| isNumeric, isNaN, sla)
+               errorNovaAcao.setText("Prazo inválido");
             }
-        });
-        usuarioAcao.getSelectionModel().clearSelection();
-        usuarioAcao.setButtonCell(new ListCell<String>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty) ;
-                if (empty || item == null) {
-                    setText("Usuário responsável");
-                } else {
-                    setText(item);
-                }
+            else{
+                long epochData = data.atStartOfDay(ZoneId.systemDefault()).toEpochSecond();
+                System.out.println(epochData);
+                // salvar informações
+                errorNovaAcao.setText("");
+                nomeAcao.clear();
+                inicioAcao.getEditor().clear();
+                prazoAcao.clear();
+                atividadeAcao.getSelectionModel().clearSelection();
+                atividadeAcao.setButtonCell(new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty) ;
+                        if (empty || item == null) {
+                            setText("Atividade");
+                        } else {
+                            setText(item);
+                        }
+                    }
+                });
+                usuarioAcao.getSelectionModel().clearSelection();
+                usuarioAcao.setButtonCell(new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty) ;
+                        if (empty || item == null) {
+                            setText("Usuário responsável");
+                        } else {
+                            setText(item);
+                        }
+                    }
+                });
+                areaAcao.getSelectionModel().clearSelection();
+                areaAcao.setButtonCell(new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty) ;
+                        if (empty || item == null) {
+                            setText("Área");
+                        } else {
+                            setText(item);
+                        }
+                    }
+                });
+                //atualizar tela do kanban
+                Kanban.telas("kanbanPage");
             }
-        });
-        areaAcao.getSelectionModel().clearSelection();
-        areaAcao.setButtonCell(new ListCell<String>() {
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty) ;
-                if (empty || item == null) {
-                    setText("Área");
-                } else {
-                    setText(item);
-                }
-            }
-        });
-        //atualizar tela do kanban
-        Kanban.telas("kanbanPage");
-
+        }
     }
 //    Programar essa parada aqui
 //    public void atualizarListaArea() {

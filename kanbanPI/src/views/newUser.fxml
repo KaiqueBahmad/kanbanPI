@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: #454546;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewUserController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1535.0" style="-fx-background-color: #454546;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NewUserController">
     <children>
         <Button id="button" fx:id="novoProjeto" alignment="CENTER" layoutX="65.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <graphic>
@@ -234,7 +234,7 @@
                   </TextField>
                   <VBox alignment="CENTER" layoutX="34.0" layoutY="211.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="36.0" prefWidth="557.0">
                      <children>
-                        <Label fx:id="errorUsuario" prefHeight="36.0" prefWidth="437.0" textFill="RED">
+                        <Label fx:id="errorUsuario" textFill="RED">
                            <font>
                               <Font size="25.0" />
                            </font>
