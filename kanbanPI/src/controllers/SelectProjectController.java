@@ -112,26 +112,30 @@ public class SelectProjectController {
     private Label tituloCriarNovoUsuario;
     
     @FXML
+    private void editarProjetoUm(MouseEvent event) {
+        // verificar se projeto existe
+        Kanban.projetoAberto = 0;
+        Kanban.telas("newName");
+    }
+    @FXML
     private void editarProjetoDois(MouseEvent event) {
         // verificar se projeto existe
+        Kanban.projetoAberto = 1;
         Kanban.telas("newName");
     }
 
     @FXML
     private void editarProjetoTres(MouseEvent event) {
         // verificar se projeto existe
+        Kanban.projetoAberto = 2;
         Kanban.telas("newName");
     }
 
-    @FXML
-    private void editarProjetoUm(MouseEvent event) {
-        // verificar se projeto existe
-        Kanban.telas("newName");
-    }
     
     @FXML
     private void editarProjetoQuatro(MouseEvent event) {
         // verificar se projeto existe
+        Kanban.projetoAberto = 3;
         Kanban.telas("newName");
     }
     @FXML

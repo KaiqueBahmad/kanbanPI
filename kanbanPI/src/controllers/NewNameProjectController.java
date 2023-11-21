@@ -1,5 +1,6 @@
 package controllers;
 
+import entities.Projeto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -113,19 +114,30 @@ public class NewNameProjectController {
 
     @FXML
     private Label tituloCriarNovoUsuario;
-
+    
     @FXML
     private void attNomeProjeto(ActionEvent event) {
-        if(attNomeNovoProjeto.getText().equals("")){
+        String novoNome = attNomeNovoProjeto.getText();
+        if(novoNome.equals("")){
             errorEditarNomeProjeto.setText("Há campos em branco");
+            return;
         }
-        else{
-            // salvar o novo nome (attNomeNovoProjeto)
-            errorEditarNomeProjeto.setText("");
-            attNomeNovoProjeto.clear();
-            Kanban.telas("selectProject");
+        for (Projeto proj:Kanban.empresaAtual().getProjetos()) {
+            if (null == proj) {
+                continue;
+            }
+            if (novoNome.equals(proj.getNome())) {
+                return;
+            }
         }
-
+        if (novoNome.equals(Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto])) {
+            errorEditarNomeProjeto.setText("Que falta de criatividade.");
+            return;
+        }
+        Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto].mudarNome(novoNome);
+        errorEditarNomeProjeto.setText("");
+        attNomeNovoProjeto.clear();
+        Kanban.telas("selectProject");
     }
 
     @FXML

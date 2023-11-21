@@ -5,6 +5,7 @@ import controllers.KanbanPageController;
 import controllers.NewActionController;
 import controllers.NewActivitController;
 import controllers.NewAreaController;
+import controllers.NewNameProjectController;
 import controllers.NewUserController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,7 @@ public class Kanban extends Application {
     private static Scene sceneKanbanPage;
     private static KanbanPageController controllerKanbanPage;
     private static Scene sceneNewNameProject;
+    private static NewNameProjectController controllerNewNameProject;
     private static Scene sceneNewAction;
     public static NewActionController controllerNewAction;
     private static Scene sceneLoginPage;
@@ -79,8 +81,9 @@ public class Kanban extends Application {
         sceneKanbanPage = new Scene(fxmlKanbanPage.load(),  1535, 800);
         controllerKanbanPage = fxmlKanbanPage.getController();
         
-        Parent fxmlNewNameProject = FXMLLoader.load(getClass().getResource("../views/newNameProject.fxml"));
-        sceneNewNameProject = new Scene(fxmlNewNameProject,  1535, 800);
+        FXMLLoader fxmlNewNameProject = new FXMLLoader(getClass().getResource("../views/newNameProject.fxml"));
+        sceneNewNameProject = new Scene(fxmlNewNameProject.load(),  1535, 800);
+        controllerNewNameProject = fxmlNewNameProject.getController();
         
         FXMLLoader fxmlNewAction = new FXMLLoader(getClass().getResource("../views/newAction.fxml"));
         sceneNewAction = new Scene(fxmlNewAction.load(),  1535, 800);
@@ -123,7 +126,10 @@ public class Kanban extends Application {
 //                controllerKanbanPage.loadAtividades();
                 telaSelecionada.setScene(sceneKanbanPage);
             }
-            case "newName" -> telaSelecionada.setScene(sceneNewNameProject);
+            case "newName" -> {
+//                controllerNewNameProject
+                telaSelecionada.setScene(sceneNewNameProject);
+            }
             case "newAction" -> {
                 controllerNewAction.loadAreasLista();
                 controllerNewAction.loadUsuariosLista();
