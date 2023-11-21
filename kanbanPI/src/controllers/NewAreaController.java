@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import kanban.Kanban;
 import utils.Metodos;
 import entities.Empresa;
+import entities.Projeto;
 
 public class NewAreaController {
 
@@ -160,10 +161,60 @@ public class NewAreaController {
         
         
         empresaLogada.criarArea(nome);
-        
+//        Kanban.newActionController.atualizarLista();
+                
         errorNovaArea.setText("");
         nomeArea.clear();
         Kanban.telas("selectProject");
+    }
+
+    public void esconderElementos() {
+        int opacidade = Kanban.loginAdmin ? 1:0;
+        novoProjeto.setOpacity(opacidade);
+        tituloCriarNovoProjeto.setOpacity(opacidade);
+        novoUsuario.setOpacity(opacidade);
+        tituloCriarNovoUsuario.setOpacity(opacidade);
+        novaArea.setOpacity(opacidade);
+        tituloCriarNovaArea.setOpacity(opacidade);
+        opacidade = 0;
+        editarProjetoUm.setOpacity(opacidade);
+        excluirProjetoUm.setOpacity(opacidade);        
+        editarProjetoDois.setOpacity(opacidade);
+        editarProjetoTres.setOpacity(opacidade);
+        editarProjetoQuatro.setOpacity(opacidade);
+        excluirProjetoDois.setOpacity(opacidade);
+        excluirProjetoTres.setOpacity(opacidade);
+        excluirProjetoQuatro.setOpacity(opacidade);
+    }
+
+    public void loadProjetos() {
+        Pane[] projetos = {projetoUm, projetoDois, projetoTres, projetoQuatro};
+        Label[] projetoNomes = {nomeProjetoUm, nomeProjetoDois, nomeProjetoTres, nomeProjetoQuatro};
+        Label[] projetoQtdAcoes = {numPostProjetoUm, numPostProjetoDois, numPostProjetoTres, numPostProjetoQuatro};
+        ProgressIndicator[] projetoProgressos = {progressoTotalUm, progressoTotalDois, progressoTotalTres, progressoTotalQuatro};
+        ImageView[] projetosExcluir = {excluirProjetoUm, excluirProjetoDois, excluirProjetoTres, excluirProjetoQuatro};
+        ImageView[] projetosEditar = {editarProjetoUm, editarProjetoDois, editarProjetoTres, editarProjetoQuatro};
+        Empresa empresa = Kanban.empresaAtual();
+        Projeto[] projetosE = empresa.getProjetos();
+        for (int i = 0; i < 4; i++) {
+            if (projetosE[i] == null) {
+                projetos[i].setOpacity(0);
+                continue;
+            }
+            projetos[i].setOpacity(1);
+            projetoNomes[i].setText(projetosE[i].getNome());
+            int numPostIts = projetosE[i].numAcoes();
+            if (numPostIts == 1) {
+                String mensagem = Integer.toString(numPostIts)+" post-it";
+                projetoQtdAcoes[i].setText(mensagem);
+            } else {
+                String mensagem = Integer.toString(numPostIts)+" post-its";
+                projetoQtdAcoes[i].setText(mensagem);
+            }
+            projetoProgressos[i].setProgress(projetosE[i].getPorcentagem());
+            projetosExcluir[i].setOpacity(1);
+            projetosEditar[i].setOpacity(1);
+        }
     }
 
 }

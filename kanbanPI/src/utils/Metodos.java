@@ -18,4 +18,13 @@ public class Metodos {
         }
         return x;
     }
+
+    public static boolean jaEstaNaLista(String nome, String[] lista) {
+        for (String item:lista) {
+            if (nome.equals(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

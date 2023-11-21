@@ -1,5 +1,7 @@
 package controllers;
 
+import entities.Empresa;
+import entities.Projeto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
+import utils.Metodos;
 
 public class CreateProjectController {
 
@@ -114,7 +117,62 @@ public class CreateProjectController {
 
     @FXML
     private Label tituloCriarNovoUsuario;
-
+    
+    @FXML
+    private Button novaArea;
+    
+    @FXML
+    private Label tituloCriarNovaArea;
+    
+    public void esconderElementos() {
+        int opacidade = Kanban.loginAdmin ? 1:0;
+        novoProjeto.setOpacity(opacidade);
+        tituloCriarNovoProjeto.setOpacity(opacidade);
+        novoUsuario.setOpacity(opacidade);
+        tituloCriarNovoUsuario.setOpacity(opacidade);
+        novaArea.setOpacity(opacidade);
+        tituloCriarNovaArea.setOpacity(opacidade);
+        opacidade = 0;
+        editarProjetoUm.setOpacity(opacidade);
+        excluirProjetoUm.setOpacity(opacidade);
+        editarProjetoDois.setOpacity(opacidade);
+        editarProjetoTres.setOpacity(opacidade);
+        editarProjetoQuatro.setOpacity(opacidade);
+        excluirProjetoDois.setOpacity(opacidade);
+        excluirProjetoTres.setOpacity(opacidade);
+        excluirProjetoQuatro.setOpacity(opacidade);
+    }
+    
+    public void loadProjetos() {
+        Pane[] projetos = {projetoUm, projetoDois, projetoTres, projetoQuatro};
+        Label[] projetoNomes = {nomeProjetoUm, nomeProjetoDois, nomeProjetoTres, nomeProjetoQuatro};
+        Label[] projetoQtdAcoes = {numPostProjetoUm, numPostProjetoDois, numPostProjetoTres, numPostProjetoQuatro};
+        ProgressIndicator[] projetoProgressos = {progressoTotalUm, progressoTotalDois, progressoTotalTres, progressoTotalQuatro};
+        ImageView[] projetosExcluir = {excluirProjetoUm, excluirProjetoDois, excluirProjetoTres, excluirProjetoQuatro};
+        ImageView[] projetosEditar = {editarProjetoUm, editarProjetoDois, editarProjetoTres, editarProjetoQuatro};
+        Empresa empresa = Kanban.empresaAtual();
+        Projeto[] projetosE = empresa.getProjetos();
+        for (int i = 0; i < 4; i++) {
+            if (projetosE[i] == null) {
+                projetos[i].setOpacity(0);
+                continue;
+            }
+            projetos[i].setOpacity(1);
+            projetoNomes[i].setText(projetosE[i].getNome());
+            int numPostIts = projetosE[i].numAcoes();
+            if (numPostIts == 1) {
+                String mensagem = Integer.toString(numPostIts)+" post-it";
+                projetoQtdAcoes[i].setText(mensagem);
+            } else {
+                String mensagem = Integer.toString(numPostIts)+" post-its";
+                projetoQtdAcoes[i].setText(mensagem);
+            }
+            projetoProgressos[i].setProgress(projetosE[i].getPorcentagem());
+            projetosExcluir[i].setOpacity(1);
+            projetosEditar[i].setOpacity(1);
+        }
+    }
+    
     @FXML
     private void cancelarProjeto(ActionEvent event) {
         errorNovoProjeto.setText("");
@@ -124,16 +182,37 @@ public class CreateProjectController {
     }
 
     @FXML
-    private void criarProjeto(ActionEvent event) {
+    private void criarProjeto(ActionEvent event) {        
         if(nomeNovoProjeto.getText().equals("") || descricaoNovoProjeto.getText().equals("")){
             errorNovoProjeto.setText("Há campos em branco");
+            return;
         }
-        else{
-            // salvar nome e descrição
+        String nomeProjeto = nomeNovoProjeto.getText();
+        String descricaoProjeto=  descricaoNovoProjeto.getText();
+        if (!Metodos.verificarEspacos(nomeNovoProjeto.getText())) {
+            errorNovoProjeto.setText("Política de uso de espaços inadequada.");
+            return;
+        }
+        Empresa empresaLogada = Kanban.empresaAtual();
+        if (empresaLogada == null) {
+            return;
+        }
+        for (Projeto projeto:empresaLogada.getProjetos()) {
+            if (projeto == null) {
+                continue;
+            }
+            if (nomeProjeto.equals(projeto.getNome())) {
+                errorNovoProjeto.setText("Nome já está em uso.");
+                return;
+            }
+        }
+        if (empresaLogada.criarProjeto(nomeProjeto, descricaoProjeto)) {
             errorNovoProjeto.setText("");
             nomeNovoProjeto.clear();
             descricaoNovoProjeto.clear();
             Kanban.telas("selectProject");
+        } else {
+            errorNovoProjeto.setText("Política de uso de espaços inadequada.");
         }
     }
 

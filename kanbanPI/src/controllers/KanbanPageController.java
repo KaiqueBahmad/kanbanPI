@@ -581,6 +581,11 @@ public class KanbanPageController {
     @FXML
     private void logout(ActionEvent event) {
         errorKanbanLixo.setText("");
+        if (Kanban.loginAdmin) {
+            Kanban.empresaAtual().logout();
+        } else {
+            Kanban.empresaAtual().getUsuarioPorNome(Kanban.currentUser).logout();
+        }
         Kanban.telas("loginPage");
     }
 
@@ -609,13 +614,16 @@ public class KanbanPageController {
     }
     
     public void esconderElementos() {
-        if (!Kanban.loginAdmin) {
-            novaAcao.setOpacity(0);
-            tituloNovaAcao.setOpacity(0);
-            novaAtividade.setOpacity(0);
-            tituloNovaAtividade.setOpacity(0);
-            deletarAcao.setOpacity(0);
-        }
+        int opacidade = Kanban.loginAdmin ? 1:0;
+        novaAcao.setOpacity(opacidade);
+        tituloNovaAcao.setOpacity(opacidade);
+        novaAtividade.setOpacity(opacidade);
+        tituloNovaAtividade.setOpacity(opacidade);
+        deletarAcao.setOpacity(opacidade);
+    }
+
+    public void loadAtividades() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

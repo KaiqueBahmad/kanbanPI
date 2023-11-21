@@ -75,4 +75,14 @@ public class Projeto {
         }
         return null;
     }
+
+    public int numAcoes() {
+        int i = 0;
+        for (Atividade at:this.atividades) {
+            for (Acao ac:at.getAcoes()) {
+                i++;
+            }
+        }
+        return i;
+    }
 }

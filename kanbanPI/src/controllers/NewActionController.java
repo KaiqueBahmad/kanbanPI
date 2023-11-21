@@ -1,5 +1,11 @@
 package controllers;
 
+import entities.Area;
+import entities.Atividade;
+import entities.Empresa;
+import entities.Usuario;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
+import utils.Metodos;
 
 public class NewActionController {
 
@@ -469,7 +476,11 @@ public class NewActionController {
 
     @FXML
     private Button voltarProjetos;
-
+       
+    private ObservableList<String> opcoesAtividade;
+    private ObservableList<String> opcoesUsuario;
+    private ObservableList<String> opcoesArea;
+    
     @FXML
     private void cancelarAcao(ActionEvent event) {
         errorNovaAcao.setText("");
@@ -517,68 +528,157 @@ public class NewActionController {
 
     @FXML
     private void criarAcao(ActionEvent event) {
-        if(nomeAcao.getText().equals("") || prazoAcao.getText().equals("")){
-            // verificar tbm os outros campos
-            // verificar se o prazo n está com número negativo
+//        if(nomeAcao.getText().equals("") || prazoAcao.getText().equals("") || inicioAcao.getValue() == null){
+//            // verificar tbm os outros campos
+//            // verificar se o prazo n está com número negativo
+//            errorNovaAcao.setText("Há campos em branco");
+//        }
+
+
+        String nome = nomeAcao.getText();
+        String prazo = prazoAcao.getText();
+        LocalDate data = inicioAcao.getValue();
+//        long data = inicioAcao.getValue().toEpochDay();
+        if (nome.equals("") || prazo.equals("")|| data == null || atividadeAcao.getSelectionModel().getSelectedItem() == null || usuarioAcao.getSelectionModel().getSelectedItem() == null || areaAcao.getSelectionModel().getSelectedItem() == null) {
             errorNovaAcao.setText("Há campos em branco");
         }
         else{
-            //salvar tudo
-            errorNovaAcao.setText("");
-            nomeAcao.clear();
-            inicioAcao.getEditor().clear();
-            prazoAcao.clear();
-            atividadeAcao.getSelectionModel().clearSelection();
-            atividadeAcao.setButtonCell(new ListCell<String>() {
-                @Override
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty) ;
-                    if (empty || item == null) {
-                        setText("Atividade");
-                    } else {
-                        setText(item);
+            if(Integer.parseInt(prazo) < 0){
+                // verificar tbm se o prazo é de fato um número (|| isNumeric, isNaN, sla)
+               errorNovaAcao.setText("Prazo inválido");
+            }
+            else{
+                long epochData = data.atStartOfDay(ZoneId.systemDefault()).toEpochSecond();
+                System.out.println(epochData);
+                // salvar informações
+                errorNovaAcao.setText("");
+                nomeAcao.clear();
+                inicioAcao.getEditor().clear();
+                prazoAcao.clear();
+                atividadeAcao.getSelectionModel().clearSelection();
+                atividadeAcao.setButtonCell(new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty) ;
+                        if (empty || item == null) {
+                            setText("Atividade");
+                        } else {
+                            setText(item);
+                        }
                     }
-                }
-            });
-            usuarioAcao.getSelectionModel().clearSelection();
-            usuarioAcao.setButtonCell(new ListCell<String>() {
-                @Override
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty) ;
-                    if (empty || item == null) {
-                        setText("Usuário responsável");
-                    } else {
-                        setText(item);
+                });
+                usuarioAcao.getSelectionModel().clearSelection();
+                usuarioAcao.setButtonCell(new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty) ;
+                        if (empty || item == null) {
+                            setText("Usuário responsável");
+                        } else {
+                            setText(item);
+                        }
                     }
-                }
-            });
-            areaAcao.getSelectionModel().clearSelection();
-            areaAcao.setButtonCell(new ListCell<String>() {
-                @Override
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty) ;
-                    if (empty || item == null) {
-                        setText("Área");
-                    } else {
-                        setText(item);
+                });
+                areaAcao.getSelectionModel().clearSelection();
+                areaAcao.setButtonCell(new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty) ;
+                        if (empty || item == null) {
+                            setText("Área");
+                        } else {
+                            setText(item);
+                        }
                     }
-                }
-            });
-            //atualizar tela do kanban
-            Kanban.telas("kanbanPage");
+                });
+                //atualizar tela do kanban
+                Kanban.telas("kanbanPage");
+            }
+        }
+    }
+//    Programar essa parada aqui
+//    public void atualizarListaArea() {
+//        Empresa empresaLogada = null;
+//        if (!Kanban.loginAdmin) {
+//            return;
+//        }
+//        for (Empresa empresa:Kanban.empresas) {
+//            if (empresa == null) {
+//                continue;
+//            }
+//            if (Kanban.currentUser.equals(empresa.getNome())) {
+//                empresaLogada = empresa;
+//            }
+//        }
+//        
+//        for (Area area:empresaLogada.getAreas()) {
+//            if (!Metodos.jaEstaNaLista(area.getNome(), opcoesAreaArray)) {
+//                opcoesArea.add(area.getNome());
+//                for (String item:opcoesAreaArray) {
+//                    item = area.getNome();
+//                }
+//            }
+//        }
+//    }
+    
+    public void loadAreasLista() {
+        Empresa empresaLogada = null;
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        for (Empresa empresa:Kanban.empresas) {
+            if (empresa == null) {
+                continue;
+            }
+            if (Kanban.currentUser.equals(empresa.getNome())) {
+                empresaLogada = empresa;
+            }
+        }
+        opcoesArea.clear();
+        for (Area area:empresaLogada.getAreas()) {
+            opcoesArea.add(area.getNome());
         }
     }
     
+    public void loadUsuariosLista() {
+        Empresa empresaLogada = null;
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        for (Empresa empresa:Kanban.empresas) {
+            if (empresa == null) {
+                continue;
+            }
+            if (Kanban.currentUser.equals(empresa.getNome())) {
+                empresaLogada = empresa;
+            }
+        }
+        opcoesUsuario.clear();
+        for (Usuario user:empresaLogada.getUsuarios()) {
+            opcoesUsuario.add(user.getNome());
+        }
+    }
+    
+    public void loadAtividadesLista() {
+        Empresa empresaLogada = null;
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        Empresa empresa = Kanban.empresaAtual();
+        opcoesAtividade.clear();
+        for (Atividade at:empresa.getProjetos()[Kanban.projetoAberto].getAtividades()) {
+            opcoesAtividade.add(at.getNome());
+        }
+    }
     
     @FXML
     public void initialize() {
         // forma de adicionar opções na combo box
-        ObservableList<String> opcoesDept = FXCollections.observableArrayList("Opção 1", "Opção 2", "Opção 3");
-        atividadeAcao.setItems(opcoesDept);
-        
-        ObservableList<String> opcoesUser = FXCollections.observableArrayList("user 1", "user 2", "user 3");
-        usuarioAcao.setItems(opcoesUser);
-        opcoesUser.add("user 4");
+        opcoesAtividade = FXCollections.observableArrayList();
+        opcoesUsuario = FXCollections.observableArrayList();
+        opcoesArea = FXCollections.observableArrayList();
+        areaAcao.setItems(opcoesArea);
+        usuarioAcao.setItems(opcoesUsuario);
+        atividadeAcao.setItems(opcoesAtividade);
     }
-
 }

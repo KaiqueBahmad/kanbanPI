@@ -99,9 +99,6 @@ public class Empresa {
     }
     
     public Area getAreaPorNome(String nome){
-        if (!this.auth()) {
-            return null;
-        }
         for (Area area:this.areas) {
             if (nome.equals(area.getNome())) {
                 return area;
@@ -110,17 +107,35 @@ public class Empresa {
         return null;
     }
     
+    public void deletarProjeto(int i) {
+        if (!this.auth()) {
+            return;
+        }
+        if (i >= 0 && i < 4) {
+            this.projetos[i] = null;
+        } else {
+            return;
+        }
+        for (int j = 0; j < this.projetos.length; j++) {
+            if (this.projetos[j] == null && j != this.projetos.length - 1) {
+                projetos[j] = projetos[j+1];
+                projetos[j+1] = null;
+            }
+        }
+    }
+    public ArrayList<Area> getAreas() {
+        return this.areas;
+    }
+    
     public String getNome() {
         return this.nome;
     }
     
     public Projeto[] getProjetos() {
-        if (this.auth()) {
-            return this.projetos;
-        }
-        return null;
+        return this.projetos;
     }
     public void logout() {
         this.senhaInformada = "";
     }
+
 }

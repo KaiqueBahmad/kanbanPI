@@ -1,7 +1,10 @@
 package controllers;
 
+import entities.Empresa;
+import entities.Projeto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
@@ -109,46 +112,76 @@ public class SelectProjectController {
     private Label tituloCriarNovoUsuario;
     
     @FXML
+    private void editarProjetoUm(MouseEvent event) {
+        // verificar se projeto existe
+        Kanban.projetoAberto = 0;
+        Kanban.telas("newName");
+    }
+    @FXML
     private void editarProjetoDois(MouseEvent event) {
         // verificar se projeto existe
+        Kanban.projetoAberto = 1;
         Kanban.telas("newName");
     }
 
     @FXML
     private void editarProjetoTres(MouseEvent event) {
         // verificar se projeto existe
+        Kanban.projetoAberto = 2;
         Kanban.telas("newName");
     }
 
-    @FXML
-    private void editarProjetoUm(MouseEvent event) {
-        // verificar se projeto existe
-        Kanban.telas("newName");
-    }
     
-        @FXML
+    @FXML
     private void editarProjetoQuatro(MouseEvent event) {
         // verificar se projeto existe
+        Kanban.projetoAberto = 3;
         Kanban.telas("newName");
     }
-
     @FXML
-    private void excluirProjetoQuatro(MouseEvent event) {
-        // verificar se projeto existe
+    private void excluirProjetoUm(MouseEvent event) {
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        Kanban.empresaAtual().deletarProjeto(0);
+        loadProjetos();
+        Kanban.controllerCreateProject.loadProjetos();
+    }
+    @FXML
+    private void excluirProjetoDois(MouseEvent event) {
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        Kanban.empresaAtual().deletarProjeto(1);
+        loadProjetos();
     }
 
     @FXML
     private void excluirProjetoTres(MouseEvent event) {
-        // verificar se projeto existe
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        Kanban.empresaAtual().deletarProjeto(2);
+        loadProjetos();
+    }
+    @FXML
+    private void excluirProjetoQuatro(MouseEvent event) {
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        Kanban.empresaAtual().deletarProjeto(3);
+        loadProjetos();
     }
 
-    @FXML
-    private void excluirProjetoUm(MouseEvent event) {
-        // verificar se projeto existe
-    }
+
 
     @FXML
     private void logout(ActionEvent event) {
+        if (Kanban.loginAdmin) {
+            Kanban.empresaAtual().logout();
+        } else {
+            Kanban.empresaAtual().getUsuarioPorNome(Kanban.currentUser).logout();
+        }
         Kanban.telas("loginPage");
     }
     
@@ -164,9 +197,16 @@ public class SelectProjectController {
        // verificar a quantidade de projetos criados
        // Apenas são possíveis até 4 projetos (errorNovoProjeto)
        // trocar opacidade e cursor (projeto, editar e excluir)
-       if (Kanban.loginAdmin) {
-            Kanban.telas("createProject");
-       }
+        if (!Kanban.loginAdmin) {
+            return;
+        }
+        for (Projeto projeto:Kanban.empresaAtual().getProjetos()) {
+             if (projeto == null) {
+                 Kanban.telas("createProject");
+                 return;
+             }
+         }
+        errorNovoProjeto.setText("Limite de 4 Projetos excedido.");
     }
     
     @FXML
@@ -175,34 +215,44 @@ public class SelectProjectController {
             Kanban.telas("newUser");
        }
     }
-
-    @FXML
-    private void projetoDois(MouseEvent event) {
-        // verificar se projeto existe
-        Kanban.telas("kanbanPage");
-    }
-
-    @FXML
-    private void projetoQuatro(MouseEvent event) {
-        // verificar se projeto existe
-        Kanban.telas("kanbanPage");
-    }
-
-    @FXML
-    private void projetoTres(MouseEvent event) {
-        // verificar se projeto existe
-        Kanban.telas("kanbanPage");
-    }
-
+    
     @FXML
     private void projetoUm(MouseEvent event) {
-        // verificar se projeto existe
-        Kanban.telas("kanbanPage");
+        if (Kanban.empresaAtual().getProjetos()[0] != null) {
+            Kanban.telas("kanbanPage");
+            Kanban.projetoAberto = 0;
+        }
     }
+    
+    @FXML
+    private void projetoDois(MouseEvent event) {
+        if (Kanban.empresaAtual().getProjetos()[1] != null) {
+            Kanban.telas("kanbanPage");
+            Kanban.projetoAberto = 1;
+        }
+    }
+    @FXML
+    private void projetoTres(MouseEvent event) {
+        if (Kanban.empresaAtual().getProjetos()[2] != null) {
+            Kanban.telas("kanbanPage");
+            Kanban.projetoAberto = 2;
+        }
+    }
+    @FXML
+    private void projetoQuatro(MouseEvent event) {
+        if (Kanban.empresaAtual().getProjetos()[3] != null) {
+            Kanban.telas("kanbanPage");
+            Kanban.projetoAberto = 3;
+        }
+    }
+
+    
+
+    
     
     public void esconderElementos() {
         int opacidade = Kanban.loginAdmin ? 1:0;
-        System.out.println(opacidade);
+        errorNovoProjeto.setText("");
         novoProjeto.setOpacity(opacidade);
         tituloCriarNovoProjeto.setOpacity(opacidade);
         novoUsuario.setOpacity(opacidade);
@@ -218,5 +268,43 @@ public class SelectProjectController {
         excluirProjetoDois.setOpacity(opacidade);
         excluirProjetoTres.setOpacity(opacidade);
         excluirProjetoQuatro.setOpacity(opacidade);
+    }
+
+    public void loadProjetos() {
+        Pane[] projetos = {projetoUm, projetoDois, projetoTres, projetoQuatro};
+        Label[] projetoNomes = {nomeProjetoUm, nomeProjetoDois, nomeProjetoTres, nomeProjetoQuatro};
+        Label[] projetoQtdAcoes = {numPostProjetoUm, numPostProjetoDois, numPostProjetoTres, numPostProjetoQuatro};
+        ProgressIndicator[] projetoProgressos = {progressoTotalUm, progressoTotalDois, progressoTotalTres, progressoTotalQuatro};
+        ImageView[] projetosExcluir = {excluirProjetoUm, excluirProjetoDois, excluirProjetoTres, excluirProjetoQuatro};
+        ImageView[] projetosEditar = {editarProjetoUm, editarProjetoDois, editarProjetoTres, editarProjetoQuatro};
+        Empresa empresa = Kanban.empresaAtual();
+        Projeto[] projetosE = empresa.getProjetos();
+        for (int i = 0; i < 4; i++) {
+            int opacidade = projetosE[i] != null ? 1:0;
+            projetos[i].setOpacity(opacidade);
+            projetosExcluir[i].setOpacity(opacidade);
+            projetosEditar[i].setOpacity(opacidade);
+            if (projetosE[i] == null) {
+                projetosExcluir[i].setCursor(Cursor.DEFAULT);
+                projetosEditar[i].setCursor(Cursor.DEFAULT);
+                projetos[i].setCursor(Cursor.DEFAULT);
+                continue;
+            }
+            
+            projetosExcluir[i].setCursor(Cursor.CLOSED_HAND);
+            projetosEditar[i].setCursor(Cursor.CLOSED_HAND);
+            projetos[i].setCursor(Cursor.CLOSED_HAND);
+            projetoNomes[i].setText(projetosE[i].getNome());
+            int numPostIts = projetosE[i].numAcoes();
+            if (numPostIts == 1) {
+                String mensagem = Integer.toString(numPostIts)+" post-it";
+                projetoQtdAcoes[i].setText(mensagem);
+            } else {
+                String mensagem = Integer.toString(numPostIts)+" post-its";
+                projetoQtdAcoes[i].setText(mensagem);
+            }
+            projetoProgressos[i].setProgress(projetosE[i].getPorcentagem());
+            
+        }
     }
 }
