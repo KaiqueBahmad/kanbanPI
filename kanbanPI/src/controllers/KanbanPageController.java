@@ -3,6 +3,7 @@ package controllers;
 import entities.PostIt;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -11,7 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
 
-public class KanbanPageController {
+public class KanbanPageController  {
 
     @FXML
     private Label aFazerAreaDois;
@@ -472,6 +473,8 @@ public class KanbanPageController {
     @FXML
     private Button voltarProjetos;
     
+    private PostIt[][] postIts;
+    
     @FXML
     private void aFazerMaisDois(MouseEvent event) {
 
@@ -654,7 +657,24 @@ public class KanbanPageController {
     }
 
     public void loadAtividades() {
-        PostIt p =  new PostIt(aFazerUm);
+        
+    }
+
+    public void definirPostIts(Scene cena) {
+        String[] secoes = {"aFazer", "fazendo","finalizado"};
+        String[] numerais = {"Um","Dois","Tres","Quatro"};
+        this.postIts = new PostIt[secoes.length][numerais.length];
+        int i = 0;
+        int j = 0;
+        for (String secao: secoes) {
+            j = 0;
+            for (String numero:numerais) {
+                postIts[i][j++] = new PostIt((Pane)cena.lookup("#"+secao+numero));
+                postIts[i][j-1].checkup();
+            }
+            i++;
+        }
+        
     }
 
 }

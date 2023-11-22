@@ -84,6 +84,7 @@ public class Kanban extends Application {
         FXMLLoader fxmlKanbanPage = new FXMLLoader(getClass().getResource("../views/kanbanPage.fxml"));
         sceneKanbanPage = new Scene(fxmlKanbanPage.load(),  1535, 800);
         controllerKanbanPage = fxmlKanbanPage.getController();
+        controllerKanbanPage.definirPostIts(sceneKanbanPage);
         
         FXMLLoader fxmlNewNameProject = new FXMLLoader(getClass().getResource("../views/newNameProject.fxml"));
         sceneNewNameProject = new Scene(fxmlNewNameProject.load(),  1535, 800);
@@ -113,16 +114,10 @@ public class Kanban extends Application {
     }
     
     public static void telas(String tela, ActionEvent event){
-        Node src = ((Node)event.getSource());
-        src.setCursor(Cursor.HAND);
         telas(tela);
-        src.setCursor(Cursor.DEFAULT);
     }
     public static void telas(String tela, MouseEvent event){
-        Node src = ((Node)event.getSource());
-        src.setCursor(Cursor.HAND);
         telas(tela);
-        src.setCursor(Cursor.DEFAULT);
     }
     public static void telas(String tela){
         switch(tela){
