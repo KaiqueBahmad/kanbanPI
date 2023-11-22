@@ -15,7 +15,11 @@ import javafx.stage.Stage;
 import entities.Empresa;
 import entities.Usuario;
 import controllers.SelectProjectController;
+import javafx.event.ActionEvent;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 public class Kanban extends Application {
     private static Stage telaSelecionada;
@@ -26,7 +30,7 @@ public class Kanban extends Application {
     private static Scene sceneKanbanPage;
     private static KanbanPageController controllerKanbanPage;
     private static Scene sceneNewNameProject;
-    private static NewNameProjectController controllerNewNameProject;
+    public static NewNameProjectController controllerNewNameProject;
     private static Scene sceneNewAction;
     public static NewActionController controllerNewAction;
     private static Scene sceneLoginPage;
@@ -108,6 +112,18 @@ public class Kanban extends Application {
         stage.show();
     }
     
+    public static void telas(String tela, ActionEvent event){
+        Node src = ((Node)event.getSource());
+        src.setCursor(Cursor.HAND);
+        telas(tela);
+        src.setCursor(Cursor.DEFAULT);
+    }
+    public static void telas(String tela, MouseEvent event){
+        Node src = ((Node)event.getSource());
+        src.setCursor(Cursor.HAND);
+        telas(tela);
+        src.setCursor(Cursor.DEFAULT);
+    }
     public static void telas(String tela){
         switch(tela){
             case "selectProject" -> {
@@ -123,11 +139,12 @@ public class Kanban extends Application {
             }
             case "kanbanPage" -> {
                 controllerKanbanPage.esconderElementos();
-//                controllerKanbanPage.loadAtividades();
+                controllerKanbanPage.loadAtividades();
                 telaSelecionada.setScene(sceneKanbanPage);
             }
             case "newName" -> {
 //                controllerNewNameProject
+                controllerNewNameProject.loadProjetos();
                 telaSelecionada.setScene(sceneNewNameProject);
             }
             case "newAction" -> {
@@ -152,6 +169,7 @@ public class Kanban extends Application {
             }
         }
     }
+    
 
     public static void main(String[] args) {
         launch(args);

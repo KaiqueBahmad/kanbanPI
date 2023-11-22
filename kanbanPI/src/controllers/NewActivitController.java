@@ -331,7 +331,7 @@ public class NewActivitController {
         errorAtividade.setText("");
         nomeAtividadeCriado.clear();
         corAtividadeCriado.setValue(Color.WHITE);
-        Kanban.telas("kanbanPage");
+        Kanban.telas("kanbanPage", event);
     }
 
     @FXML
@@ -360,7 +360,7 @@ public class NewActivitController {
             errorAtividade.setText("");     
             nomeAtividadeCriado.clear();
             corAtividadeCriado.setValue(Color.WHITE);
-            Kanban.telas("kanbanPage");
+            Kanban.telas("kanbanPage", event);
         } else {
             errorAtividade.setText("Erro ao criar a Atividade.");
         }

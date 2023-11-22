@@ -1,6 +1,8 @@
 package controllers;
 
+import entities.Empresa;
 import entities.Projeto;
+import java.util.Arrays;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
+import utils.Metodos;
 
 public class NewNameProjectController {
 
@@ -122,29 +125,54 @@ public class NewNameProjectController {
             errorEditarNomeProjeto.setText("Há campos em branco");
             return;
         }
-        for (Projeto proj:Kanban.empresaAtual().getProjetos()) {
-            if (null == proj) {
-                continue;
-            }
-            if (novoNome.equals(proj.getNome())) {
-                return;
-            }
-        }
-        if (novoNome.equals(Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto])) {
-            errorEditarNomeProjeto.setText("Que falta de criatividade.");
+        if (!Metodos.verificarEspacos(novoNome)) {
+            errorEditarNomeProjeto.setText("Politica de uso de espaços inadequada");
             return;
         }
-        Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto].mudarNome(novoNome);
+        if (!Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto].mudarNome(novoNome)) {
+            errorEditarNomeProjeto.setText("Que falta de criatividade");
+            return;
+        }
         errorEditarNomeProjeto.setText("");
         attNomeNovoProjeto.clear();
-        Kanban.telas("selectProject");
+        Kanban.telas("selectProject", event);
     }
 
     @FXML
     private void cancelarProjeto(ActionEvent event) {
         errorEditarNomeProjeto.setText("");
         attNomeNovoProjeto.clear();
-        Kanban.telas("selectProject");
+        Kanban.telas("selectProject", event);
+    }
+
+    public void loadProjetos() {
+        Pane[] projetos = {projetoUm, projetoDois, projetoTres, projetoQuatro};
+        Label[] projetoNomes = {nomeProjetoUm, nomeProjetoDois, nomeProjetoTres, nomeProjetoQuatro};
+        Label[] projetoQtdAcoes = {numPostProjetoUm, numPostProjetoDois, numPostProjetoTres, numPostProjetoQuatro};
+        ProgressIndicator[] projetoProgressos = {progressoTotalUm, progressoTotalDois, progressoTotalTres, progressoTotalQuatro};
+        ImageView[] projetosExcluir = {excluirProjetoUm, excluirProjetoDois, excluirProjetoTres, excluirProjetoQuatro};
+        ImageView[] projetosEditar = {editarProjetoUm, editarProjetoDois, editarProjetoTres, editarProjetoQuatro};
+        Empresa empresa = Kanban.empresaAtual();
+        Projeto[] projetosE = empresa.getProjetos();
+        for (int i = 0; i < 4; i++) {
+            if (projetosE[i] == null) {
+                projetos[i].setOpacity(0);
+                continue;
+            }
+            projetos[i].setOpacity(1);
+            projetoNomes[i].setText(projetosE[i].getNome());
+            int numPostIts = projetosE[i].numAcoes();
+            if (numPostIts == 1) {
+                String mensagem = Integer.toString(numPostIts)+" post-it";
+                projetoQtdAcoes[i].setText(mensagem);
+            } else {
+                String mensagem = Integer.toString(numPostIts)+" post-its";
+                projetoQtdAcoes[i].setText(mensagem);
+            }
+            projetoProgressos[i].setProgress(projetosE[i].getPorcentagem());
+            projetosExcluir[i].setOpacity(1);
+            projetosEditar[i].setOpacity(1);
+        }
     }
 
 }

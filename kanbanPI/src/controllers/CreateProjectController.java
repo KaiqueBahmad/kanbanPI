@@ -178,7 +178,7 @@ public class CreateProjectController {
         errorNovoProjeto.setText("");
         nomeNovoProjeto.clear();
         descricaoNovoProjeto.clear();
-        Kanban.telas("selectProject");
+        Kanban.telas("selectProject", event);
     }
 
     @FXML
@@ -210,7 +210,7 @@ public class CreateProjectController {
             errorNovoProjeto.setText("");
             nomeNovoProjeto.clear();
             descricaoNovoProjeto.clear();
-            Kanban.telas("selectProject");
+            Kanban.telas("selectProject", event);
         } else {
             errorNovoProjeto.setText("Política de uso de espaços inadequada.");
         }

@@ -127,7 +127,7 @@ public class NewAreaController {
     private void cancelarArea(ActionEvent event) {
         nomeArea.clear();
         errorNovaArea.setText("");
-        Kanban.telas("selectProject");
+        Kanban.telas("selectProject", event);
     }
 
     @FXML
@@ -165,7 +165,7 @@ public class NewAreaController {
                 
         errorNovaArea.setText("");
         nomeArea.clear();
-        Kanban.telas("selectProject");
+        Kanban.telas("selectProject", event);
     }
 
     public void esconderElementos() {

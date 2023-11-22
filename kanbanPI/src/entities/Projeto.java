@@ -17,7 +17,13 @@ public class Projeto {
     }
     
     public boolean mudarNome(String novoNome) {
+        if (!this.pai.auth()) {
+            return false;
+        }
         for (Projeto projeto:this.pai.getProjetos()) {
+            if (projeto == null) {
+                continue;
+            }
             if (novoNome.equals(projeto.getNome())) {
                 return false;
             }

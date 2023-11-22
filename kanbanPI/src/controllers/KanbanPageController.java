@@ -1,7 +1,10 @@
 package controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -10,19 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
 
-public class KanbanPageController {
-
-    @FXML
-    private Label aFazerAreaDois;
-
-    @FXML
-    private Label aFazerAreaQuatro;
-
-    @FXML
-    private Label aFazerAreaTres;
-
-    @FXML
-    private Label aFazerAreaUm;
+public class KanbanPageController implements Initializable {
 
     @FXML
     private ProgressBar aFazerBarraPorcentDois;
@@ -43,6 +34,9 @@ public class KanbanPageController {
     private Pane aFazerCorEscolhidaBarraQuatro;
 
     @FXML
+    private Pane aFazerCorEscolhidaBarraTres;
+
+    @FXML
     private Pane aFazerCorEscolhidaBarraUm;
 
     @FXML
@@ -58,19 +52,19 @@ public class KanbanPageController {
     private Pane aFazerCorEscolhidaUm;
 
     @FXML
+    private Label aFazerDescricaoDois;
+
+    @FXML
+    private Label aFazerDescricaoQuatro;
+
+    @FXML
+    private Label aFazerDescricaoTres;
+
+    @FXML
+    private Label aFazerDescricaoUm;
+
+    @FXML
     private Pane aFazerDois;
-
-    @FXML
-    private Label aFazerDuracaoDois;
-
-    @FXML
-    private Label aFazerDuracaoQuatro;
-
-    @FXML
-    private Label aFazerDuracaoTres;
-
-    @FXML
-    private Label aFazerDuracaoUm;
 
     @FXML
     private Label aFazerInicioFimDois;
@@ -163,18 +157,6 @@ public class KanbanPageController {
     private Label errorKanbanLixo;
 
     @FXML
-    private Label fazendoAreaDois;
-
-    @FXML
-    private Label fazendoAreaQuatro;
-
-    @FXML
-    private Label fazendoAreaTres;
-
-    @FXML
-    private Label fazendoAreaUm;
-
-    @FXML
     private ProgressBar fazendoBarraPorcentDois;
 
     @FXML
@@ -196,6 +178,9 @@ public class KanbanPageController {
     private Pane fazendoCorEscolhidaBarraTres;
 
     @FXML
+    private Pane fazendoCorEscolhidaBarraUm;
+
+    @FXML
     private Pane fazendoCorEscolhidaDois;
 
     @FXML
@@ -208,19 +193,19 @@ public class KanbanPageController {
     private Pane fazendoCorEscolhidaUm;
 
     @FXML
+    private Label fazendoDescricaoDois;
+
+    @FXML
+    private Label fazendoDescricaoQuatro;
+
+    @FXML
+    private Label fazendoDescricaoTres;
+
+    @FXML
+    private Label fazendoDescricaoUm;
+
+    @FXML
     private Pane fazendoDois;
-
-    @FXML
-    private Label fazendoDuracaoDois;
-
-    @FXML
-    private Label fazendoDuracaoQuatro;
-
-    @FXML
-    private Label fazendoDuracaoTres;
-
-    @FXML
-    private Label fazendoDuracaoUm;
 
     @FXML
     private Label fazendoInicioFimDois;
@@ -307,18 +292,6 @@ public class KanbanPageController {
     private Label fazendoUsuarioUm;
 
     @FXML
-    private Label finalizadoAreaDois;
-
-    @FXML
-    private Label finalizadoAreaQuatro;
-
-    @FXML
-    private Label finalizadoAreaTres;
-
-    @FXML
-    private Label finalizadoAreaUm;
-
-    @FXML
     private ProgressBar finalizadoBarraPorcentDois;
 
     @FXML
@@ -355,19 +328,19 @@ public class KanbanPageController {
     private Pane finalizadoCorEscolhidaUm;
 
     @FXML
+    private Label finalizadoDescricaoDois;
+
+    @FXML
+    private Label finalizadoDescricaoQuatro;
+
+    @FXML
+    private Label finalizadoDescricaoTres;
+
+    @FXML
+    private Label finalizadoDescricaoUm;
+
+    @FXML
     private Pane finalizadoDois;
-
-    @FXML
-    private Label finalizadoDuracaoDois;
-
-    @FXML
-    private Label finalizadoDuracaoQuatro;
-
-    @FXML
-    private Label finalizadoDuracaoTres;
-
-    @FXML
-    private Label finalizadoDuracaoUm;
 
     @FXML
     private Label finalizadoInicioFimDois;
@@ -471,6 +444,8 @@ public class KanbanPageController {
     @FXML
     private Button voltarProjetos;
     
+    private boolean lixeiraAberta;
+    
     @FXML
     private void aFazerMaisDois(MouseEvent event) {
 
@@ -518,7 +493,14 @@ public class KanbanPageController {
     
     @FXML
     private void deletarAcao(MouseEvent event) {
-        errorKanbanLixo.setText("Selecione o Post-it que deseja excluir");
+        if (lixeiraAberta) {
+            errorKanbanLixo.setText("");
+            lixeiraAberta = false;
+            
+        } else {
+            errorKanbanLixo.setText("Selecione o Post-it que deseja excluir");
+            lixeiraAberta = true;
+        }
         
         //retirar qnd clicar em algum post-it
     }
@@ -616,14 +598,14 @@ public class KanbanPageController {
         } else {
             Kanban.empresaAtual().getUsuarioPorNome(Kanban.currentUser).logout();
         }
-        Kanban.telas("loginPage");
+        Kanban.telas("loginPage", event);
     }
 
     @FXML
     private void novaAcao(ActionEvent event) {
         if (Kanban.loginAdmin) {
             errorKanbanLixo.setText("");
-            Kanban.telas("newAction");
+            Kanban.telas("newAction", event);
        }
         
     }
@@ -632,7 +614,7 @@ public class KanbanPageController {
     private void novaAtividade(ActionEvent event) {
         if (Kanban.loginAdmin) {
             errorKanbanLixo.setText("");
-            Kanban.telas("newActivit");
+            Kanban.telas("newActivit", event);
        }
         
     }
@@ -640,7 +622,7 @@ public class KanbanPageController {
     @FXML
     private void voltarProjetos(ActionEvent event) {
         errorKanbanLixo.setText("");
-        Kanban.telas("selectProject");
+        Kanban.telas("selectProject", event);
     }
     
     public void esconderElementos() {
@@ -653,7 +635,11 @@ public class KanbanPageController {
     }
 
     public void loadAtividades() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        lixeiraAberta = false;
     }
 
 }

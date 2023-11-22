@@ -115,20 +115,20 @@ public class SelectProjectController {
     private void editarProjetoUm(MouseEvent event) {
         // verificar se projeto existe
         Kanban.projetoAberto = 0;
-        Kanban.telas("newName");
+        Kanban.telas("newName", event);
     }
     @FXML
     private void editarProjetoDois(MouseEvent event) {
         // verificar se projeto existe
         Kanban.projetoAberto = 1;
-        Kanban.telas("newName");
+        Kanban.telas("newName", event);
     }
 
     @FXML
     private void editarProjetoTres(MouseEvent event) {
         // verificar se projeto existe
         Kanban.projetoAberto = 2;
-        Kanban.telas("newName");
+        Kanban.telas("newName", event);
     }
 
     
@@ -136,7 +136,7 @@ public class SelectProjectController {
     private void editarProjetoQuatro(MouseEvent event) {
         // verificar se projeto existe
         Kanban.projetoAberto = 3;
-        Kanban.telas("newName");
+        Kanban.telas("newName", event);
     }
     @FXML
     private void excluirProjetoUm(MouseEvent event) {
@@ -182,7 +182,7 @@ public class SelectProjectController {
         } else {
             Kanban.empresaAtual().getUsuarioPorNome(Kanban.currentUser).logout();
         }
-        Kanban.telas("loginPage");
+        Kanban.telas("loginPage", event);
     }
     
     @FXML
@@ -202,7 +202,7 @@ public class SelectProjectController {
         }
         for (Projeto projeto:Kanban.empresaAtual().getProjetos()) {
              if (projeto == null) {
-                 Kanban.telas("createProject");
+                 Kanban.telas("createProject", event);
                  return;
              }
          }
@@ -212,14 +212,14 @@ public class SelectProjectController {
     @FXML
     private void novoUsuario(ActionEvent event) {
         if (Kanban.loginAdmin) {
-            Kanban.telas("newUser");
+            Kanban.telas("newUser", event);
        }
     }
     
     @FXML
     private void projetoUm(MouseEvent event) {
         if (Kanban.empresaAtual().getProjetos()[0] != null) {
-            Kanban.telas("kanbanPage");
+            Kanban.telas("kanbanPage", event);
             Kanban.projetoAberto = 0;
         }
     }
@@ -227,21 +227,21 @@ public class SelectProjectController {
     @FXML
     private void projetoDois(MouseEvent event) {
         if (Kanban.empresaAtual().getProjetos()[1] != null) {
-            Kanban.telas("kanbanPage");
+            Kanban.telas("kanbanPage", event);
             Kanban.projetoAberto = 1;
         }
     }
     @FXML
     private void projetoTres(MouseEvent event) {
         if (Kanban.empresaAtual().getProjetos()[2] != null) {
-            Kanban.telas("kanbanPage");
+            Kanban.telas("kanbanPage", event);
             Kanban.projetoAberto = 2;
         }
     }
     @FXML
     private void projetoQuatro(MouseEvent event) {
         if (Kanban.empresaAtual().getProjetos()[3] != null) {
-            Kanban.telas("kanbanPage");
+            Kanban.telas("kanbanPage", event);
             Kanban.projetoAberto = 3;
         }
     }

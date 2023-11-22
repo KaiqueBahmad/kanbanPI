@@ -132,7 +132,7 @@ public class NewUserController {
         errorUsuario.setText("");
         nomeUsuarioCriado.clear();
         senhaUsuarioCriado.clear();
-        Kanban.telas("selectProject");
+        Kanban.telas("selectProject", event);
     }
 
     @FXML
@@ -175,7 +175,7 @@ public class NewUserController {
         errorUsuario.setText("");
         nomeUsuarioCriado.clear();
         senhaUsuarioCriado.clear();
-        Kanban.telas("selectProject");
+        Kanban.telas("selectProject", event);
     }
 
     public void esconderElementos() {

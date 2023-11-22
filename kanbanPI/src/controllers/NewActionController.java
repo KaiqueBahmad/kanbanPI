@@ -523,7 +523,7 @@ public class NewActionController {
                 }
             }
         });
-        Kanban.telas("kanbanPage");
+        Kanban.telas("kanbanPage", event);
     }
 
     @FXML
@@ -539,62 +539,69 @@ public class NewActionController {
         String prazo = prazoAcao.getText();
         LocalDate data = inicioAcao.getValue();
 //        long data = inicioAcao.getValue().toEpochDay();
+        System.out.println(atividadeAcao.getSelectionModel().getSelectedItem());
         if (nome.equals("") || prazo.equals("")|| data == null || atividadeAcao.getSelectionModel().getSelectedItem() == null || usuarioAcao.getSelectionModel().getSelectedItem() == null || areaAcao.getSelectionModel().getSelectedItem() == null) {
             errorNovaAcao.setText("Há campos em branco");
+            return;
         }
-        else{
-            if(Integer.parseInt(prazo) < 0){
-                // verificar tbm se o prazo é de fato um número (|| isNumeric, isNaN, sla)
-               errorNovaAcao.setText("Prazo inválido");
-            }
-            else{
-                long epochData = data.atStartOfDay(ZoneId.systemDefault()).toEpochSecond();
-                System.out.println(epochData);
-                // salvar informações
-                errorNovaAcao.setText("");
-                nomeAcao.clear();
-                inicioAcao.getEditor().clear();
-                prazoAcao.clear();
-                atividadeAcao.getSelectionModel().clearSelection();
-                atividadeAcao.setButtonCell(new ListCell<String>() {
-                    @Override
-                    protected void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty) ;
-                        if (empty || item == null) {
-                            setText("Atividade");
-                        } else {
-                            setText(item);
-                        }
-                    }
-                });
-                usuarioAcao.getSelectionModel().clearSelection();
-                usuarioAcao.setButtonCell(new ListCell<String>() {
-                    @Override
-                    protected void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty) ;
-                        if (empty || item == null) {
-                            setText("Usuário responsável");
-                        } else {
-                            setText(item);
-                        }
-                    }
-                });
-                areaAcao.getSelectionModel().clearSelection();
-                areaAcao.setButtonCell(new ListCell<String>() {
-                    @Override
-                    protected void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty) ;
-                        if (empty || item == null) {
-                            setText("Área");
-                        } else {
-                            setText(item);
-                        }
-                    }
-                });
-                //atualizar tela do kanban
-                Kanban.telas("kanbanPage");
-            }
+        if (!Metodos.isInteger(prazo)) {
+            errorNovaAcao.setText("Prazo não é numérico");
+            return;
         }
+        int numPrazo = Integer.parseInt(prazo);
+        if(numPrazo <= 0){
+            // verificar tbm se o prazo é de fato um número (|| isNumeric, isNaN, sla)
+           errorNovaAcao.setText("Prazo inválido");
+           return;
+        }
+        long epochData = data.atStartOfDay(ZoneId.systemDefault()).toEpochSecond();
+        // salvar informações
+        String atividade = atividadeAcao.getSelectionModel().getSelectedItem().toString();
+        String usuario = usuarioAcao.getSelectionModel().getSelectedItem().toString();
+        String area = areaAcao.getSelectionModel().getSelectedItem().toString();
+        Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto].getAtividadePorNome(atividade).criarAcao(nome, usuario, area, epochData, epochData+(numPrazo*24*60*60));
+        errorNovaAcao.setText("");
+        nomeAcao.clear();
+        inicioAcao.getEditor().clear();
+        prazoAcao.clear();
+        atividadeAcao.getSelectionModel().clearSelection();
+        atividadeAcao.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Atividade");
+                } else {
+                    setText(item);
+                }
+            }
+        });
+        usuarioAcao.getSelectionModel().clearSelection();
+        usuarioAcao.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Usuário responsável");
+                } else {
+                    setText(item);
+                }
+            }
+        });
+        areaAcao.getSelectionModel().clearSelection();
+        areaAcao.setButtonCell(new ListCell<String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty) ;
+                if (empty || item == null) {
+                    setText("Área");
+                } else {
+                    setText(item);
+                }
+            }
+        });
+        //atualizar tela do kanban
+        Kanban.telas("kanbanPage", event);
     }
 //    Programar essa parada aqui
 //    public void atualizarListaArea() {

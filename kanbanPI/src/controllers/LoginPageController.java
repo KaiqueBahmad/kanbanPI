@@ -59,7 +59,7 @@ public class LoginPageController {
                     if (empresa.auth()) {
                         Kanban.currentUser = empresa.getNome();
                         Kanban.loginAdmin = true;
-                        Kanban.telas("selectProject");
+                        Kanban.telas("selectProject", event);
                         entrarNomeEmpresa.clear();
                         entrarSenhaEmpresa.clear();
                         errorCadastro.setText("");
@@ -78,7 +78,7 @@ public class LoginPageController {
                         if (user.auth()) {
                             Kanban.currentUser = user.getNome();
                             Kanban.loginAdmin = false;
-                            Kanban.telas("selectProject");
+                            Kanban.telas("selectProject", event);
                             entrarNomeEmpresa.clear();
                             entrarSenhaEmpresa.clear();
                             errorCadastro.setText("");
