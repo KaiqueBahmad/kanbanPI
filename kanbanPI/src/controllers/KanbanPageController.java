@@ -1,5 +1,6 @@
 package controllers;
 
+import entities.PostIt;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -653,7 +654,7 @@ public class KanbanPageController {
     }
 
     public void loadAtividades() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        PostIt p =  new PostIt(aFazerUm);
     }
 
 }
