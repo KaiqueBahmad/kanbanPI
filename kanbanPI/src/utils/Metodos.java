@@ -4,6 +4,8 @@
  */
 package utils;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author kaiqu
@@ -46,4 +48,18 @@ public class Metodos {
         }
         return false;
     }
+    
+    public static String[] getPageofArray(int p, ArrayList<String>vet) {
+        String mosVet[] = new String[4]; 
+
+        int c = (p - 1) * 4;
+        int f = Math.min(c + 4, vet.size());
+
+        for (int i = c; i < f; i++) {
+            mosVet[i - c] = vet.get(i);
+        }
+
+       return mosVet;
+    }
+    
 }

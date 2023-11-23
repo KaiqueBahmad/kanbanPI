@@ -362,7 +362,7 @@ public class NewActivitController {
             corAtividadeCriado.setValue(Color.WHITE);
             Kanban.telas("kanbanPage", event);
         } else {
-            errorAtividade.setText("Erro ao criar a Atividade.");
+            errorAtividade.setText("Já existe uma área com este nome.");
         }
     }
 //        @FXML

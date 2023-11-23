@@ -1,15 +1,19 @@
 package controllers;
 
+import entities.Acao;
 import entities.Area;
 import entities.Atividade;
 import entities.Empresa;
 import entities.Usuario;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -18,7 +22,12 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import kanban.Kanban;
 import utils.Metodos;
 
@@ -527,6 +536,16 @@ public class NewActionController {
     }
 
     @FXML
+    private void trocaCor(ActionEvent event) {
+        System.out.println(atividadeAcao.getSelectionModel().getSelectedItem());
+        if (atividadeAcao.getSelectionModel().getSelectedItem() == null) {
+            atividadeAcao.setStyle("-fx-background-radius:10px;-fx-font-size:25px;-fx-color:#FFFFFF;");
+        }
+        String cor = Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto].getAtividadePorNome(atividadeAcao.getSelectionModel().getSelectedItem().toString()).getCor();
+        atividadeAcao.setStyle("-fx-background-radius:10px;-fx-font-size:25px;-fx-color:"+cor+";");
+    }
+    
+    @FXML
     private void criarAcao(ActionEvent event) {
 //        if(nomeAcao.getText().equals("") || prazoAcao.getText().equals("") || inicioAcao.getValue() == null){
 //            // verificar tbm os outros campos
@@ -543,6 +562,12 @@ public class NewActionController {
         if (nome.equals("") || prazo.equals("")|| data == null || atividadeAcao.getSelectionModel().getSelectedItem() == null || usuarioAcao.getSelectionModel().getSelectedItem() == null || areaAcao.getSelectionModel().getSelectedItem() == null) {
             errorNovaAcao.setText("Há campos em branco");
             return;
+        }
+        for (Acao ac:Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto].getAtividadePorNome(atividadeAcao.getSelectionModel().getSelectedItem().toString()).getAcoes()) {
+            if (nome.equals(ac.getNome())) {
+                errorNovaAcao.setText("Já há um ação com esse nome");
+                return;
+            }
         }
         if (!Metodos.isInteger(prazo)) {
             errorNovaAcao.setText("Prazo não é numérico");
@@ -565,6 +590,7 @@ public class NewActionController {
         inicioAcao.getEditor().clear();
         prazoAcao.clear();
         atividadeAcao.getSelectionModel().clearSelection();
+        atividadeAcao.setStyle("-fx-background-radius:10px;-fx-font-size:25px;-fx-color:#FFFFFF;");
         atividadeAcao.setButtonCell(new ListCell<String>() {
             @Override
             protected void updateItem(String item, boolean empty) {

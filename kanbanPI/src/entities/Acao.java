@@ -22,6 +22,14 @@ public class Acao {
         this.porcentagem = 0;
     }
 
+    public Atividade getAtividade() {
+        return this.atividadePai;
+    }
+    
+    public Area getArea() {
+        return this.areaResponsavel;
+    }
+    
     public Usuario getUsrResponsavel() {
         return this.usuarioResponsavel;
     }

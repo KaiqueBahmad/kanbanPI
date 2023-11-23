@@ -219,30 +219,30 @@ public class SelectProjectController {
     @FXML
     private void projetoUm(MouseEvent event) {
         if (Kanban.empresaAtual().getProjetos()[0] != null) {
-            Kanban.telas("kanbanPage", event);
             Kanban.projetoAberto = 0;
+            Kanban.telas("kanbanPage", event);
         }
     }
     
     @FXML
     private void projetoDois(MouseEvent event) {
         if (Kanban.empresaAtual().getProjetos()[1] != null) {
-            Kanban.telas("kanbanPage", event);
             Kanban.projetoAberto = 1;
+            Kanban.telas("kanbanPage", event);
         }
     }
     @FXML
     private void projetoTres(MouseEvent event) {
         if (Kanban.empresaAtual().getProjetos()[2] != null) {
-            Kanban.telas("kanbanPage", event);
             Kanban.projetoAberto = 2;
+            Kanban.telas("kanbanPage", event);
         }
     }
     @FXML
     private void projetoQuatro(MouseEvent event) {
         if (Kanban.empresaAtual().getProjetos()[3] != null) {
-            Kanban.telas("kanbanPage", event);
             Kanban.projetoAberto = 3;
+            Kanban.telas("kanbanPage", event);
         }
     }
 

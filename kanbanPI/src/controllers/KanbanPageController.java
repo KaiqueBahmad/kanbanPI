@@ -1,8 +1,14 @@
 package controllers;
 
+import entities.Acao;
+import entities.Atividade;
 import entities.PostIt;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,7 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
 
-public class KanbanPageController  {
+public class KanbanPageController implements Initializable {
 
     @FXML
     private Label aFazerAreaDois;
@@ -473,7 +479,14 @@ public class KanbanPageController  {
     @FXML
     private Button voltarProjetos;
     
+    private boolean lixeiraAberta;
+    
     private PostIt[][] postIts;
+    
+    public static ArrayList<Acao> aFazer;
+    public static ArrayList<Acao> fazendo;
+    public static ArrayList<Acao> finalizado;
+    
     
     @FXML
     private void aFazerMaisDois(MouseEvent event) {
@@ -522,8 +535,14 @@ public class KanbanPageController  {
     
     @FXML
     private void deletarAcao(MouseEvent event) {
-        errorKanbanLixo.setText("Selecione o Post-it que deseja excluir");
-        
+        if (lixeiraAberta) {
+            errorKanbanLixo.setText("");
+            lixeiraAberta = false;
+
+        } else {
+            errorKanbanLixo.setText("Selecione o Post-it que deseja excluir");
+            lixeiraAberta = true;
+        }
         //retirar qnd clicar em algum post-it
     }
 
@@ -657,6 +676,28 @@ public class KanbanPageController  {
     }
 
     public void loadAtividades() {
+        aFazer = new ArrayList<>();
+        fazendo = new ArrayList<>();
+        finalizado = new ArrayList<>();
+        for (Atividade at:Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto].getAtividades()) {
+            for (Acao ac:at.getAcoes()) {
+                float porcentagem = ac.getPorcentagem();
+                if (porcentagem == 0) {
+                    aFazer.add(ac);
+                }
+                if (porcentagem > 0 && porcentagem < 1) {
+                    fazendo.add(ac);
+                }
+                if (porcentagem == 1) {
+                    finalizado.add(ac);
+                }
+            }
+        }
+        for (PostIt[] i:postIts) {
+            for (PostIt postIt:i) {
+                postIt.sePreencher();
+            }
+        }
         
     }
 
@@ -669,12 +710,15 @@ public class KanbanPageController  {
         for (String secao: secoes) {
             j = 0;
             for (String numero:numerais) {
-                postIts[i][j++] = new PostIt((Pane)cena.lookup("#"+secao+numero));
+                postIts[i][j++] = new PostIt((Pane)cena.lookup("#"+secao+numero), i, j-1);
                 postIts[i][j-1].checkup();
             }
             i++;
         }
         
     }
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        lixeiraAberta = false;
+    }
 }

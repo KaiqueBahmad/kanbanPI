@@ -44,7 +44,12 @@ public class Kanban extends Application {
     public static String currentUser;
     public static int projetoAberto;
     public static boolean loginAdmin;
-
+    public static int paginaAFazer;
+    public static int paginaFazendo;
+    public static int paginaFinalizado;
+    
+    
+    
     public static Empresa empresaAtual() {
         if (loginAdmin) {
             for (Empresa emp:empresas) {
@@ -68,6 +73,9 @@ public class Kanban extends Application {
         telaSelecionada = stage;
         empresas = new Empresa[32];
         loginAdmin = false;
+        paginaAFazer = 0;
+        paginaFazendo = 0;
+        paginaFinalizado = 0;
         
         Parent fxmlLoginPage = FXMLLoader.load(getClass().getResource("../views/loginPage.fxml"));
         sceneLoginPage = new Scene(fxmlLoginPage,  1535, 800);
