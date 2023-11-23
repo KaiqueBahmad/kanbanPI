@@ -420,10 +420,10 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="fazendoUm" layoutX="558.0" layoutY="237.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="fazendoUm" layoutX="558.0" layoutY="237.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="fazendoCorEscolhidaUm" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
-            <Pane fx:id="fazendoCorEscolhidaBarraDois" layoutY="34.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #0349FE;">
+            <Pane fx:id="fazendoCorEscolhidaBarraUm" layoutY="34.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #0349FE;">
                <children>
                   <VBox alignment="CENTER" layoutY="-1.0" prefHeight="21.0" prefWidth="200.0">
                      <children>

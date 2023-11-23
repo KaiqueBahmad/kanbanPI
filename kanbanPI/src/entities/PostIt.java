@@ -60,37 +60,40 @@ public class PostIt {
     public void sePreencher() {
         switch (coluna) {
             case 0:
-                if (KanbanPageController.aFazer.size() <= 4*Kanban.paginaAFazer + this.pos + 1) {
+                if (KanbanPageController.aFazer.size() <= 4*Kanban.paginaAFazer + this.pos) {
+                    seEsconder();
                     return;
                 }
                 myData = KanbanPageController.aFazer.get(4*Kanban.paginaAFazer + this.pos);
-                this.menos.setOpacity(0);
-                this.menos.setCursor(Cursor.DEFAULT);
-                this.mais.setOpacity(1);
-                this.mais.setCursor(Cursor.HAND);
                 break;
             case 1:
-                if (KanbanPageController.fazendo.size() <= 4*Kanban.paginaFazendo + this.pos + 1) {
+                if (KanbanPageController.fazendo.size() <= 4*Kanban.paginaFazendo + this.pos) {
+                    seEsconder();
                     return;
                 }
                 myData = KanbanPageController.fazendo.get(4*Kanban.paginaFazendo + this.pos);
-                this.menos.setOpacity(1);
-                this.menos.setCursor(Cursor.HAND);
-                this.mais.setOpacity(1);
-                this.mais.setCursor(Cursor.HAND);
                 break;
             case 2:
-                if (KanbanPageController.finalizado.size() <= 4*Kanban.paginaFinalizado + this.pos + 1) {
+                if (KanbanPageController.finalizado.size() <= 4*Kanban.paginaFinalizado + this.pos) {
+                    seEsconder();
                     return;
                 }
                 myData = KanbanPageController.finalizado.get(4*Kanban.paginaFinalizado + this.pos);
-                this.menos.setOpacity(1);
-                this.menos.setCursor(Cursor.HAND);
-                this.mais.setOpacity(0);
-                this.mais.setCursor(Cursor.DEFAULT);
                 break;
         }
+        if (Kanban.empresaAtual().auth() || myData.getUsrResponsavel().auth()) {
+            this.menos.setOpacity(1);
+            this.menos.setCursor(Cursor.HAND);
+            this.mais.setOpacity(1);
+            this.mais.setCursor(Cursor.HAND);
+        } else {
+            this.menos.setOpacity(0);
+            this.menos.setCursor(Cursor.DEFAULT);
+            this.mais.setOpacity(0);
+            this.mais.setCursor(Cursor.DEFAULT);
+        }
         container.setOpacity(1);
+
         this.container.setStyle("-fx-border-color:" + myData.getAtividade().getCor()+";-fx-border-width:3px;"+"-fx-background-color: #E6E6E6" );
         this.middleColor.setStyle("-fx-background-color:"+myData.getAtividade().getCor()+";");
         nomeAcao.setText(myData.getNome());
@@ -103,17 +106,25 @@ public class PostIt {
         
     }
     
+    public void seEsconder() {
+        this.container.setOpacity(0);
+        this.menos.setOpacity(0);
+        this.menos.setCursor(Cursor.DEFAULT);
+        this.mais.setOpacity(0);
+        this.mais.setCursor(Cursor.DEFAULT);
+    }
+    
     public void checkup() {
-        System.out.println("Chekup "+coluna+"|"+pos);
-        System.out.println(container);
-        System.out.println(sideColor);
-        System.out.println(middleColor);
-        System.out.println(periodoData);
-        System.out.println(barraProgresso);
-        System.out.println(labelProgresso);
-        System.out.println(nomeAcao);
-        System.out.println(nomeUsuario);
-        System.out.println(nomeArea);
-        System.out.println(diasRestantes);
+//        System.out.println("Chekup "+coluna+"|"+pos);
+//        System.out.println(container);
+//        System.out.println(sideColor);
+//        System.out.println(middleColor);
+//        System.out.println(periodoData);
+//        System.out.println(barraProgresso);
+//        System.out.println(labelProgresso);
+//        System.out.println(nomeAcao);
+//        System.out.println(nomeUsuario);
+//        System.out.println(nomeArea);
+//        System.out.println(diasRestantes);
     }
 }

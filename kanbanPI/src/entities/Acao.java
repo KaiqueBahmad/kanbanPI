@@ -43,9 +43,12 @@ public class Acao {
             return;
         }
         this.porcentagem += aumento;
-        if (this.porcentagem >= 1) {
+        if (this.porcentagem > 1) {
             this.porcentagem = 1;
             this.terminar();
+        }
+        if (this.porcentagem < 0) {
+            this.porcentagem = 0;
         }
     }
     public float getPorcentagem() {
