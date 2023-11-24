@@ -18,7 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import kanban.Kanban;
 
-public class KanbanPageController implements Initializable {
+public class ReloadController implements Initializable {
 
     @FXML
     private Label aFazerAreaDois;
@@ -759,7 +759,7 @@ public class KanbanPageController implements Initializable {
     }
 
     public void loadAtividades() {
-        Scene cena = Kanban.sceneKanbanPage;
+        Scene cena = Kanban.sceneReload;
         aFazer = new ArrayList<>();
         fazendo = new ArrayList<>();
         finalizado = new ArrayList<>();

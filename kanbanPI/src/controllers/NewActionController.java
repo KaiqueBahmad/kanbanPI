@@ -547,17 +547,9 @@ public class NewActionController {
     
     @FXML
     private void criarAcao(ActionEvent event) {
-//        if(nomeAcao.getText().equals("") || prazoAcao.getText().equals("") || inicioAcao.getValue() == null){
-//            // verificar tbm os outros campos
-//            // verificar se o prazo n está com número negativo
-//            errorNovaAcao.setText("Há campos em branco");
-//        }
-
-
         String nome = nomeAcao.getText();
         String prazo = prazoAcao.getText();
         LocalDate data = inicioAcao.getValue();
-//        long data = inicioAcao.getValue().toEpochDay();
         System.out.println(atividadeAcao.getSelectionModel().getSelectedItem());
         if (nome.equals("") || prazo.equals("")|| data == null || atividadeAcao.getSelectionModel().getSelectedItem() == null || usuarioAcao.getSelectionModel().getSelectedItem() == null || areaAcao.getSelectionModel().getSelectedItem() == null) {
             errorNovaAcao.setText("Há campos em branco");
@@ -626,33 +618,9 @@ public class NewActionController {
                 }
             }
         });
-        //atualizar tela do kanban
-        Kanban.telas("kanbanPage", event);
+        
+        Kanban.telas("kanbanPage");
     }
-//    Programar essa parada aqui
-//    public void atualizarListaArea() {
-//        Empresa empresaLogada = null;
-//        if (!Kanban.loginAdmin) {
-//            return;
-//        }
-//        for (Empresa empresa:Kanban.empresas) {
-//            if (empresa == null) {
-//                continue;
-//            }
-//            if (Kanban.currentUser.equals(empresa.getNome())) {
-//                empresaLogada = empresa;
-//            }
-//        }
-//        
-//        for (Area area:empresaLogada.getAreas()) {
-//            if (!Metodos.jaEstaNaLista(area.getNome(), opcoesAreaArray)) {
-//                opcoesArea.add(area.getNome());
-//                for (String item:opcoesAreaArray) {
-//                    item = area.getNome();
-//                }
-//            }
-//        }
-//    }
     
     public void loadAreasLista() {
         Empresa empresaLogada = null;

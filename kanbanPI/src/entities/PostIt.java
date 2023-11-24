@@ -38,7 +38,6 @@ public class PostIt {
         this.coluna = coluna;
         this.pos = pos;
         myData = null;
-        System.out.println(secoes[coluna]+numerais[pos]);
         this.container = (Pane) cena.lookup(secoes[coluna]+numerais[pos]);
         this.sideColor = (Pane) cena.lookup(secoes[coluna]+"CorEscolhida"+numerais[pos]);
         this.middleColor = (Pane) cena.lookup(secoes[coluna]+"CorEscolhidaBarra"+numerais[pos]);
@@ -50,7 +49,8 @@ public class PostIt {
         this.nomeArea = (Label) cena.lookup(secoes[coluna]+"Area"+numerais[pos]);
         this.diasRestantes = (Label) cena.lookup(secoes[coluna]+"Duracao"+numerais[pos]);
         this.mais = (ImageView) cena.lookup(secoes[coluna]+"Mais"+numerais[pos]);
-        this.menos = (ImageView) cena.lookup(secoes[coluna]+"Menos"+numerais[pos]);   
+        this.menos = (ImageView) cena.lookup(secoes[coluna]+"Menos"+numerais[pos]); 
+        this.barraProgresso.setOpacity(1);
     }
     
     public Acao getData() {
@@ -92,7 +92,6 @@ public class PostIt {
             this.mais.setOpacity(0);
             this.mais.setCursor(Cursor.DEFAULT);
         }
-        container.setOpacity(1);
 
         this.container.setStyle("-fx-border-color:" + myData.getAtividade().getCor()+";-fx-border-width:3px;"+"-fx-background-color: #E6E6E6" );
         this.middleColor.setStyle("-fx-background-color:"+myData.getAtividade().getCor()+";");
@@ -101,8 +100,9 @@ public class PostIt {
         nomeUsuario.setText(myData.getUsrResponsavel().getNome());
         this.sideColor.setStyle("-fx-background-color:"+myData.getAtividade().getCor()+";");
         this.barraProgresso.setProgress(myData.getPorcentagem());
-        int porcentagem = (int) (myData.getPorcentagem()*100);
+        int porcentagem = Math.round(myData.getPorcentagem()*100);
         this.labelProgresso.setText(Integer.toString(porcentagem)+"%");
+        container.setOpacity(1);
         
     }
     
@@ -115,16 +115,16 @@ public class PostIt {
     }
     
     public void checkup() {
-//        System.out.println("Chekup "+coluna+"|"+pos);
-//        System.out.println(container);
-//        System.out.println(sideColor);
-//        System.out.println(middleColor);
-//        System.out.println(periodoData);
-//        System.out.println(barraProgresso);
-//        System.out.println(labelProgresso);
-//        System.out.println(nomeAcao);
-//        System.out.println(nomeUsuario);
-//        System.out.println(nomeArea);
-//        System.out.println(diasRestantes);
+        System.out.println("Chekup "+coluna+"|"+pos);
+        System.out.println(container);
+        System.out.println(sideColor);
+        System.out.println(middleColor);
+        System.out.println(periodoData);
+        System.out.println(barraProgresso);
+        System.out.println(labelProgresso);
+        System.out.println(nomeAcao);
+        System.out.println(nomeUsuario);
+        System.out.println(nomeArea);
+        System.out.println(diasRestantes);
     }
 }

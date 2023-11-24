@@ -63,7 +63,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Pane>
-      <Pane fx:id="projetoDois" layoutX="426.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoDois" opacity="0.0" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
+      <Pane fx:id="projetoDois" layoutX="426.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoDois" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <children>
             <ProgressIndicator fx:id="progressoTotalDois" layoutX="106.0" layoutY="188.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="110.0" progress="0.0" style="-fx-accent: #32CD32; -fx-font-size: 17px; -fx-background-color: transparent; -fx-background-insets: null;" />
             <VBox alignment="CENTER" layoutX="7.0" layoutY="42.0" prefHeight="36.0" prefWidth="309.0">
@@ -86,7 +86,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="projetoTres" layoutX="788.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoTres" opacity="0.0" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
+      <Pane fx:id="projetoTres" layoutX="788.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoTres" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <children>
             <ProgressIndicator fx:id="progressoTotalTres" layoutX="106.0" layoutY="188.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="110.0" progress="0.0" style="-fx-accent: #32CD32; -fx-font-size: 17px; -fx-background-color: transparent; -fx-background-insets: null;" />
             <VBox alignment="CENTER" layoutX="7.0" layoutY="42.0" prefHeight="36.0" prefWidth="309.0">
@@ -108,7 +108,7 @@
                </children>
             </VBox>
          </children></Pane>
-      <Pane fx:id="projetoQuatro" layoutX="1149.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoQuatro" opacity="0.0" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
+      <Pane fx:id="projetoQuatro" layoutX="1149.0" layoutY="218.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#projetoQuatro" prefHeight="330.0" prefWidth="321.0" style="-fx-background-color: #5DC1B9; -fx-background-radius: 10px;">
          <children>
             <ProgressIndicator fx:id="progressoTotalQuatro" layoutX="106.0" layoutY="188.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="110.0" progress="0.0" style="-fx-accent: #32CD32; -fx-font-size: 17px; -fx-background-color: transparent; -fx-background-insets: null;" />
             <VBox alignment="CENTER" layoutX="7.0" layoutY="42.0" prefHeight="36.0" prefWidth="309.0">
@@ -146,7 +146,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fx:id="excluirProjetoDois" fitHeight="20.0" fitWidth="20.0" layoutX="591.0" layoutY="560.0" onMouseClicked="#excluirProjetoUm" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="excluirProjetoDois" fitHeight="20.0" fitWidth="20.0" layoutX="591.0" layoutY="560.0" onMouseClicked="#excluirProjetoDois" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/imgs/lixo.png" />
          </image>

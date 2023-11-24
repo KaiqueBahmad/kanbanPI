@@ -4,6 +4,7 @@
  */
 package utils;
 
+import entities.Projeto;
 import java.util.ArrayList;
 
 /**
@@ -60,6 +61,20 @@ public class Metodos {
         }
 
        return mosVet;
+    }
+
+    
+    //Entra [null, null, projeto1, projeto2]
+    //Sai [projeto1, projeto2, null, null]
+    public static Projeto[] sequenciar(Projeto[] projetos) {
+        Projeto[] sequenciado = new Projeto[projetos.length];
+        int j = 0;
+        for (int i = 0; i < sequenciado.length; i++) {
+            if (projetos[i] != null) {
+                sequenciado[j++] = projetos[i];
+            }
+        }
+        return sequenciado;
     }
     
 }

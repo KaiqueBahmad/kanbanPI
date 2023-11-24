@@ -43,13 +43,14 @@ public class Acao {
             return;
         }
         this.porcentagem += aumento;
-        if (this.porcentagem > 1) {
+        if ((Math.floor(this.porcentagem)) >= 1) {
             this.porcentagem = 1;
             this.terminar();
         }
-        if (this.porcentagem < 0) {
+        if (Math.round(this.porcentagem*100) <= 0) {
             this.porcentagem = 0;
         }
+        this.atividadePai.atualizarPorcentagem();
     }
     public float getPorcentagem() {
         return porcentagem;

@@ -34,7 +34,6 @@ public class Projeto {
     public boolean criarAtividade(String nome, String cor) {
         for (Atividade atividade:atividades) {
             if (nome.equals(atividade.getNome())) {
-                System.out.println("Já existe uma Atividade com esse Nome");
                 return false;
             }
         }

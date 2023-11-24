@@ -3,6 +3,8 @@ package entities;
 //Chamar uma Função e a senhaInformada não seja igual à senha
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import utils.Metodos;
 
 //Se sobrar Tempo, implementar Criptografia
 public class Empresa {
@@ -116,12 +118,7 @@ public class Empresa {
         } else {
             return;
         }
-        for (int j = 0; j < this.projetos.length; j++) {
-            if (this.projetos[j] == null && j != this.projetos.length - 1) {
-                projetos[j] = projetos[j+1];
-                projetos[j+1] = null;
-            }
-        }
+        this.projetos = Metodos.sequenciar(this.projetos);
     }
     public ArrayList<Area> getAreas() {
         return this.areas;

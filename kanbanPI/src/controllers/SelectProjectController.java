@@ -145,7 +145,6 @@ public class SelectProjectController {
         }
         Kanban.empresaAtual().deletarProjeto(0);
         loadProjetos();
-        Kanban.controllerCreateProject.loadProjetos();
     }
     @FXML
     private void excluirProjetoDois(MouseEvent event) {

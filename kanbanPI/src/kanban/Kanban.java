@@ -7,6 +7,7 @@ import controllers.NewActivitController;
 import controllers.NewAreaController;
 import controllers.NewNameProjectController;
 import controllers.NewUserController;
+import controllers.ReloadController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,6 +30,8 @@ public class Kanban extends Application {
     public static CreateProjectController controllerCreateProject;
     public static Scene sceneKanbanPage;
     private static KanbanPageController controllerKanbanPage;
+    private static ReloadController controllerReload;
+    public static Scene sceneReload;
     private static Scene sceneNewNameProject;
     public static NewNameProjectController controllerNewNameProject;
     private static Scene sceneNewAction;
@@ -76,7 +79,13 @@ public class Kanban extends Application {
         paginaAFazer = 0;
         paginaFazendo = 0;
         paginaFinalizado = 0;
-        
+        empresas[0] = new Empresa("a","a");
+        empresas[0].salvarSenha("a");
+        empresas[0].criarProjeto("Projeto 1", "Projeto Criado Automaticamente");
+        empresas[0].criarUsuario("Usuario 1", "123");
+        empresas[0].criarUsuario("Usuario 2", "123");
+        empresas[0].criarArea("Area 1");
+        empresas[0].logout();
         Parent fxmlLoginPage = FXMLLoader.load(getClass().getResource("../views/loginPage.fxml"));
         sceneLoginPage = new Scene(fxmlLoginPage,  1535, 800);
         
@@ -93,6 +102,13 @@ public class Kanban extends Application {
         sceneKanbanPage = new Scene(fxmlKanbanPage.load(),  1535, 800);
         controllerKanbanPage = fxmlKanbanPage.getController();
         controllerKanbanPage.definirPostIts(sceneKanbanPage);
+        
+        FXMLLoader fxmlReload = new FXMLLoader(getClass().getResource("../views/reload.fxml"));
+        sceneReload = new Scene(fxmlReload.load(),  1535, 800);
+        controllerReload = fxmlReload.getController();
+        controllerReload.definirPostIts(sceneReload);
+        
+        
         
         FXMLLoader fxmlNewNameProject = new FXMLLoader(getClass().getResource("../views/newNameProject.fxml"));
         sceneNewNameProject = new Scene(fxmlNewNameProject.load(),  1535, 800);
@@ -144,6 +160,9 @@ public class Kanban extends Application {
                 controllerKanbanPage.esconderElementos();
                 controllerKanbanPage.loadAtividades();
                 telaSelecionada.setScene(sceneKanbanPage);
+                controllerReload.esconderElementos();
+                controllerReload.loadAtividades();
+                telaSelecionada.setScene(sceneReload);
             }
             case "newName" -> {
 //                controllerNewNameProject
@@ -170,6 +189,11 @@ public class Kanban extends Application {
                 controllerNewArea.loadProjetos();
                 telaSelecionada.setScene(sceneNewArea);
             }
+        }
+        if (tela.equals("kanbanPage")) {
+            controllerKanbanPage.esconderElementos();
+            controllerKanbanPage.loadAtividades();
+            telaSelecionada.setScene(sceneKanbanPage);
         }
     }
     
