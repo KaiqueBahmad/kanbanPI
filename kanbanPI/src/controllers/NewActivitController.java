@@ -1,9 +1,14 @@
 package controllers;
 
+import entities.Acao;
+import entities.Atividade;
 import entities.Empresa;
+import entities.PostIt;
 import entities.Projeto;
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
@@ -325,7 +330,19 @@ public class NewActivitController {
 
     @FXML
     private Button voltarProjetos;
-
+    
+    @FXML
+    private ImageView aFazerProximo;
+    @FXML
+    private ImageView fazendoProximo;
+    @FXML
+    private ImageView finalizadoProximo;
+    
+    private PostIt[][] postIts;
+    public static ArrayList<Acao> aFazer;
+    public static ArrayList<Acao> fazendo;
+    public static ArrayList<Acao> finalizado;
+    
     @FXML
     private void cancelarAtividade(ActionEvent event) {
         errorAtividade.setText("");
@@ -334,6 +351,22 @@ public class NewActivitController {
         Kanban.telas("kanbanPage", event);
     }
 
+    public void definirPostIts(Scene cena) {
+        String[] secoes = {"aFazer", "fazendo","finalizado"};
+        String[] numerais = {"Um","Dois","Tres","Quatro"};
+        this.postIts = new PostIt[secoes.length][numerais.length];
+        int i = 0;
+        int j = 0;
+        for (String secao: secoes) {
+            j = 0;
+            for (String numero:numerais) {
+                postIts[i][j++] = new PostIt(cena, i, j-1);
+            }
+            i++;
+        }
+        
+    }
+    
     @FXML
     private void criarAtividade(ActionEvent event) {
         if(nomeAtividadeCriado.getText().equals("")){
@@ -365,38 +398,55 @@ public class NewActivitController {
             errorAtividade.setText("Já existe uma área com este nome.");
         }
     }
-//        @FXML
-//    private void criarProjeto(ActionEvent event) {        
-//        if(nomeNovoProjeto.getText().equals("") || descricaoNovoProjeto.getText().equals("")){
-//            errorNovoProjeto.setText("Há campos em branco");
-//            return;
-//        }
-//        String nomeProjeto = nomeNovoProjeto.getText();
-//        String descricaoProjeto=  descricaoNovoProjeto.getText();
-//        if (!Metodos.verificarEspacos(nomeNovoProjeto.getText())) {
-//            errorNovoProjeto.setText("Política de uso de espaços inadequada.");
-//            return;
-//        }
-//        Empresa empresaLogada = Kanban.empresaAtual();
-//        if (empresaLogada == null) {
-//            return;
-//        }
-//        for (Projeto projeto:empresaLogada.getProjetos()) {
-//            if (projeto == null) {
-//                continue;
-//            }
-//            if (nomeProjeto.equals(projeto.getNome())) {
-//                errorNovoProjeto.setText("Nome já está em uso.");
-//                return;
-//            }
-//        }
-//        if (empresaLogada.criarProjeto(nomeProjeto, descricaoProjeto)) {
-//            errorNovoProjeto.setText("");
-//            nomeNovoProjeto.clear();
-//            descricaoNovoProjeto.clear();
-//            Kanban.telas("selectProject");
-//        } else {
-//            errorNovoProjeto.setText("Política de uso de espaços inadequada.");
-//        }
-//    }
+
+    public void esconderElementos() {
+        int opacidade = Kanban.loginAdmin ? 1:0;
+        novaAcao.setOpacity(opacidade);
+        tituloNovaAcao.setOpacity(opacidade);
+        novaAtividade.setOpacity(opacidade);
+        tituloNovaAtividade.setOpacity(opacidade);
+        deletarAcao.setOpacity(opacidade);
+    }
+
+    public void loadAtividades() {
+        Scene cena = Kanban.sceneKanbanPage;
+        aFazer = new ArrayList<>();
+        fazendo = new ArrayList<>();
+        finalizado = new ArrayList<>();
+        for (Atividade at:Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto].getAtividades()) {
+            for (Acao ac:at.getAcoes()) {
+                float porcentagem = ac.getPorcentagem();
+                if (porcentagem <= 0) {
+                    aFazer.add(ac);
+                }
+                if (porcentagem > 0 && porcentagem < 1) {
+                    fazendo.add(ac);
+                }
+                if (porcentagem >= 1) {
+                    finalizado.add(ac);
+                }
+            }
+        }
+        if (aFazer.size() > 4) {
+            aFazerProximo.setOpacity(1);
+        } else {
+            aFazerProximo.setOpacity(0);
+        }
+        if (fazendo.size() > 4) {
+            fazendoProximo.setOpacity(1);
+        } else {
+            fazendoProximo.setOpacity(0);
+        }
+        if (finalizado.size() > 4) {
+            finalizadoProximo.setOpacity(1);
+        } else {
+            finalizadoProximo.setOpacity(0);
+        }
+        for (PostIt[] i:postIts) {
+            for (PostIt postIt:i) {
+                postIt.sePreencher();
+            }
+        }
+        
+    }
 }

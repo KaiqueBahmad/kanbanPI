@@ -11,8 +11,10 @@ import javafx.scene.layout.VBox;
 import kanban.Kanban;
 import controllers.KanbanPageController;
 import entities.Atividade;
+import java.util.function.Function;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 
 public class PostIt {
     private Pane container;
@@ -30,8 +32,8 @@ public class PostIt {
     private Acao myData;
     private int coluna;
     private int pos;
-    private static String[] secoes = {"#aFazer", "#fazendo","#finalizado"};
-    private static String[] numerais = {"Um","Dois","Tres","Quatro"};
+    protected static String[] secoes = {"#aFazer", "#fazendo","#finalizado"};
+    protected static String[] numerais = {"Um","Dois","Tres","Quatro"};
     
     
     public PostIt(Scene cena, int coluna, int pos) {
@@ -39,6 +41,8 @@ public class PostIt {
         this.pos = pos;
         myData = null;
         this.container = (Pane) cena.lookup(secoes[coluna]+numerais[pos]);
+        SeExcluir funcao = new SeExcluir(coluna, pos);
+//        this.container.onMouseClickedProperty().set(funcao.excluir);
         this.sideColor = (Pane) cena.lookup(secoes[coluna]+"CorEscolhida"+numerais[pos]);
         this.middleColor = (Pane) cena.lookup(secoes[coluna]+"CorEscolhidaBarra"+numerais[pos]);
         this.periodoData = (Label) cena.lookup(secoes[coluna]+"InicioFim"+numerais[pos]);
@@ -126,5 +130,18 @@ public class PostIt {
         System.out.println(nomeUsuario);
         System.out.println(nomeArea);
         System.out.println(diasRestantes);
+    }
+}
+
+class SeExcluir {
+    private int coluna;
+    private int pos;
+    public SeExcluir(int coluna, int pos) {
+        this.coluna = coluna;
+        this.pos = pos;
+    }
+    
+    public void excluir(MouseEvent event) {
+    
     }
 }

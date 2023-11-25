@@ -98,6 +98,10 @@ public class Kanban extends Application {
         sceneCreateProject = new Scene(fxmlcreateProject.load(),  1535, 800);
         controllerCreateProject = fxmlcreateProject.getController();        
         
+        FXMLLoader fxmlNewNameProject = new FXMLLoader(getClass().getResource("../views/newNameProject.fxml"));
+        sceneNewNameProject = new Scene(fxmlNewNameProject.load(),  1535, 800);
+        controllerNewNameProject = fxmlNewNameProject.getController();
+        
         FXMLLoader fxmlKanbanPage = new FXMLLoader(getClass().getResource("../views/kanbanPage.fxml"));
         sceneKanbanPage = new Scene(fxmlKanbanPage.load(),  1535, 800);
         controllerKanbanPage = fxmlKanbanPage.getController();
@@ -108,20 +112,15 @@ public class Kanban extends Application {
         controllerReload = fxmlReload.getController();
         controllerReload.definirPostIts(sceneReload);
         
-        
-        
-        FXMLLoader fxmlNewNameProject = new FXMLLoader(getClass().getResource("../views/newNameProject.fxml"));
-        sceneNewNameProject = new Scene(fxmlNewNameProject.load(),  1535, 800);
-        controllerNewNameProject = fxmlNewNameProject.getController();
-        
         FXMLLoader fxmlNewAction = new FXMLLoader(getClass().getResource("../views/newAction.fxml"));
         sceneNewAction = new Scene(fxmlNewAction.load(),  1535, 800);
         controllerNewAction = fxmlNewAction.getController();
-        
+        controllerNewAction.definirPostIts(sceneNewAction);
         
         FXMLLoader fxmlNewActivit = new FXMLLoader(getClass().getResource("../views/newActivit.fxml"));
         sceneNewActivit = new Scene(fxmlNewActivit.load(),  1535, 800);
         controllerNewActivity = fxmlNewActivit.getController();
+        controllerNewActivity.definirPostIts(sceneNewActivit);
         
         FXMLLoader fxmlNewUser = new FXMLLoader(getClass().getResource("../views/newUser.fxml"));
         sceneNewUser = new Scene(fxmlNewUser.load(),  1535, 800);
@@ -173,10 +172,18 @@ public class Kanban extends Application {
                 controllerNewAction.loadAreasLista();
                 controllerNewAction.loadUsuariosLista();
                 controllerNewAction.loadAtividadesLista();
+                controllerNewAction.esconderElementos();
+                controllerNewAction.loadAtividades();
+                controllerNewAction.hidePopup();
                 telaSelecionada.setScene(sceneNewAction);
+                controllerReload.esconderElementos();
+                controllerReload.loadAtividades();
+                telaSelecionada.setScene(sceneReload);
             }
             case "loginPage" -> telaSelecionada.setScene(sceneLoginPage);
             case "newActivit" -> {
+                controllerNewActivity.esconderElementos();
+                controllerNewActivity.loadAtividades();
                 telaSelecionada.setScene(sceneNewActivit);
             }
             case "newUser" -> {
@@ -194,6 +201,15 @@ public class Kanban extends Application {
             controllerKanbanPage.esconderElementos();
             controllerKanbanPage.loadAtividades();
             telaSelecionada.setScene(sceneKanbanPage);
+        }
+        if (tela.equals("newAction")) {
+            controllerNewAction.loadAreasLista();
+            controllerNewAction.loadUsuariosLista();
+            controllerNewAction.loadAtividadesLista();
+            controllerNewAction.esconderElementos();
+            controllerNewAction.loadAtividades();
+            controllerNewAction.showPopup();
+            telaSelecionada.setScene(sceneNewAction);
         }
     }
     
