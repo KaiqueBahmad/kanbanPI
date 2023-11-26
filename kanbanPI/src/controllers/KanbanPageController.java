@@ -481,77 +481,11 @@ public class KanbanPageController implements Initializable {
     
     private boolean lixeiraAberta;
     
-    private PostIt[][] postIts;
-    
+    public PostIt[][] postIts;
+    public static int[] postItSelecionado;
     public static ArrayList<Acao> aFazer;
     public static ArrayList<Acao> fazendo;
     public static ArrayList<Acao> finalizado;
-    
-    @FXML
-    private void aFazerMaisUm(MouseEvent event) {
-        if (postIts[0][0].getData() != null) {
-            postIts[0][0].getData().aumentarPorcentagem(0.05);
-            this.loadAtividades();
-        }
-    }
-    
-    @FXML
-    private void aFazerMaisDois(MouseEvent event) {
-        if (postIts[0][1].getData() != null) {
-            postIts[0][1].getData().aumentarPorcentagem(0.05);
-            this.loadAtividades();
-        }
-    }
-
-
-    @FXML
-    private void aFazerMaisTres(MouseEvent event) {
-        if (postIts[0][2].getData() != null) {
-            postIts[0][2].getData().aumentarPorcentagem(0.05);
-            this.loadAtividades();
-        }
-    }
-
-    @FXML
-    private void aFazerMaisQuatro(MouseEvent event) {
-        if (postIts[0][3].getData() != null) {
-            postIts[0][3].getData().aumentarPorcentagem(0.05);
-            this.loadAtividades();
-        }
-    }
-
-    @FXML
-    private void aFazerMenosUm(MouseEvent event) {
-        if (postIts[0][0].getData() != null) {
-            postIts[0][0].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
-    }
-
-    @FXML
-    private void aFazerMenosDois(MouseEvent event) {
-        if (postIts[0][1].getData() != null) {
-            postIts[0][1].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
-    }
-
-
-    @FXML
-    private void aFazerMenosTres(MouseEvent event) {
-        if (postIts[0][2].getData() != null) {
-            postIts[0][2].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
-    }
-
-    @FXML
-    private void aFazerMenosQuatro(MouseEvent event) {
-        if (postIts[0][3].getData() != null) {
-            postIts[0][3].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
-    }
 
     @FXML
     private void aFazerProximo(MouseEvent event) {
@@ -565,83 +499,10 @@ public class KanbanPageController implements Initializable {
     
     @FXML
     private void deletarAcao(MouseEvent event) {
-        if (lixeiraAberta) {
-            errorKanbanLixo.setText("");
-            lixeiraAberta = false;
-
-        } else {
-            errorKanbanLixo.setText("Selecione o Post-it que deseja excluir");
-            lixeiraAberta = true;
-        }
-        //retirar qnd clicar em algum post-it
+//        errorKanbanLixo;;
+//        lixeiraAberta;
+        PostIt.deletarAcoes();
     }
-
-
-    @FXML
-    private void fazendoMaisUm(MouseEvent event) {
-        if (postIts[1][0].getData() != null) {
-            postIts[1][0].getData().aumentarPorcentagem(0.05);
-            this.loadAtividades();
-        }
-    }
-
-    @FXML
-    private void fazendoMaisDois(MouseEvent event) {
-        if (postIts[1][1].getData() != null) {
-            postIts[1][1].getData().aumentarPorcentagem(0.05);
-            this.loadAtividades();
-        }
-    }
-    @FXML
-    private void fazendoMaisTres(MouseEvent event) {
-        if (postIts[1][2].getData() != null) {
-            postIts[1][2].getData().aumentarPorcentagem(0.05);
-            this.loadAtividades();
-        }
-    }
-
-    @FXML
-    private void fazendoMaisQuatro(MouseEvent event) {
-        if (postIts[1][3].getData() != null) {
-            postIts[1][3].getData().aumentarPorcentagem(0.05);
-            this.loadAtividades();
-        }
-    }
-
-
-    @FXML
-    private void fazendoMenosUm(MouseEvent event) {
-        if (postIts[1][0].getData() != null) {
-            postIts[1][0].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
-    }
-
-    @FXML
-    private void fazendoMenosDois(MouseEvent event) {
-        if (postIts[1][1].getData() != null) {
-            postIts[1][1].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
-    }
-
-    @FXML
-    private void fazendoMenosTres(MouseEvent event) {
-        if (postIts[1][2].getData() != null) {
-            postIts[1][2].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
-
-    }
-
-    @FXML
-    private void fazendoMenosQuatro(MouseEvent event) {
-        if (postIts[1][3].getData() != null) {
-            postIts[1][3].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
-    }
-
 
     @FXML
     private void fazendoProximo(MouseEvent event) {
@@ -651,57 +512,6 @@ public class KanbanPageController implements Initializable {
             Kanban.paginaFazendo = 0;
         }
         loadAtividades();
-    }
-
-    @FXML
-    private void finalizadoMaisUm(MouseEvent event) {
-        return;
-    }
-    @FXML
-    private void finalizadoMaisDois(MouseEvent event) {
-        return;
-    }
-
-    @FXML
-    private void finalizadoMaisQuatro(MouseEvent event) {
-        return;
-    }
-
-    @FXML
-    private void finalizadoMaisTres(MouseEvent event) {
-        return;
-    }
-
-    @FXML
-    private void finalizadoMenosDois(MouseEvent event) {
-        if (postIts[2][1].getData() != null) {
-            postIts[2][1].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
-    }
-
-    @FXML
-    private void finalizadoMenosQuatro(MouseEvent event) {
-        if (postIts[2][3].getData() != null) {
-            postIts[2][3].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
-    }
-
-    @FXML
-    private void finalizadoMenosTres(MouseEvent event) {
-        if (postIts[2][2].getData() != null) {
-            postIts[2][2].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
-    }
-
-    @FXML
-    private void finalizadoMenosUm(MouseEvent event) {
-        if (postIts[2][0].getData() != null) {
-            postIts[2][0].getData().aumentarPorcentagem(-0.05);
-            this.loadAtividades();
-        }
     }
 
     @FXML
@@ -722,6 +532,7 @@ public class KanbanPageController implements Initializable {
         } else {
             Kanban.empresaAtual().getUsuarioPorNome(Kanban.currentUser).logout();
         }
+        PostIt.cancelarSelecao();
         Kanban.telas("loginPage");
     }
 
@@ -729,6 +540,7 @@ public class KanbanPageController implements Initializable {
     private void novaAcao(ActionEvent event) {
         if (Kanban.loginAdmin) {
             errorKanbanLixo.setText("");
+            PostIt.cancelarSelecao();
             Kanban.telas("newAction");
        }
         
@@ -738,6 +550,7 @@ public class KanbanPageController implements Initializable {
     private void novaAtividade(ActionEvent event) {
         if (Kanban.loginAdmin) {
             errorKanbanLixo.setText("");
+            PostIt.cancelarSelecao();
             Kanban.telas("newActivit");
        }
         
@@ -746,6 +559,7 @@ public class KanbanPageController implements Initializable {
     @FXML
     private void voltarProjetos(ActionEvent event) {
         errorKanbanLixo.setText("");
+        PostIt.cancelarSelecao();
         Kanban.telas("selectProject");
     }
     
@@ -755,7 +569,10 @@ public class KanbanPageController implements Initializable {
         tituloNovaAcao.setOpacity(opacidade);
         novaAtividade.setOpacity(opacidade);
         tituloNovaAtividade.setOpacity(opacidade);
-        deletarAcao.setOpacity(opacidade);
+        deletarAcao.setOpacity(0); 
+        if (opacidade == 1 && PostIt.selecionando) {
+            deletarAcao.setOpacity(1); 
+        }
     }
 
     public void loadAtividades() {
@@ -763,6 +580,11 @@ public class KanbanPageController implements Initializable {
         aFazer = new ArrayList<>();
         fazendo = new ArrayList<>();
         finalizado = new ArrayList<>();
+        if (PostIt.selecionando && Kanban.loginAdmin) {
+            deletarAcao.setOpacity(1);
+        } else {
+            deletarAcao.setOpacity(0);
+        }
         for (Atividade at:Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto].getAtividades()) {
             for (Acao ac:at.getAcoes()) {
                 float porcentagem = ac.getPorcentagem();
@@ -823,5 +645,8 @@ public class KanbanPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lixeiraAberta = false;
+        postItSelecionado = new int[2];
+        postItSelecionado[0] = -1;
+        postItSelecionado[1] = -1;
     }
 }

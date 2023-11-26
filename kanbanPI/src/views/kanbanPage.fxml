@@ -133,7 +133,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="aFazerMenosUm" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#aFazerMenosUm" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="aFazerMenosUm" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -141,7 +141,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="aFazerMaisUm" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#aFazerMaisUm" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="aFazerMaisUm" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
@@ -214,7 +214,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="aFazerMenosDois" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#aFazerMenosDois" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="aFazerMenosDois" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -222,7 +222,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="aFazerMaisDois" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#aFazerMaisDois" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="aFazerMaisDois" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
@@ -290,7 +290,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="aFazerMenosTres" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#aFazerMenosTres" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="aFazerMenosTres" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -298,7 +298,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="aFazerMaisTres" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#aFazerMaisTres" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="aFazerMaisTres" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
@@ -366,7 +366,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="aFazerMenosQuatro" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#aFazerMenosQuatro" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="aFazerMenosQuatro" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -374,7 +374,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="aFazerMaisQuatro" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#aFazerMaisQuatro" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="aFazerMaisQuatro" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
@@ -420,7 +420,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="fazendoUm" layoutX="558.0" layoutY="237.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="fazendoUm" layoutX="558.0" layoutY="237.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="fazendoCorEscolhidaUm" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Pane fx:id="fazendoCorEscolhidaBarraUm" layoutY="34.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #0349FE;">
@@ -442,7 +442,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="fazendoMenosUm" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#fazendoMenosUm" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fazendoMenosUm" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -450,7 +450,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="fazendoMaisUm" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#fazendoMaisUm" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fazendoMaisUm" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
@@ -496,7 +496,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="fazendoDois" layoutX="777.0" layoutY="237.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="fazendoDois" layoutX="777.0" layoutY="237.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="fazendoCorEscolhidaDois" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Pane fx:id="fazendoCorEscolhidaBarraDois" layoutY="34.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #0349FE;">
@@ -518,7 +518,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="fazendoMenosDois" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#fazendoMenosDois" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fazendoMenosDois" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -526,7 +526,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="fazendoMaisDois" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#fazendoMaisDois" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fazendoMaisDois" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
@@ -572,7 +572,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="fazendoTres" layoutX="558.0" layoutY="454.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="fazendoTres" layoutX="558.0" layoutY="454.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="fazendoCorEscolhidaTres" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Pane fx:id="fazendoCorEscolhidaBarraTres" layoutY="34.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #0349FE;">
@@ -594,7 +594,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="fazendoMenosTres" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#fazendoMenosTres" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fazendoMenosTres" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -602,7 +602,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="fazendoMaisTres" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#fazendoMaisTres" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fazendoMaisTres" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
@@ -648,7 +648,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="fazendoQuatro" layoutX="777.0" layoutY="454.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="fazendoQuatro" layoutX="777.0" layoutY="454.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="fazendoCorEscolhidaQuatro" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Pane fx:id="fazendoCorEscolhidaBarraQuatro" layoutY="34.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #0349FE;">
@@ -670,7 +670,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="fazendoMenosQuatro" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#fazendoMenosQuatro" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fazendoMenosQuatro" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -678,7 +678,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="fazendoMaisQuatro" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#fazendoMaisQuatro" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fazendoMaisQuatro" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
@@ -724,7 +724,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="finalizadoUm" layoutX="1027.0" layoutY="237.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="finalizadoUm" layoutX="1027.0" layoutY="237.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="finalizadoCorEscolhidaUm" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Pane fx:id="finalizadoCorEscolhidaBarraUm" layoutY="34.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #0349FE;">
@@ -746,7 +746,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="finalizadoMenosUm" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#finalizadoMenosUm" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="finalizadoMenosUm" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -754,7 +754,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="finalizadoMaisUm" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#finalizadoMaisUm" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="finalizadoMaisUm" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
@@ -800,7 +800,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="finalizadoDois" layoutX="1246.0" layoutY="237.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="finalizadoDois" layoutX="1246.0" layoutY="237.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="finalizadoCorEscolhidaDois" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Pane fx:id="finalizadoCorEscolhidaBarraDois" layoutY="34.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #0349FE;">
@@ -822,7 +822,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="finalizadoMenosDois" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#finalizadoMenosDois" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="finalizadoMenosDois" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -830,7 +830,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="finalizadoMaisDois" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#finalizadoMaisDois" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="finalizadoMaisDois" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
@@ -876,7 +876,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="finalizadoTres" layoutX="1027.0" layoutY="454.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="finalizadoTres" layoutX="1027.0" layoutY="454.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="finalizadoCorEscolhidaTres" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Pane fx:id="finalizadoCorEscolhidaBarraTres" layoutY="34.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #0349FE;">
@@ -898,7 +898,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="finalizadoMenosTres" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#finalizadoMenosTres" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="finalizadoMenosTres" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -906,7 +906,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="finalizadoMaisTres" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#finalizadoMaisTres" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="finalizadoMaisTres" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
@@ -952,7 +952,7 @@
             </VBox>
          </children>
       </Pane>
-      <Pane fx:id="finalizadoQuatro" layoutX="1246.0" layoutY="454.0" opacity="0.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
+      <Pane fx:id="finalizadoQuatro" layoutX="1246.0" layoutY="454.0" prefHeight="204.0" prefWidth="200.0" style="-fx-background-color: #E6E6E6; -fx-border-color: #0349FE; -fx-border-width: 2px;">
          <children>
             <Pane fx:id="finalizadoCorEscolhidaQuatro" prefHeight="204.0" prefWidth="22.0" style="-fx-background-color: #0349FE;" />
             <Pane fx:id="finalizadoCorEscolhidaBarraQuatro" layoutY="34.0" prefHeight="20.0" prefWidth="200.0" style="-fx-background-color: #0349FE;">
@@ -974,7 +974,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="finalizadoMenosQuatro" fitWidth="10.0" layoutX="87.0" layoutY="185.0" onMouseClicked="#finalizadoMenosQuatro" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="finalizadoMenosQuatro" fitWidth="10.0" layoutX="87.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/menos.png" />
                </image>
@@ -982,7 +982,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="finalizadoMaisQuatro" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" onMouseClicked="#finalizadoMaisQuatro" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="finalizadoMaisQuatro" fitHeight="10.0" fitWidth="10.0" layoutX="108.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/imgs/mais.png" />
                </image>
