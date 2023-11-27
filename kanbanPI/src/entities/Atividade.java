@@ -72,6 +72,7 @@ public class Atividade {
             if (nome.equals(acao.getNome())) {
                 if (acao.desvincular(this.pai.getEmpresa())) {
                     acoes.remove(acao);
+                    atualizarPorcentagem();
                     return true;
                 }
             }

@@ -18,6 +18,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import utils.Metodos;
 
 public class PostIt {
     private Pane container;
@@ -37,7 +38,7 @@ public class PostIt {
     private int pos;
     protected static String[] secoes = {"#aFazer", "#fazendo","#finalizado"};
     protected static String[] numerais = {"Um","Dois","Tres","Quatro"};
-    public static boolean selecionando;
+    public static boolean selecionando = false;
     public static ArrayList<Acao> selecionados;
     
     public PostIt(Scene cena, int coluna, int pos) {
@@ -180,6 +181,7 @@ public class PostIt {
         nomeAcao.setText(myData.getNome());
         nomeArea.setText(myData.getArea().getNome());
         nomeUsuario.setText(myData.getUsrResponsavel().getNome());
+        periodoData.setText(Metodos.dataDDMM(myData.getInicio())+" "+Metodos.dataDDMM(myData.getPrazo()));
         this.sideColor.setStyle("-fx-background-color:"+myData.getAtividade().getCor()+";");
         this.barraProgresso.setProgress(myData.getPorcentagem());
         int porcentagem = Math.round(myData.getPorcentagem()*100);

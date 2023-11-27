@@ -5,6 +5,7 @@
 package utils;
 
 import entities.Projeto;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +13,8 @@ import java.util.ArrayList;
  * @author kaiqu
  */
 public class Metodos {
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
+    
     public static boolean verificarEspacos(String str) {
         String trimmedString = str.trim();
         boolean x = true;
@@ -63,9 +66,10 @@ public class Metodos {
        return mosVet;
     }
 
+    public static String dataDDMM(long data) {
+         return sdf.format(new java.util.Date(data * 1000));
+    }
     
-    //Entra [null, null, projeto1, projeto2]
-    //Sai [projeto1, projeto2, null, null]
     public static Projeto[] sequenciar(Projeto[] projetos) {
         Projeto[] sequenciado = new Projeto[projetos.length];
         int j = 0;
@@ -76,5 +80,4 @@ public class Metodos {
         }
         return sequenciado;
     }
-    
 }

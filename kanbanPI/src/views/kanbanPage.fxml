@@ -46,7 +46,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ImageView fx:id="deletarAcao" fitHeight="40.0" fitWidth="40.0" layoutX="1134.0" layoutY="75.0" onMouseClicked="#deletarAcao" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="deletarAcao" fitHeight="40.0" fitWidth="40.0" layoutX="1134.0" layoutY="75.0" onMouseClicked="#deletarAcao" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/imgs/lixo.png" />
          </image>

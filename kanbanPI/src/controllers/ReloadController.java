@@ -755,7 +755,11 @@ public class ReloadController implements Initializable {
         tituloNovaAcao.setOpacity(opacidade);
         novaAtividade.setOpacity(opacidade);
         tituloNovaAtividade.setOpacity(opacidade);
-        deletarAcao.setOpacity(opacidade);
+        if (Kanban.loginAdmin && PostIt.selecionando) {
+            deletarAcao.setOpacity(1);
+        } else {
+            deletarAcao.setOpacity(0);
+        }
     }
 
     public void loadAtividades() {

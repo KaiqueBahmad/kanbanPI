@@ -570,9 +570,6 @@ public class KanbanPageController implements Initializable {
         novaAtividade.setOpacity(opacidade);
         tituloNovaAtividade.setOpacity(opacidade);
         deletarAcao.setOpacity(0); 
-        if (opacidade == 1 && PostIt.selecionando) {
-            deletarAcao.setOpacity(1); 
-        }
     }
 
     public void loadAtividades() {

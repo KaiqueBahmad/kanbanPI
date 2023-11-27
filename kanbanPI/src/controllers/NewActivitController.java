@@ -405,7 +405,7 @@ public class NewActivitController {
         tituloNovaAcao.setOpacity(opacidade);
         novaAtividade.setOpacity(opacidade);
         tituloNovaAtividade.setOpacity(opacidade);
-        deletarAcao.setOpacity(opacidade);
+        deletarAcao.setOpacity(0);
     }
 
     public void loadAtividades() {
