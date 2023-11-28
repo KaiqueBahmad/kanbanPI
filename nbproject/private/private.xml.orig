@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/kaiqu/OneDrive/Documents/desktop2/kanbanPI/kanbanPI/src/controllers/NewAreaController.java</file>
+            <file>file:/C:/Users/kaiqu/OneDrive/Documents/desktop2/kanbanPI/kanbanPI/src/utils/Metodos.java</file>
+            <file>file:/C:/Users/kaiqu/OneDrive/Documents/desktop2/kanbanPI/kanbanPI/src/controllers/NewUserController.java</file>
+            <file>file:/C:/Users/kaiqu/OneDrive/Documents/desktop2/kanbanPI/kanbanPI/src/controllers/SelectProjectController.java</file>
+            <file>file:/C:/Users/kaiqu/OneDrive/Documents/desktop2/kanbanPI/kanbanPI/src/controllers/LoginPageController.java</file>
+=======
+            <file>file:/C:/Users/heloi/OneDrive/Documentos/lisa/programming/faculdade/kanbanPI/kanbanPI/src/controllers/LoginPageController.java</file>
+            <file>file:/C:/Users/heloi/OneDrive/Documentos/lisa/programming/faculdade/kanbanPI/kanbanPI/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/heloi/OneDrive/Documentos/lisa/programming/faculdade/kanbanPI/kanbanPI/src/kanban/Kanban.java</file>
+            <file>file:/C:/Users/heloi/OneDrive/Documentos/lisa/programming/faculdade/kanbanPI/kanbanPI/src/entities/Empresa.java</file>
+>>>>>>> 951eb4cea993c16af1318e3b0dc1b7f730e256a9
+        </group>
+    </open-files>
+</project-private>
