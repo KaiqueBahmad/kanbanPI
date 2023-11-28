@@ -332,6 +332,12 @@ public class NewActivitController {
     private Button voltarProjetos;
     
     @FXML
+    private Button novoRelatorio;
+
+    @FXML
+    private Label tituloGerarRelatorio;
+    
+    @FXML
     private ImageView aFazerProximo;
     @FXML
     private ImageView fazendoProximo;

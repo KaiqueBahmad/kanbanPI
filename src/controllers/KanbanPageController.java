@@ -31,6 +31,12 @@ public class KanbanPageController implements Initializable {
 
     @FXML
     private Label aFazerAreaUm;
+    
+    @FXML
+    private Button novoRelatorio;
+
+    @FXML
+    private Label tituloGerarRelatorio;
 
     @FXML
     private ProgressBar aFazerBarraPorcentDois;
@@ -554,6 +560,11 @@ public class KanbanPageController implements Initializable {
             Kanban.telas("newActivit");
        }
         
+    }
+    
+    @FXML
+   private void novoRelatorio(ActionEvent event) {
+       // fazer download do txt
     }
 
     @FXML

@@ -490,6 +490,12 @@ public class NewActionController {
     private Button voltarProjetos;
     @FXML
     private Pane popupNewAction;
+    
+    @FXML
+    private Button novoRelatorio;
+
+    @FXML
+    private Label tituloGerarRelatorio;
        
     private ObservableList<String> opcoesAtividade;
     private ObservableList<String> opcoesUsuario;
