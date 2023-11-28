@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -565,6 +566,7 @@ public class KanbanPageController implements Initializable {
     @FXML
    private void novoRelatorio(ActionEvent event) {
        // fazer download do txt
+        System.out.println("fui clickado");
     }
 
     @FXML
@@ -580,7 +582,23 @@ public class KanbanPageController implements Initializable {
         tituloNovaAcao.setOpacity(opacidade);
         novaAtividade.setOpacity(opacidade);
         tituloNovaAtividade.setOpacity(opacidade);
-        deletarAcao.setOpacity(0); 
+        deletarAcao.setOpacity(0);
+        if (!Kanban.loginAdmin) {
+            novaAtividade.setCursor(Cursor.DEFAULT);
+            novaAcao.setCursor(Cursor.DEFAULT);
+            novoRelatorio.setLayoutX(65);
+            novoRelatorio.setLayoutY(70);
+            tituloGerarRelatorio.setLayoutX(129);
+            tituloGerarRelatorio.setLayoutY(77);
+        } else {
+            novaAtividade.setCursor(Cursor.HAND);
+            novaAcao.setCursor(Cursor.HAND);
+            novoRelatorio.setLayoutX(626);
+            novoRelatorio.setLayoutY(70);
+            tituloGerarRelatorio.setLayoutX(690);
+            tituloGerarRelatorio.setLayoutY(77);
+            
+        }
     }
 
     public void loadAtividades() {

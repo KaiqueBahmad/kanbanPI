@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -479,6 +480,12 @@ public class ReloadController implements Initializable {
     @FXML
     private Button voltarProjetos;
     
+    @FXML
+    private Button novoRelatorio;
+
+    @FXML
+    private Label tituloGerarRelatorio;
+    
     private boolean lixeiraAberta;
     
     private PostIt[][] postIts;
@@ -755,10 +762,22 @@ public class ReloadController implements Initializable {
         tituloNovaAcao.setOpacity(opacidade);
         novaAtividade.setOpacity(opacidade);
         tituloNovaAtividade.setOpacity(opacidade);
-        if (Kanban.loginAdmin && PostIt.selecionando) {
-            deletarAcao.setOpacity(1);
+        deletarAcao.setOpacity(0);
+        if (!Kanban.loginAdmin) {
+            novaAtividade.setCursor(Cursor.DEFAULT);
+            novaAcao.setCursor(Cursor.DEFAULT);
+            novoRelatorio.setLayoutX(65);
+            novoRelatorio.setLayoutY(70);
+            tituloGerarRelatorio.setLayoutX(129);
+            tituloGerarRelatorio.setLayoutY(77);
         } else {
-            deletarAcao.setOpacity(0);
+            novaAtividade.setCursor(Cursor.HAND);
+            novaAcao.setCursor(Cursor.HAND);
+            novoRelatorio.setLayoutX(626);
+            novoRelatorio.setLayoutY(70);
+            tituloGerarRelatorio.setLayoutX(690);
+            tituloGerarRelatorio.setLayoutY(77);
+            
         }
     }
 
