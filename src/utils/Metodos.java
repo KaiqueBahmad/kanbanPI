@@ -70,6 +70,42 @@ public class Metodos {
          return sdf.format(new java.util.Date(data * 1000));
     }
     
+    public static String tempoRestante(Long prazo){
+        long atual = System.currentTimeMillis()/1000;
+        
+        long p = prazo - atual;
+        boolean negativo = false;
+        if (p < 0) {
+            p = -p;
+            negativo = true;
+        }
+        String f = "";
+        
+        if(p >= 0 && p < 60){
+        f = p + " segundo(s)";   
+            
+        }else if(p >= 60 && p < 3600){
+        f = (p / 60) + " minuto(s)";
+            
+        }else if(p >= 3600 && p < 86400){
+        f = (p / 3600) + " hora(s)";
+            
+        }else if( p >= 86400 && p < 2629743){
+        f = (p / 86400) + " dia(s)";
+            
+        }else if( p >= 2629743 && p < 31556926){
+        f = (p / 2629743) + " mese(s)"; 
+            
+        }else if( p >= 31556926){
+        f = (p / 31556926 ) + " ano(s)";
+        
+        }
+        if (negativo) {
+            return "Atrasado a "+f;
+        } 
+        return "Faltam "+f;
+    }
+    
     public static Projeto[] sequenciar(Projeto[] projetos) {
         Projeto[] sequenciado = new Projeto[projetos.length];
         int j = 0;

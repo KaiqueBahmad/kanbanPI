@@ -608,8 +608,10 @@ public class KanbanPageController implements Initializable {
         finalizado = new ArrayList<>();
         if (PostIt.selecionando && Kanban.loginAdmin) {
             deletarAcao.setOpacity(1);
+            deletarAcao.setCursor(Cursor.HAND);
         } else {
             deletarAcao.setOpacity(0);
+            deletarAcao.setCursor(Cursor.DEFAULT);
         }
         for (Atividade at:Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto].getAtividades()) {
             for (Acao ac:at.getAcoes()) {

@@ -104,7 +104,7 @@ public class PostIt {
     private static void removerDaSelecao(Acao target) {
         if (estaSelecionado(target)) {
             PostIt.selecionados.remove(target);
-            if (PostIt.selecionados.size() == 0) {
+            if (PostIt.selecionados.isEmpty()) {
                 selecionando = false;
             }
         }
@@ -186,6 +186,7 @@ public class PostIt {
         this.barraProgresso.setProgress(myData.getPorcentagem());
         int porcentagem = Math.round(myData.getPorcentagem()*100);
         this.labelProgresso.setText(Integer.toString(porcentagem)+"%");
+        this.diasRestantes.setText(Metodos.tempoRestante(this.myData.getPrazo()));
         container.setOpacity(1);
         
     }
