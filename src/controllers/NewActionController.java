@@ -567,6 +567,10 @@ public class NewActionController {
         String prazo = prazoAcao.getText();
         LocalDate data = inicioAcao.getValue();
         System.out.println(atividadeAcao.getSelectionModel().getSelectedItem());
+        if (!Metodos.verificarEspacos(nome)) {
+            errorNovaAcao.setText("Política de uso de espaços inadequada.");
+            return;
+        }
         if (nome.equals("") || prazo.equals("")|| data == null || atividadeAcao.getSelectionModel().getSelectedItem() == null || usuarioAcao.getSelectionModel().getSelectedItem() == null || areaAcao.getSelectionModel().getSelectedItem() == null) {
             errorNovaAcao.setText("Há campos em branco");
             return;

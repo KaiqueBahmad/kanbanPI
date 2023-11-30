@@ -7,6 +7,7 @@ import entities.Projeto;
 import entities.Usuario;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Relatorio {
     public static String criarRelatorio(Projeto projeto) {
@@ -134,20 +135,29 @@ public class Relatorio {
             relatorio+= "\n";
             relatorio+= "#STATUS ATIVIDADES\n";
             
-            int numAcoesCompletas = 0;
-            int numAcoesAtrasadas = 0;
-            int numAcoesAndamento = 0;
+            int numAcoesCompletas;
+            int numAcoesAtrasadas;
+            int numAcoesAndamento;
             for (Atividade at:projeto.getAtividades()) {
+                numAcoesCompletas = 0;
+                numAcoesAtrasadas = 0;
+                numAcoesAndamento = 0;
                 relatorio += at.getNome()+":\n";
-                relatorio += "\tNúmero de Ações: "+at.getAcoes().size();
+                relatorio += "\tNúmero de Ações: "+at.getAcoes().size()+"\n";
                 for (Acao ac:at.getAcoes()) {
                     if (ac.getPorcentagem() < 1 && ac.getPrazo() - System.currentTimeMillis()/1000 >= 0) {
                         numAcoesAndamento++;
+                    } else if (ac.getPorcentagem() < 1) {
+                        numAcoesAtrasadas++;
+                    } else {
+                        numAcoesCompletas++;
                     }
                 }
+                relatorio += "\tNúmero de Ações em Andamento: "+numAcoesAndamento+"\n";
+                relatorio += "\tNúmero d Ações Atrasadas: "+numAcoesAtrasadas+"\n";
+                relatorio += "\tNúmero de Ações Completas: "+numAcoesCompletas+"\n";
             }
         }
-        
         return relatorio;
     }
     
@@ -161,18 +171,23 @@ public class Relatorio {
         }
         return out;
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Empresa emp = new Empresa("nome","senha");
         emp.salvarSenha("senha");
         emp.criarProjeto("nome", "descricao");
         emp.getProjetos()[0].criarAtividade("atividade 1", "#0000FF");
         emp.criarArea("financeiro");
         emp.criarUsuario("usuario", "senha");
-        emp.getProjetos()[0].getAtividadePorNome("atividade 1").criarAcao("acao", "usuario", "financeiro", 1701291822, 1701900000);
+        emp.getProjetos()[0].getAtividadePorNome("atividade 1").criarAcao("acao", "usuario", "financeiro", System.currentTimeMillis()/1000, 1701900000);
         emp.getProjetos()[0].getAtividadePorNome("atividade 1").criarAcao("acao 2", "usuario", "financeiro", 1701291822, 1701900000);
         emp.getProjetos()[0].getAtividadePorNome("atividade 1").criarAcao("acao 3", "usuario", "financeiro", 1701291822, 1701900000);
 //        emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao 2").aumentarPorcentagem(0.55);
 //        emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao 3").aumentarPorcentagem(1.7);
         System.out.println(criarRelatorio(emp.getProjetos()[0]));
+//        TimeUnit.SECONDS.sleep(5);
+//        emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao").aumentarPorcentagem(0.5);
+//        TimeUnit.SECONDS.sleep(5);
+//        emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao").aumentarPorcentagem(0.6);
+//        System.out.println(emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao").getHistorico());;        
     }
 }

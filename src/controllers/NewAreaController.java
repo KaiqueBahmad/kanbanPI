@@ -133,6 +133,7 @@ public class NewAreaController {
     @FXML
     private void criarArea(ActionEvent event) {
         String nome = nomeArea.getText();
+        nome = Metodos.formatarPalavra(nome);
         if(nome.equals("")){
             errorNovaArea.setText("Há campos em branco");
             return;

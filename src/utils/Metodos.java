@@ -106,6 +106,45 @@ public class Metodos {
         return "Faltam "+f;
     }
     
+    public static String tempoEntre(long inicio, long fim){
+        long p = fim - inicio;
+        boolean negativo = false;
+        if (p < 0) {
+            p = -p;
+            negativo = true;
+        }
+        String f = "";
+        
+        if(p >= 0 && p < 60){
+        f = p + " segundo(s)";   
+            
+        }else if(p >= 60 && p < 3600){
+        f = (p / 60) + " minuto(s)";
+            
+        }else if(p >= 3600 && p < 86400){
+        f = (p / 3600) + " hora(s)";
+            
+        }else if( p >= 86400 && p < 2629743){
+        f = (p / 86400) + " dia(s)";
+            
+        }
+        if (negativo) {
+            return "-"+f;
+        } 
+        return f;
+    }
+    
+    public static String formatarPalavra(String str) {
+        if (str.isEmpty()) {
+            return str;
+        }
+        String retorno = Character.toString(str.toCharArray()[0]).toUpperCase();
+        for (int i = 1; i<str.length();i++) {
+            retorno += str.charAt(i);
+        }
+        return retorno;
+    }
+    
     public static Projeto[] sequenciar(Projeto[] projetos) {
         Projeto[] sequenciado = new Projeto[projetos.length];
         int j = 0;
@@ -115,5 +154,7 @@ public class Metodos {
             }
         }
         return sequenciado;
+    }
+    public static void main(String[] args) {
     }
 }

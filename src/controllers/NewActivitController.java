@@ -380,12 +380,23 @@ public class NewActivitController {
             return;
         }
         String nomeAtividade = nomeAtividadeCriado.getText();
+        nomeAtividade = Metodos.formatarPalavra(nomeAtividade);
         Color cor = corAtividadeCriado.getValue();
         String corHex = String.format( "#%02X%02X%02X",
             (int)( cor.getRed() * 255 ),
             (int)( cor.getGreen() * 255 ),
             (int)( cor.getBlue() * 255 )
         );
+        for (Atividade at:Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto].getAtividades()) {
+            if (corHex.equals(at.getCor())) {
+                errorAtividade.setText("Cor já utilizada.");
+                return;
+            }
+        }
+        if(corHex.equals("#FFFFFF")) {
+            errorAtividade.setText("Cor branca não pode ser utilizada.");
+            return;
+        }
         if (!Metodos.verificarEspacos(nomeAtividadeCriado.getText())) {
             errorAtividade.setText("Política de uso de espaços inadequada.");
             return;
