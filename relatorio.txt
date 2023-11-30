@@ -21,9 +21,9 @@ RELATORIO PROJETO "nome do projeto" DD/MM/AAAA HH:MM
 |_______________________|_______________________|_______________________|
 
 #STATUS USUARIOS
+
 Usuário 1:
     Designado a: X% das Ações (k ações)
-    Produtivdade: N pontos (K em relação à média)
     Ações atrasadas:
         Ação 4 (Atividade 1) [75%]: A X dias
     Ações Completas:
@@ -32,17 +32,10 @@ Usuário 1:
 
 #STATUS ATIVIDADES
 Atividade 1:
-    Porcentagem: X%
-    Prazo médio das atividades: X%
-    Atividade com prazo mais urgente relativo ao prazo total:
-        Acao 3: 15% do prazo
-    Atividades com menor andamento relativo à duração:
-        Acao 1: 5%/Dia
-        Acao 2: 10%/Dia
-        Acao 3: 25%/Dia
-    Atividades atrasadas:
-        Acao 4 (a 15 horas)
-        Acao 7 (a 2 dias)
+    Num ações: X Ações
+    Concluídas: K% (x/N)
+
+    
 
 *STATUS AÇÕES
 Acao 1:

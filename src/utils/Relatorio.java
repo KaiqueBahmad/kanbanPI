@@ -4,6 +4,7 @@ import entities.Empresa;
 import entities.Acao;
 import entities.Atividade;
 import entities.Projeto;
+import entities.Usuario;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -90,6 +91,63 @@ public class Relatorio {
             relatorio += "|"+primeiraColuna+"|"+segundaColuna+"|"+terceiraColuna+"|\n";
         }
         relatorio += "|"+xS("_",maior)+"|"+xS("_",maior)+"|"+xS("_", maior)+"|\n";
+        relatorio +="\n";
+        relatorio += "#STATUS USUARIOS\n";
+        int indiceDesignado = 0;
+        int numDesignado = 0;
+        for (Usuario usr: projeto.getEmpresa().getUsuarios()) {
+            relatorio += usr.getNome()+":\n";
+            for (Atividade at:projeto.getAtividades()) {
+                for (Acao ac:at.getAcoes()) {
+                    if (ac.getUsrResponsavel().getNome().equals(usr.getNome())) {
+                        numDesignado++;
+                    }
+                }
+            }
+            indiceDesignado = (int)((numDesignado / (double) numAcoes)*100);
+            relatorio += "\tDesignado a: "+indiceDesignado+"% das Ações ("+numDesignado+")\n";
+            relatorio += "\tAções Atrasadas:\n";
+            int porcentagem = 0;
+            for (Acao ac:usr.getAcoes()) {
+                if (ac.getPrazo() - System.currentTimeMillis()/1000 < 0 && ac.getPorcentagem() < 1) {
+                    porcentagem = (int)(ac.getPorcentagem()*100) ;
+                    relatorio += "\t\t";
+                    relatorio += ac.getNome()+"("+ac.getAtividade().getNome()+")["+porcentagem+"%]: "+Metodos.tempoRestante(ac.getPrazo())+"\n";
+                }
+            }   
+            relatorio+= "\tAções Completas:\n";
+            for (Acao ac:usr.getAcoes()) {
+                if (ac.getPorcentagem() == 1) {
+                    porcentagem = (int)(ac.getPorcentagem()*100) ;
+                    relatorio += "\t\t";
+                    relatorio += ac.getNome()+"("+ac.getAtividade().getNome()+")["+porcentagem+"%]: "+Metodos.tempoRestante(ac.getPrazo())+"\n";
+                }
+            }
+            relatorio+= "\tAções em Andamento:\n";
+            for (Acao ac:usr.getAcoes()) {
+                if (ac.getPorcentagem() >= 0 && ac.getPorcentagem() < 1 && ac.getPrazo() - System.currentTimeMillis()/1000 >= 0) {
+                    porcentagem = (int)(ac.getPorcentagem()*100) ;
+                    relatorio += "\t\t";
+                    relatorio += ac.getNome()+"("+ac.getAtividade().getNome()+")["+porcentagem+"%]: "+Metodos.tempoRestante(ac.getPrazo())+"\n";
+                }
+            }
+            relatorio+= "\n";
+            relatorio+= "#STATUS ATIVIDADES\n";
+            
+            int numAcoesCompletas = 0;
+            int numAcoesAtrasadas = 0;
+            int numAcoesAndamento = 0;
+            for (Atividade at:projeto.getAtividades()) {
+                relatorio += at.getNome()+":\n";
+                relatorio += "\tNúmero de Ações: "+at.getAcoes().size();
+                for (Acao ac:at.getAcoes()) {
+                    if (ac.getPorcentagem() < 1 && ac.getPrazo() - System.currentTimeMillis()/1000 >= 0) {
+                        numAcoesAndamento++;
+                    }
+                }
+            }
+        }
+        
         return relatorio;
     }
     
