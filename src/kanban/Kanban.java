@@ -86,49 +86,49 @@ public class Kanban extends Application {
         empresas[0].criarUsuario("Usuario 2", "123");
         empresas[0].criarArea("Area 1");
         empresas[0].logout();
-        Parent fxmlLoginPage = FXMLLoader.load(getClass().getResource("../views/loginPage.fxml"));
+        Parent fxmlLoginPage = FXMLLoader.load(getClass().getResource("/views/loginPage.fxml"));
         sceneLoginPage = new Scene(fxmlLoginPage,  1535, 800);
         
-        FXMLLoader fxmlSelectProject = new FXMLLoader(getClass().getResource("../views/selectProject.fxml"));
+        FXMLLoader fxmlSelectProject = new FXMLLoader(getClass().getResource("/views/selectProject.fxml"));
         sceneSelectProject = new Scene(fxmlSelectProject.load(),  1535, 800);
         controllerSelectProject = fxmlSelectProject.getController();
         
         
-        FXMLLoader fxmlcreateProject = new FXMLLoader(getClass().getResource("../views/createProject.fxml"));
+        FXMLLoader fxmlcreateProject = new FXMLLoader(getClass().getResource("/views/createProject.fxml"));
         sceneCreateProject = new Scene(fxmlcreateProject.load(),  1535, 800);
         controllerCreateProject = fxmlcreateProject.getController();        
         
-        FXMLLoader fxmlNewNameProject = new FXMLLoader(getClass().getResource("../views/newNameProject.fxml"));
+        FXMLLoader fxmlNewNameProject = new FXMLLoader(getClass().getResource("/views/newNameProject.fxml"));
         sceneNewNameProject = new Scene(fxmlNewNameProject.load(),  1535, 800);
         controllerNewNameProject = fxmlNewNameProject.getController();
         
-        FXMLLoader fxmlKanbanPage = new FXMLLoader(getClass().getResource("../views/kanbanPage.fxml"));
+        FXMLLoader fxmlKanbanPage = new FXMLLoader(getClass().getResource("/views/kanbanPage.fxml"));
         sceneKanbanPage = new Scene(fxmlKanbanPage.load(),  1535, 800);
         controllerKanbanPage = fxmlKanbanPage.getController();
         controllerKanbanPage.definirPostIts(sceneKanbanPage);
         
-        FXMLLoader fxmlReload = new FXMLLoader(getClass().getResource("../views/reload.fxml"));
+        FXMLLoader fxmlReload = new FXMLLoader(getClass().getResource("/views/reload.fxml"));
         sceneReload = new Scene(fxmlReload.load(),  1535, 800);
         controllerReload = fxmlReload.getController();
         controllerReload.definirPostIts(sceneReload);
         
-        FXMLLoader fxmlNewAction = new FXMLLoader(getClass().getResource("../views/newAction.fxml"));
+        FXMLLoader fxmlNewAction = new FXMLLoader(getClass().getResource("/views/newAction.fxml"));
         sceneNewAction = new Scene(fxmlNewAction.load(),  1535, 800);
         controllerNewAction = fxmlNewAction.getController();
         controllerNewAction.definirPostIts(sceneNewAction);
         
-        FXMLLoader fxmlNewActivit = new FXMLLoader(getClass().getResource("../views/newActivit.fxml"));
+        FXMLLoader fxmlNewActivit = new FXMLLoader(getClass().getResource("/views/newActivit.fxml"));
         sceneNewActivit = new Scene(fxmlNewActivit.load(),  1535, 800);
         controllerNewActivity = fxmlNewActivit.getController();
         controllerNewActivity.definirPostIts(sceneNewActivit);
         
-        FXMLLoader fxmlNewUser = new FXMLLoader(getClass().getResource("../views/newUser.fxml"));
+        FXMLLoader fxmlNewUser = new FXMLLoader(getClass().getResource("/views/newUser.fxml"));
         sceneNewUser = new Scene(fxmlNewUser.load(),  1535, 800);
         controllerNewUser = fxmlNewUser.getController();
         
         
         
-        FXMLLoader fxmlNewArea = new FXMLLoader(getClass().getResource("../views/newArea.fxml"));
+        FXMLLoader fxmlNewArea = new FXMLLoader(getClass().getResource("/views/newArea.fxml"));
         sceneNewArea = new Scene(fxmlNewArea.load(),  1535, 800);
         controllerNewArea = fxmlNewArea.getController();
         
@@ -164,7 +164,6 @@ public class Kanban extends Application {
                 telaSelecionada.setScene(sceneReload);
             }
             case "newName" -> {
-//                controllerNewNameProject
                 controllerNewNameProject.loadProjetos();
                 telaSelecionada.setScene(sceneNewNameProject);
             }

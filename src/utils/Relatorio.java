@@ -121,7 +121,12 @@ public class Relatorio {
                 if (ac.getPorcentagem() == 1) {
                     porcentagem = (int)(ac.getPorcentagem()*100) ;
                     relatorio += "\t\t";
-                    relatorio += ac.getNome()+"("+ac.getAtividade().getNome()+")["+porcentagem+"%]: "+Metodos.tempoRestante(ac.getPrazo())+"\n";
+                    
+                    if ( ac.getPrazo() - ac.getTermino() > 0) {
+                        relatorio += ac.getNome()+"("+ac.getAtividade().getNome()+")["+porcentagem+"%]: adiantado em "+Metodos.tempoEntre(ac.getTermino(), ac.getPrazo())+"\n";
+                    } else {
+                        relatorio += ac.getNome()+"("+ac.getAtividade().getNome()+")["+porcentagem+"%]: atrasado em "+Metodos.tempoEntre(ac.getPrazo(), ac.getTermino())+"\n";
+                    }
                 }
             }
             relatorio+= "\tAções em Andamento:\n";
@@ -158,6 +163,23 @@ public class Relatorio {
                 relatorio += "\tNúmero de Ações Completas: "+numAcoesCompletas+"\n";
             }
         }
+        relatorio += "#STATUS AÇÕES";
+        for (Atividade at:projeto.getAtividades()) {
+            for (Acao ac:at.getAcoes()) {
+                relatorio += ac.getNome() +"("+at.getNome()+"):\n";
+                float percent = ac.getPorcentagem();
+                relatorio += "\tPorcentagem: "+(int)(percent*100)+"%\n";
+                if (percent == 0) {
+                    relatorio += "\tStatus: A Fazer\n";
+                } else if (percent > 0 && percent < 1 ) {
+                    relatorio += "\tStatus: Fazendo\n";
+                } else {
+                    relatorio += "\tStatus: Finalizado\n";
+                }
+                relatorio += "\tHistórico: "+String.join(" -> ",ac.getHistorico())+"\n";
+            }
+        }
+        
         return relatorio;
     }
     
@@ -181,7 +203,8 @@ public class Relatorio {
         emp.getProjetos()[0].getAtividadePorNome("atividade 1").criarAcao("acao", "usuario", "financeiro", System.currentTimeMillis()/1000, 1701900000);
         emp.getProjetos()[0].getAtividadePorNome("atividade 1").criarAcao("acao 2", "usuario", "financeiro", 1701291822, 1701900000);
         emp.getProjetos()[0].getAtividadePorNome("atividade 1").criarAcao("acao 3", "usuario", "financeiro", 1701291822, 1701900000);
-//        emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao 2").aumentarPorcentagem(0.55);
+        emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao 2").aumentarPorcentagem(1);
+        emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao 2").aumentarPorcentagem(-0.5);
 //        emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao 3").aumentarPorcentagem(1.7);
         System.out.println(criarRelatorio(emp.getProjetos()[0]));
 //        TimeUnit.SECONDS.sleep(5);

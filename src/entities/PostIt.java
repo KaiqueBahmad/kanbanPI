@@ -186,7 +186,22 @@ public class PostIt {
         this.barraProgresso.setProgress(myData.getPorcentagem());
         int porcentagem = Math.round(myData.getPorcentagem()*100);
         this.labelProgresso.setText(Integer.toString(porcentagem)+"%");
-        this.diasRestantes.setText(Metodos.tempoRestante(this.myData.getPrazo()));
+        System.out.println(this.coluna);
+        if (this.coluna == 0 || this.coluna == 1) {
+            this.diasRestantes.setText(Metodos.tempoRestante(this.myData.getPrazo()));
+        } else if (this.coluna == 2) {
+            String delta = "";
+            String mensagemFinalizado = "";
+            if ( this.myData.getPrazo() - this.myData.getTermino() > 0) {
+                delta = Metodos.tempoEntre(this.myData.getTermino(), this.myData.getPrazo());
+                mensagemFinalizado = delta+" Adiantado";
+            } else {
+                delta = Metodos.tempoEntre(this.myData.getPrazo(), this.myData.getTermino());
+                mensagemFinalizado = delta+" Atrasado";
+            }
+            
+            this.diasRestantes.setText(mensagemFinalizado);
+        }
         container.setOpacity(1);
         
     }
