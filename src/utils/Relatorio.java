@@ -7,14 +7,14 @@ import entities.Projeto;
 import entities.Usuario;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 public class Relatorio {
     public static String criarRelatorio(Projeto projeto) {
         String relatorio = "";
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY HH:mm");
         String dataAtual = sdf.format(new Date());
-        relatorio += "RELATORIO PROJETO \""+projeto.getNome()+"\" "+dataAtual+"\n\n";
+        relatorio += "RELATORIO PROJETO \""+projeto.getNome()+"\" "+dataAtual+"\n";
+        relatorio += "DESCRIÇÃO: "+projeto.getDescricao() +"\n\n";
         relatorio += "*PREVIEW\n";
         int maior = 0;
         int numAcoes = 0;

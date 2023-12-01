@@ -20,10 +20,11 @@ import javafx.event.ActionEvent;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 
 public class Kanban extends Application {
-    private static Stage telaSelecionada;
+    public static Stage telaSelecionada;
     private static Scene sceneSelectProject;
     private static SelectProjectController controllerSelectProject;
     private static Scene sceneCreateProject;
@@ -50,7 +51,6 @@ public class Kanban extends Application {
     public static int paginaAFazer;
     public static int paginaFazendo;
     public static int paginaFinalizado;
-    
     
     
     public static Empresa empresaAtual() {
@@ -127,10 +127,11 @@ public class Kanban extends Application {
         controllerNewUser = fxmlNewUser.getController();
         
         
-        
         FXMLLoader fxmlNewArea = new FXMLLoader(getClass().getResource("/views/newArea.fxml"));
         sceneNewArea = new Scene(fxmlNewArea.load(),  1535, 800);
         controllerNewArea = fxmlNewArea.getController();
+        
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/assets/imgs/imgKanban.png")));
         
         stage.setScene(sceneLoginPage);
         stage.show();

@@ -90,4 +90,8 @@ public class Projeto {
         }
         return i;
     }
+
+    public String getDescricao() {
+        return this.descricao;
+    }
 }

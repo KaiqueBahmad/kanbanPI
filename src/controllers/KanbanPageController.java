@@ -3,7 +3,13 @@ package controllers;
 import entities.Acao;
 import entities.Atividade;
 import entities.PostIt;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,7 +23,11 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import kanban.Kanban;
+import utils.Relatorio;
 
 public class KanbanPageController implements Initializable {
 
@@ -564,9 +574,18 @@ public class KanbanPageController implements Initializable {
     }
     
     @FXML
-   private void novoRelatorio(ActionEvent event) {
-       // fazer download do txt
-        System.out.println("fui clickado");
+   private void novoRelatorio(ActionEvent event) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().addAll(
+                 new ExtensionFilter("Text Files", "*.txt")
+        );
+         File selectedFile = fileChooser.showSaveDialog(Kanban.telaSelecionada);
+         if (selectedFile != null) {
+            try (BufferedWriter br = Files.newBufferedWriter(selectedFile.toPath(), StandardCharsets.UTF_8)) {
+                br.write(Relatorio.criarRelatorio(Kanban.empresaAtual().getProjetos()[Kanban.projetoAberto]));
+            }
+         }
     }
 
     @FXML
