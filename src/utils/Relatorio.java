@@ -138,32 +138,33 @@ public class Relatorio {
                 }
             }
             relatorio+= "\n";
-            relatorio+= "#STATUS ATIVIDADES\n";
             
-            int numAcoesCompletas;
-            int numAcoesAtrasadas;
-            int numAcoesAndamento;
-            for (Atividade at:projeto.getAtividades()) {
-                numAcoesCompletas = 0;
-                numAcoesAtrasadas = 0;
-                numAcoesAndamento = 0;
-                relatorio += at.getNome()+":\n";
-                relatorio += "\tNúmero de Ações: "+at.getAcoes().size()+"\n";
-                for (Acao ac:at.getAcoes()) {
-                    if (ac.getPorcentagem() < 1 && ac.getPrazo() - System.currentTimeMillis()/1000 >= 0) {
-                        numAcoesAndamento++;
-                    } else if (ac.getPorcentagem() < 1) {
-                        numAcoesAtrasadas++;
-                    } else {
-                        numAcoesCompletas++;
-                    }
-                }
-                relatorio += "\tNúmero de Ações em Andamento: "+numAcoesAndamento+"\n";
-                relatorio += "\tNúmero d Ações Atrasadas: "+numAcoesAtrasadas+"\n";
-                relatorio += "\tNúmero de Ações Completas: "+numAcoesCompletas+"\n";
-            }
         }
-        relatorio += "#STATUS AÇÕES";
+        relatorio+= "#STATUS ATIVIDADES\n";
+            
+        int numAcoesCompletas;
+        int numAcoesAtrasadas;
+        int numAcoesAndamento;
+        for (Atividade at:projeto.getAtividades()) {
+            numAcoesCompletas = 0;
+            numAcoesAtrasadas = 0;
+            numAcoesAndamento = 0;
+            relatorio += at.getNome()+":\n";
+            relatorio += "\tNúmero de Ações: "+at.getAcoes().size()+"\n";
+            for (Acao ac:at.getAcoes()) {
+                if (ac.getPorcentagem() < 1 && ac.getPrazo() - System.currentTimeMillis()/1000 >= 0) {
+                    numAcoesAndamento++;
+                } else if (ac.getPorcentagem() < 1) {
+                    numAcoesAtrasadas++;
+                } else {
+                    numAcoesCompletas++;
+                }
+            }
+            relatorio += "\tNúmero de Ações em Andamento: "+numAcoesAndamento+"\n";
+            relatorio += "\tNúmero d Ações Atrasadas: "+numAcoesAtrasadas+"\n";
+            relatorio += "\tNúmero de Ações Completas: "+numAcoesCompletas+"\n";
+        }
+        relatorio += "#STATUS AÇÕES\n";
         for (Atividade at:projeto.getAtividades()) {
             for (Acao ac:at.getAcoes()) {
                 relatorio += ac.getNome() +"("+at.getNome()+"):\n";

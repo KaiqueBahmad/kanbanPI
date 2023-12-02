@@ -511,6 +511,7 @@ public class NewActionController {
         errorNovaAcao.setText("");
         nomeAcao.clear();
         inicioAcao.getEditor().clear();
+        inicioAcao.setValue(null);
         prazoAcao.clear();
         atividadeAcao.getSelectionModel().clearSelection();
         atividadeAcao.setButtonCell(new ListCell<String>() {
@@ -600,6 +601,7 @@ public class NewActionController {
         errorNovaAcao.setText("");
         nomeAcao.clear();
         inicioAcao.getEditor().clear();
+        inicioAcao.setValue(null);
         prazoAcao.clear();
         atividadeAcao.getSelectionModel().clearSelection();
         atividadeAcao.setStyle("-fx-background-radius:10px;-fx-font-size:25px;-fx-color:#FFFFFF;");
@@ -644,6 +646,7 @@ public class NewActionController {
     
     public void loadAreasLista() {
         Empresa empresaLogada = null;
+        inicioAcao.setEditable(false);
         if (!Kanban.loginAdmin) {
             return;
         }

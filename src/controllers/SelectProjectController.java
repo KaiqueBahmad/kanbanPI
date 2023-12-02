@@ -114,12 +114,18 @@ public class SelectProjectController {
     @FXML
     private void editarProjetoUm(MouseEvent event) {
         // verificar se projeto existe
+        if (!Kanban.loginAdmin || Kanban.empresaAtual().getProjetos()[0] == null) {
+            return;
+        }
         Kanban.projetoAberto = 0;
         Kanban.telas("newName", event);
     }
     @FXML
     private void editarProjetoDois(MouseEvent event) {
         // verificar se projeto existe
+        if (!Kanban.loginAdmin || Kanban.empresaAtual().getProjetos()[1] == null) {
+            return;
+        }
         Kanban.projetoAberto = 1;
         Kanban.telas("newName", event);
     }
@@ -127,6 +133,9 @@ public class SelectProjectController {
     @FXML
     private void editarProjetoTres(MouseEvent event) {
         // verificar se projeto existe
+        if (!Kanban.loginAdmin || Kanban.empresaAtual().getProjetos()[2] == null) {
+            return;
+        }
         Kanban.projetoAberto = 2;
         Kanban.telas("newName", event);
     }
@@ -135,12 +144,15 @@ public class SelectProjectController {
     @FXML
     private void editarProjetoQuatro(MouseEvent event) {
         // verificar se projeto existe
+        if (!Kanban.loginAdmin || Kanban.empresaAtual().getProjetos()[3] == null) {
+            return;
+        }
         Kanban.projetoAberto = 3;
         Kanban.telas("newName", event);
     }
     @FXML
     private void excluirProjetoUm(MouseEvent event) {
-        if (!Kanban.loginAdmin) {
+        if (!Kanban.loginAdmin || Kanban.empresaAtual().getProjetos()[0] == null) {
             return;
         }
         Kanban.empresaAtual().deletarProjeto(0);
@@ -148,7 +160,7 @@ public class SelectProjectController {
     }
     @FXML
     private void excluirProjetoDois(MouseEvent event) {
-        if (!Kanban.loginAdmin) {
+        if (!Kanban.loginAdmin || Kanban.empresaAtual().getProjetos()[1] == null) {
             return;
         }
         Kanban.empresaAtual().deletarProjeto(1);
@@ -157,7 +169,7 @@ public class SelectProjectController {
 
     @FXML
     private void excluirProjetoTres(MouseEvent event) {
-        if (!Kanban.loginAdmin) {
+        if (!Kanban.loginAdmin || Kanban.empresaAtual().getProjetos()[2] == null) {
             return;
         }
         Kanban.empresaAtual().deletarProjeto(2);
@@ -165,7 +177,7 @@ public class SelectProjectController {
     }
     @FXML
     private void excluirProjetoQuatro(MouseEvent event) {
-        if (!Kanban.loginAdmin) {
+        if (!Kanban.loginAdmin || Kanban.empresaAtual().getProjetos()[3] == null) {
             return;
         }
         Kanban.empresaAtual().deletarProjeto(3);
@@ -258,14 +270,14 @@ public class SelectProjectController {
         tituloCriarNovoUsuario.setOpacity(opacidade);
         novaArea.setOpacity(opacidade);
         tituloCriarNovaArea.setOpacity(opacidade);
+        opacidade = 0;
         editarProjetoUm.setOpacity(opacidade);
         excluirProjetoUm.setOpacity(opacidade);        
-        opacidade = 0;
         editarProjetoDois.setOpacity(opacidade);
-        editarProjetoTres.setOpacity(opacidade);
-        editarProjetoQuatro.setOpacity(opacidade);
         excluirProjetoDois.setOpacity(opacidade);
+        editarProjetoTres.setOpacity(opacidade);
         excluirProjetoTres.setOpacity(opacidade);
+        editarProjetoQuatro.setOpacity(opacidade);
         excluirProjetoQuatro.setOpacity(opacidade);
     }
 
@@ -281,18 +293,30 @@ public class SelectProjectController {
         for (int i = 0; i < 4; i++) {
             int opacidade = projetosE[i] != null ? 1:0;
             projetos[i].setOpacity(opacidade);
-            projetosExcluir[i].setOpacity(opacidade);
-            projetosEditar[i].setOpacity(opacidade);
-            if (projetosE[i] == null) {
+            if (projetosE[i] != null && Kanban.loginAdmin) {
+                projetosExcluir[i].setCursor(Cursor.CLOSED_HAND);
+                projetosEditar[i].setCursor(Cursor.CLOSED_HAND);
+                projetosExcluir[i].setOpacity(1);
+                projetosEditar[i].setOpacity(1);
+                projetos[i].setCursor(Cursor.CLOSED_HAND);
+            }
+            if (projetosE[i] != null && !Kanban.loginAdmin) {
+                projetosExcluir[i].setCursor(Cursor.DEFAULT);
+                projetosEditar[i].setCursor(Cursor.DEFAULT);
+                projetosExcluir[i].setOpacity(0);
+                projetosEditar[i].setOpacity(0);
+                projetos[i].setCursor(Cursor.CLOSED_HAND);
+            }
+            if (projetosE[i] == null ) {
                 projetosExcluir[i].setCursor(Cursor.DEFAULT);
                 projetosEditar[i].setCursor(Cursor.DEFAULT);
                 projetos[i].setCursor(Cursor.DEFAULT);
+                projetosExcluir[i].setOpacity(0);
+                projetosEditar[i].setOpacity(0);
                 continue;
             }
             
-            projetosExcluir[i].setCursor(Cursor.CLOSED_HAND);
-            projetosEditar[i].setCursor(Cursor.CLOSED_HAND);
-            projetos[i].setCursor(Cursor.CLOSED_HAND);
+            
             projetoNomes[i].setText(projetosE[i].getNome());
             int numPostIts = projetosE[i].numAcoes();
             if (numPostIts == 1) {

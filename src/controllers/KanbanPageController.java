@@ -661,6 +661,17 @@ public class KanbanPageController implements Initializable {
         } else {
             finalizadoProximo.setOpacity(0);
         }
+        if (Kanban.paginaAFazer > 0 || Kanban.paginaFazendo > 0 ||Kanban.paginaFinalizado > 0 ) {
+            if (Kanban.paginaAFazer >= aFazer.size() / 4.0) {
+                Kanban.paginaAFazer = aFazer.size() / 4 - 1;
+            }
+            if (Kanban.paginaFazendo >= fazendo.size() / 4.0) {
+                Kanban.paginaFazendo = fazendo.size() / 4 - 1;
+            }
+            if (Kanban.paginaFinalizado >= finalizado.size() / 4.0) {
+                Kanban.paginaFinalizado = finalizado.size() / 4 - 1;
+            }
+        }
         for (PostIt[] i:postIts) {
             for (PostIt postIt:i) {
                 postIt.sePreencher();

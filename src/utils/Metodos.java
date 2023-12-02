@@ -140,7 +140,7 @@ public class Metodos {
         }
         String retorno = Character.toString(str.toCharArray()[0]).toUpperCase();
         for (int i = 1; i<str.length();i++) {
-            retorno += str.charAt(i);
+            retorno += Character.toString(str.charAt(i)).toLowerCase();
         }
         return retorno;
     }

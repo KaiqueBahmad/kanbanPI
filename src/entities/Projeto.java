@@ -58,6 +58,7 @@ public class Projeto {
     }
     
     public float getPorcentagem() {
+        atualizarPorcentagem();
         return this.porcentagem;
     }
     

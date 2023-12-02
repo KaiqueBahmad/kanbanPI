@@ -117,6 +117,12 @@ public class LoginPageController {
                     errorCadastro.setText("Empresa já cadastrada");
                     return;
                 }
+                for (entities.Usuario usr:empresa.getUsuarios()) {
+                    if (nomeInserido.equals(usr.getNome())) {
+                    errorCadastro.setText("Nome já utilizado para usuário");
+                    return;
+                    }
+                }
             }
             if (senhaInformada.equals(senha2Informada)) {
                 for (int i = 0; i < Kanban.empresas.length; i++) {
