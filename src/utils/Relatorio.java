@@ -96,7 +96,7 @@ public class Relatorio {
         relatorio += "#STATUS USUARIOS\n";
         int indiceDesignado = 0;
         int numDesignado = 0;
-        for (Usuario usr: projeto.getEmpresa().getUsuarios()) {
+        for (Usuario usr: projeto.getUsuarios()) {
             relatorio += usr.getNome()+":\n";
             for (Atividade at:projeto.getAtividades()) {
                 for (Acao ac:at.getAcoes()) {
@@ -110,7 +110,7 @@ public class Relatorio {
             relatorio += "\tAções Atrasadas:\n";
             int porcentagem = 0;
             for (Acao ac:usr.getAcoes()) {
-                if (ac.getPrazo() - System.currentTimeMillis()/1000 < 0 && ac.getPorcentagem() < 1) {
+                if (ac.getPrazo() - System.currentTimeMillis()/1000 < 0 && ac.getPorcentagem() < 1 && ac.getAtividade().getProjeto() == projeto) {
                     porcentagem = (int)(ac.getPorcentagem()*100) ;
                     relatorio += "\t\t";
                     relatorio += ac.getNome()+"("+ac.getAtividade().getNome()+")["+porcentagem+"%]: "+Metodos.tempoRestante(ac.getPrazo())+"\n";
@@ -118,6 +118,9 @@ public class Relatorio {
             }   
             relatorio+= "\tAções Completas:\n";
             for (Acao ac:usr.getAcoes()) {
+                if (ac.getAtividade().getProjeto() != projeto) {
+                    continue;
+                }
                 if (ac.getPorcentagem() == 1) {
                     porcentagem = (int)(ac.getPorcentagem()*100) ;
                     relatorio += "\t\t";
@@ -131,6 +134,9 @@ public class Relatorio {
             }
             relatorio+= "\tAções em Andamento:\n";
             for (Acao ac:usr.getAcoes()) {
+                if (ac.getAtividade().getProjeto() != projeto) {
+                    continue;
+                }
                 if (ac.getPorcentagem() >= 0 && ac.getPorcentagem() < 1 && ac.getPrazo() - System.currentTimeMillis()/1000 >= 0) {
                     porcentagem = (int)(ac.getPorcentagem()*100) ;
                     relatorio += "\t\t";
@@ -161,13 +167,20 @@ public class Relatorio {
                 }
             }
             relatorio += "\tNúmero de Ações em Andamento: "+numAcoesAndamento+"\n";
-            relatorio += "\tNúmero d Ações Atrasadas: "+numAcoesAtrasadas+"\n";
+            relatorio += "\tNúmero de Ações Atrasadas: "+numAcoesAtrasadas+"\n";
             relatorio += "\tNúmero de Ações Completas: "+numAcoesCompletas+"\n";
         }
         relatorio += "#STATUS AÇÕES\n";
         for (Atividade at:projeto.getAtividades()) {
             for (Acao ac:at.getAcoes()) {
                 relatorio += ac.getNome() +"("+at.getNome()+"):\n";
+                
+                relatorio += "\tInício: "+Metodos.dataDDMM(ac.getInicio())+"\n";
+                if (ac.getPorcentagem() == 1) {
+                    relatorio +="\tTérmino: "+Metodos.dataDDMM(ac.getTermino())+"\n";
+                }
+                relatorio += "\tPrazo: "+Metodos.dataDDMM(ac.getPrazo())+"\n";
+                
                 float percent = ac.getPorcentagem();
                 relatorio += "\tPorcentagem: "+(int)(percent*100)+"%\n";
                 if (percent == 0) {
@@ -205,7 +218,7 @@ public class Relatorio {
         emp.getProjetos()[0].getAtividadePorNome("atividade 1").criarAcao("acao 2", "usuario", "financeiro", 1701291822, 1701900000);
         emp.getProjetos()[0].getAtividadePorNome("atividade 1").criarAcao("acao 3", "usuario", "financeiro", 1701291822, 1701900000);
         emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao 2").aumentarPorcentagem(1);
-        emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao 2").aumentarPorcentagem(-0.5);
+//        emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao 2").aumentarPorcentagem(-0.5);
 //        emp.getProjetos()[0].getAtividadePorNome("atividade 1").getAcaoPorNome("acao 3").aumentarPorcentagem(1.7);
         System.out.println(criarRelatorio(emp.getProjetos()[0]));
 //        TimeUnit.SECONDS.sleep(5);

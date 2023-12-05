@@ -82,6 +82,18 @@ public class Projeto {
         return null;
     }
 
+    public ArrayList<Usuario> getUsuarios() {
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        for (Atividade at:this.atividades) {
+            for (Acao ac:at.getAcoes()) {
+                if (!listaUsuarios.contains(ac.getUsrResponsavel())) {
+                    listaUsuarios.add(ac.getUsrResponsavel());
+                }
+            }
+        }
+        return listaUsuarios;
+    } 
+    
     public int numAcoes() {
         int i = 0;
         for (Atividade at:this.atividades) {
