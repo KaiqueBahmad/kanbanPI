@@ -518,9 +518,9 @@ public class KanbanPageController implements Initializable {
     
     @FXML
     private void deletarAcao(MouseEvent event) {
-//        errorKanbanLixo;;
+//        errorKanbanLixo;
 //        lixeiraAberta;
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deletar "+PostIt.selecionados.size()+" ações ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deletar "+PostIt.selecionados.size()+" ações ?", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
             PostIt.deletarAcoes();
