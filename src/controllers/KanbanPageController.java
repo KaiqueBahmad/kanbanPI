@@ -17,7 +17,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -518,7 +520,13 @@ public class KanbanPageController implements Initializable {
     private void deletarAcao(MouseEvent event) {
 //        errorKanbanLixo;;
 //        lixeiraAberta;
-        PostIt.deletarAcoes();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deletar "+PostIt.selecionados.size()+" ações ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        alert.showAndWait();
+        if (alert.getResult() == ButtonType.YES) {
+            PostIt.deletarAcoes();
+        } else if (alert.getResult() == ButtonType.NO) {
+            PostIt.cancelarSelecao();
+        }
     }
 
     @FXML
